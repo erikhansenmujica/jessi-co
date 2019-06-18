@@ -8,11 +8,11 @@ const Product = db.define('products', {
     allowNull: false,
   },
   price: {
-    type: S.NUMBER,
+    type: S.INTEGER,
     allowNull: false,
   },
   stock: {
-    type: S.NUMBER, 
+    type: S.INTEGER, 
   },
   description: {
     type : S.TEXT
@@ -24,7 +24,7 @@ const Product = db.define('products', {
     type : S.STRING
   },
   rating : {
-    type : S.NUMBER
+    type : S.INTEGER
   }
 })
 
