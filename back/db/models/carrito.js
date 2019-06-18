@@ -8,6 +8,6 @@ const Carrito = db.define('carritos', {
   }
 })
 
-Carrito.belongsTo(User)
+//Carrito.belongsTo(User)
 
 module.exports = Carrito
