@@ -4,7 +4,9 @@ const db = require('../db');
 
 const Carrito = db.define('carritos', {
   productsID: {
+
     type: S.INTEGER,
+
   }
 })
 
