@@ -1,4 +1,9 @@
 const S = require('sequelize');
+
+const User = require('./user')
+const Product = require ('./products')
+
+
 const db = require('../db');
 
 const Carrito = db.define('carritos', {

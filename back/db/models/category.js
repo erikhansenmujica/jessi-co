@@ -1,5 +1,5 @@
 const S = require('sequelize');
-
+const Product = require('./products')
 const db = require('../db');
 
 const Category = db.define('categories', {
@@ -9,6 +9,6 @@ const Category = db.define('categories', {
   }
 })
 
-Category.hasMany(Product)
+//Category.belongsTo(Product)
 
-module.exports = Order
+module.exports = Category
