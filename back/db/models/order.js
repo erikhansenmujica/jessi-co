@@ -1,22 +1,21 @@
-const S = require('sequelize');
-const Product = require('./products')
-const db = require('../db');
+const S = require("sequelize");
+const Product = require("./products");
+const db = require("../db");
 
-const Order = db.define('orders', {
+const Order = db.define("orders", {
   status: {
     type: S.STRING,
-    allowNull: false,
+    allowNull: false
   },
   address: {
     type: S.STRING,
-    allowNull: false,
+    allowNull: false
   },
   date: {
-    type: S.DATE, 
+    type: S.DATE
   }
-})
+});
 
-Order.hasMany(Product)
+Order.hasMany(Product);
 
-
-module.exports = Order
+module.exports = Order;

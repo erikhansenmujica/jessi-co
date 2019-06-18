@@ -1,19 +1,19 @@
-const S = require('sequelize');
-const Order = require('./order')
-const db = require('../db');
+const S = require("sequelize");
+const Order = require("./order");
+const db = require("../db");
 
-const User = db.define('users', {
-  name: { 
-    type: S.STRING,
+const User = db.define("users", {
+  name: {
+    type: S.STRING
   },
-  lastname : {
-      type: S.STRING
+  lastname: {
+    type: S.STRING
   },
-  admin : {
-      type : S.BOOLEAN
+  admin: {
+    type: S.BOOLEAN
   }
-})
+});
 
-User.hasMany(Order)
+User.hasMany(Order);
 
-module.exports = User
+module.exports = User;

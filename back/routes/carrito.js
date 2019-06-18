@@ -7,6 +7,12 @@ router.get('/api/carrito/:userId', function (req, res) {
         .then((carrito) => res.send(carrito))
 })
 
+router.post('/api/carrito/storageCarrito', function (req, res) {
+    localStorage.setItem(req.body);
+})
+router.post('/api/carrito/getCarrito', function (req, res) {
+    res.send(localStorage.getItem(req.body));
+})
 
 
 

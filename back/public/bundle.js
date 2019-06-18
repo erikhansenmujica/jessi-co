@@ -43903,7 +43903,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var initialState = {
   products: [],
-  product: {}
+  product: {},
+  carrito: []
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -43921,6 +43922,13 @@ var initialState = {
       {
         return Object.assign({}, state, {
           product: action.product
+        });
+      }
+
+    case _utils_constants__WEBPACK_IMPORTED_MODULE_0__["SET_CART"]:
+      {
+        return Object.assign({}, state, {
+          product: action.carrito
         });
       }
 
