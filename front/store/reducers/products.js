@@ -1,8 +1,9 @@
-import {ADD_PRODUCTS, ADD_PRODUCT} from '../../utils/constants'
+import {ADD_PRODUCTS, ADD_PRODUCT, SET_CART} from '../../utils/constants'
 
 const initialState ={
     products:[],
-    product:{}
+    product:{},
+    carrito: []
 }
 
 export default (state=initialState, action) =>{
@@ -12,6 +13,9 @@ export default (state=initialState, action) =>{
         }
         case ADD_PRODUCT:{
             return Object.assign({}, state, {product:action.product})
+        }
+        case SET_CART:{
+            return Object.assign({}, state, {product:action.carrito})
         }
         default:
             return state;
