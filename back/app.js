@@ -46,7 +46,7 @@ app.use(function (err, req, res, next) {
     res.sendStatus(err.status || 500);
 });
 
-db.sync({ force: false }).then(() => console.log('Data Base connected: Tessie'))
+db.sync({ force:false }).then((c)=> console.log(`connected to ${c.config.database} DB`))
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`server started on port ${PORT}`))
