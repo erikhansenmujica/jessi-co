@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const routes = require('./routes/index')
+const productsRoutes = require('./routes/products');
+const carritoRoutes = require('./routes/carrito');
 const cookieParser = require('cookie-parser');
 const session = require("express-session");
 //const passport = require('./config/passportConfig');
@@ -23,10 +24,16 @@ app.use(session({
 // app.use(passport.session());
 /*****************************/
 
-app.use('/', routes);
+/*Configuración de rutas*/
+app.use('/api/products', productsRoutes);
+app.use('/api/carrito', carritoRoutes);
+/***********************/
+
+
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './public', 'index.html'));
 })
+
 app.use(function (req, res, next) {
     const err = new Error('Not Found');
     err.status = 404;
@@ -39,7 +46,7 @@ app.use(function (err, req, res, next) {
     res.sendStatus(err.status || 500);
 });
 
-db.sync({force:false}).then(()=>console.log('Data Base connected: Tessie'))
+db.sync({ force: false }).then(() => console.log('Data Base connected: Tessie'))
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`server started on port ${PORT}`))
