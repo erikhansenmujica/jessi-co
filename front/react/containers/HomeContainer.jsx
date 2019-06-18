@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from '../components/Home'
+import {connect} from 'react-redux'
 
 export default class HomeContainer extends React.Component{
     constructor(props){
@@ -12,3 +13,11 @@ export default class HomeContainer extends React.Component{
         )
     }
 }
+
+// const mapDispatchToProps=(state, ownProps)=>{
+    // return({
+    //     state:state.home
+    // })
+// }
+
+// export default connect(null, mapDispatchToProps)(HomeContainer)
