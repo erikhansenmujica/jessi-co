@@ -10,7 +10,7 @@ const faker = require ("faker")
 //const passport = require('./config/passportConfig');
 const db = require('./db/db')
 const Products = require("./db/models/products")
-var i=0
+// var i=0
 // while (i<55) {
 //     Products.create({
 //         name: faker.commerce.productName(),

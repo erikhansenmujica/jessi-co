@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -35,11 +36,11 @@ export default function TitlebarGridList(props) {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">December</ListSubheader>
         </GridListTile>
-        {props.products.name&&props.products.map(
-          <GridListTile key={"1"}>
-            <img src={"!"} alt={"1"} />
+        {props.products.name&&props.products.map(prod=>
+            <Link to={`/products/${prod.name}`}> <GridListTile key={prod.id}>
+          <img src={prod.images} alt={"not found"} />
             <GridListTileBar
-              title={"1"}
+              title={prod.name}
               subtitle={<span>by: {"1"}</span>}
               actionIcon={
                 <IconButton aria-label={`info about ${"1"}`} className={classes.icon}>
@@ -47,7 +48,7 @@ export default function TitlebarGridList(props) {
                 </IconButton>
               }
             />
-          </GridListTile>
+          </GridListTile></Link>
         )}
       </GridList>
     </div>
