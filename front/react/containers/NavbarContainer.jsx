@@ -29,19 +29,10 @@ export default class NavbarContainer extends React.Component {
     }
     render (){
         return (
-        
             <Navbar 
             handleSearch = {this.handleSearch}
             handleSubmit = {this.handleSubmit}
-
             />
-            
-        
         )
     }
 }
-
-
-
-
-
