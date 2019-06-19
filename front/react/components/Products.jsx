@@ -35,8 +35,8 @@ export default function TitlebarGridList(props) {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">December</ListSubheader>
         </GridListTile>
-        {props.products.name&&props.products.map(
-          <GridListTile key={"1"}>
+        {props.products&&props.products.map((elem)=>
+          <GridListTile key={elem.id}>
             <img src={"!"} alt={"1"} />
             <GridListTileBar
               title={"1"}
