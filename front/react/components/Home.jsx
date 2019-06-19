@@ -1,90 +1,63 @@
-import React from "react"
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import IconButton from "@material-ui/core/IconButton";
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+//import tileData from './tileData';
 
-export default ()=>{
-    return (
-        <div style={styles.contentMessage}>
-            HOLAAAAAAA
-        </div>
-    )
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
+    backgroundColor: theme.palette.background.paper
+  },
+  gridList: {
+    flexWrap: "nowrap",
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: "translateZ(0)"
+  },
+  title: {
+    color: theme.palette.primary.light
+  },
+  titleBar: {
+    background:
+      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
+  }
+}));
 
+export default function SingleLineGridList() {
+  const classes = useStyles();
 
+  return (
+    <div className={classes.root}>
+
+    <h1 className={classes.title}>
+      Estoy entrando
+    </h1>
+    {/* <GridList className={classes.gridList} cols={2.5}>
+
+        {tileData.map(tile => (
+          <GridListTile key={tile.img}>
+            <img src={tile.img} alt={tile.title} />
+            <GridListTileBar
+              title={tile.title}
+              classes={{
+                root: classes.titleBar,
+                title: classes.title,
+              }}
+              actionIcon={
+                <IconButton aria-label={`star ${tile.title}`}>
+                  <StarBorderIcon className={classes.title} />
+                </IconButton>
+              }
+            />
+          </GridListTile>
+        ))}
+      </GridList> */}
+    </div>
+  );
 }
-
-const styles = theme => ({
-    content: {
-      backgroundColor: theme.palette.secondary.light,
-      color: theme.palette.text.primary,
-      flexWrap: 'inherit',
-      [theme.breakpoints.up('md')]: {
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 4,
-        borderBottomLeftRadius: 4,
-      },
-    },
-    contentMessage: {
-      fontSize: 16,
-      display: 'flex',
-      alignItems: 'center',
-    },
-    contentAction: {
-      paddingLeft: theme.spacing(2),
-    },
-    info: {
-      flexShrink: 0,
-      marginRight: theme.spacing(2),
-    },
-    close: {
-      padding: theme.spacing(1),
-    },
-  });
-  
-  // function Transition(props) {
-  //   return <Slide {...props} direction="down" />;
-  // }
-  
-  // function Snackbar(props) {
-  //   const { classes, onClose, message, ...other } = props;
-  
-  //   return (
-  //     <MuiSnackbar
-  //       anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-  //       autoHideDuration={6e3}
-  //       transition={Transition}
-  //       ContentProps={{
-  //         'aria-describedby': 'snackbar',
-  //         classes: {
-  //           root: classes.content,
-  //           message: classes.contentMessage,
-  //           action: classes.contentAction,
-  //         },
-  //       }}
-  //       message={
-  //         <React.Fragment>
-  //           <InfoIcon className={classes.info} />
-  //           <span id="snackbar">{message}</span>
-  //         </React.Fragment>
-  //       }
-  //       action={[
-  //         <IconButton
-  //           key="close"
-  //           aria-label="Close"
-  //           color="inherit"
-  //           className={classes.close}
-  //           onClick={onClose}
-  //         >
-  //           <CloseIcon />
-  //         </IconButton>,
-  //       ]}
-  //       {...other}
-  //     />
-  //   );
-  // }
-  
-  // Snackbar.propTypes = {
-  //   classes: PropTypes.object.isRequired,
-  //   SnackbarContentProps: PropTypes.object,
-  // };
-  
-  // export default withStyles(styles)(Snackbar);
-  
