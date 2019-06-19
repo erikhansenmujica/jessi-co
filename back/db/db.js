@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
 
-const db = new Sequelize ('postgres://localhost:5432/tessie')
+const db = new Sequelize ('postgres://localhost:5432/tessie',{ logging : false})
 
 module.exports = db
