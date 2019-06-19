@@ -6,12 +6,13 @@ import SingleProductContainer from "../containers/SingleProductContainer";
 import NavbarContainer from "../containers/NavbarContainer";
 
 import ProductsContainer from "../containers/ProductsContainer"
+import CarritoContainer from "../containers/CarritoContainer";
 
 
 export default () => {
   return (
     <div>
- <Route component={NavbarContainer} /> 
+      <Route component={NavbarContainer} />
       <Switch>
         <Route exact path="/" component={HomeContainer} />
         <Route
@@ -20,6 +21,7 @@ export default () => {
           component={SingleProductContainer}
         />
         <Route path="/products" component={ProductsContainer} />
+        <Route exact path="/carrito" component={CarritoContainer}/>
       </Switch>
     </div>
   );
