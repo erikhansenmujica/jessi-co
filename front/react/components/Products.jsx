@@ -34,7 +34,7 @@ export default function TitlebarGridList(props) {
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
+          <ListSubheader component="div">Products</ListSubheader>
         </GridListTile>
         {props.products.name&&props.products.map(prod=>
             <GridListTile onClick={()=>props.handleClick(prod.id)}key={prod.id}>
