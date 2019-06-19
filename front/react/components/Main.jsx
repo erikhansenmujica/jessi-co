@@ -8,7 +8,7 @@ import ProductsContainer from "../containers/ProductsContainer"
 export default () => {
   return (
     <div>
-      {/* <NavbarContainer /> */}
+{/* <NavbarContainer /> */}
       <Switch>
         <Route exact path="/" component={HomeContainer} />
         <Route
