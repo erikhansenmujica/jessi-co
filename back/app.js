@@ -10,19 +10,19 @@ const faker = require ("faker")
 //const passport = require('./config/passportConfig');
 const db = require('./db/db')
 const Products = require("./db/models/products")
-var i=0
-while (i<55) {
-    Products.create({
-        name: faker.commerce.productName(),
-          price:  parseInt(faker.commerce.price()),
-          stock: parseInt(faker.random.number()),
-          description: faker.lorem.sentence(),
-          images:faker.image.technics(),
-          reviews : faker.hacker.phrase(),
-          rating : parseInt(faker.random.number())
-    })
-    i++
-}
+// var i=0
+// while (i<55) {
+//     Products.create({
+//         name: faker.commerce.productName(),
+//           price:  parseInt(faker.commerce.price()),
+//           stock: parseInt(faker.random.number()),
+//           description: faker.lorem.sentence(),
+//           images:faker.image.technics(),
+//           reviews : faker.hacker.phrase(),
+//           rating : parseInt(faker.random.number())
+//     })
+//     i++
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -61,7 +61,7 @@ app.use(function (err, req, res, next) {
     res.sendStatus(err.status || 500);
 });
 
-db.sync({ force:true }).then((c)=> console.log(`connected to ${c.config.database} DB`))
+db.sync({ force:false }).then((c)=> console.log(`connected to ${c.config.database} DB`))
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`server started on port ${PORT}`))
