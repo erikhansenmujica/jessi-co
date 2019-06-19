@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Products from '../components/Products';
 import {fetchProductsById} from '../../store/actions/getProducts'
-class PorductsContainer extends React.Component{
+class ProductsContainer extends React.Component{
     constructor(props){
         super(props);
         
@@ -27,4 +27,4 @@ const mapDispatchToProps = ()=>({
 export default connect (
     mapStateToProps,
     mapDispatchToProps
-)(PorductsContainer)
+)(ProductsContainer)
