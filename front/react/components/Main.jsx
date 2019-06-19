@@ -12,11 +12,8 @@ export default () => {
     <div>
       <Route component={NavbarContainer} />
       <Switch>
-        <Route exact path="/" component={HomeContainer} />
-        <Route
-          exact
-          path="/products/:name"
-          component={SingleProductContainer}
+        <Route exact path="/" component = {HomeContainer} />
+        <Route exact path="/products/:name" component = {SingleProductContainer}
         />
         <Route path="/products" component={ProductsContainer} />
         <Route exact path="/carrito" component={CarritoContainer}/>

@@ -15,7 +15,7 @@ const Products = require("./db/models/products")
 //     Products.create({
 //         name: faker.commerce.productName(),
 //           price:  parseInt(faker.commerce.price()),
-//           stock: Math.floor(Math.random() * 3),
+//           stock: Math.round(Math.random()*2),
 //           description: faker.lorem.sentence(),
 //           images:[faker.image.technics(),faker.image.technics(),faker.image.technics(),faker.image.technics()],
 //           reviews : [faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase()],

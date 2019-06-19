@@ -52322,53 +52322,173 @@ function CenteredGrid(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SingleLineGridList; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/styles */ "./node_modules/@material-ui/core/esm/styles/index.js");
-/* harmony import */ var _material_ui_core_GridList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/GridList */ "./node_modules/@material-ui/core/esm/GridList/index.js");
-/* harmony import */ var _material_ui_core_GridListTile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/GridListTile */ "./node_modules/@material-ui/core/esm/GridListTile/index.js");
-/* harmony import */ var _material_ui_core_GridListTileBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/GridListTileBar */ "./node_modules/@material-ui/core/esm/GridListTileBar/index.js");
-/* harmony import */ var _material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/core/IconButton */ "./node_modules/@material-ui/core/esm/IconButton/index.js");
-/* harmony import */ var _material_ui_icons_StarBorder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/icons/StarBorder */ "./node_modules/@material-ui/icons/StarBorder.js");
-/* harmony import */ var _material_ui_icons_StarBorder__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_StarBorder__WEBPACK_IMPORTED_MODULE_6__);
 
-
-
-
-
-
- //import tileData from './tileData';
-
-var useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_1__["makeStyles"])(function (theme) {
-  return {
-    root: {
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "space-around",
-      overflow: "hidden",
-      backgroundColor: theme.palette.background.paper
-    },
-    gridList: {
-      flexWrap: "nowrap",
-      // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-      transform: "translateZ(0)"
-    },
-    title: {
-      color: theme.palette.primary.light
-    },
-    titleBar: {
-      background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
-    }
-  };
-});
-function SingleLineGridList(props) {
-  var classes = useStyles();
-  console.log(props, "props del home");
+var style = {
+  div: {
+    display: "block",
+    margin: "auto",
+    height: "300px",
+    width: "200px"
+  },
+  text: {
+    "text-align": "center",
+    "font-family": "Anton",
+    "font-size": "80px"
+  },
+  text2: {
+    "text-align": "center"
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: classes.root
-  });
-}
+    className: "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    style: style.text
+  }, "TESSIE&CO"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "carouselExampleCaptions",
+    className: "carousel slide",
+    "data-ride": "carousel"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
+    className: "carousel-indicators"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    "data-target": "#carouselExampleCaptions",
+    "data-slide-to": "0",
+    className: "active"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    "data-target": "#carouselExampleCaptions",
+    "data-slide-to": "1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    "data-target": "#carouselExampleCaptions",
+    "data-slide-to": "2"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-inner"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-item active"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4598/4598800cv12d.jpg",
+    className: "d-block w-100",
+    alt: "...",
+    style: style.div
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-caption d-none d-md-block"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "MacBook"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://www.apple.com/my/support/products/images/mac-hero_2x.png",
+    style: style.div,
+    className: "d-block w-100",
+    alt: "..."
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-caption d-none d-md-block"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Mac Apple"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/image/AppleInc/aos/published/images/a/pp/apple/watch/apple-watch-og-hero-201809?wid=600&hei=315&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1536762554360",
+    style: style.div,
+    className: "d-block w-100",
+    alt: "..."
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-caption d-none d-md-block"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Apple Watch")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "carousel-control-prev",
+    href: "#carouselExampleCaptions",
+    role: "button",
+    "data-slide": "prev"
+  }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "carousel-control-prev-icon",
+    "aria-hidden": "true"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "sr-only"
+  }, "Previous")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "carousel-control-next",
+    href: "#carouselExampleCaptions",
+    role: "button",
+    "data-slide": "next"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "carousel-control-next-icon",
+    "aria-hidden": "true"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "sr-only"
+  }, "Next"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "carouselExampleCaptions",
+    className: "carousel slide",
+    "data-ride": "carousel"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ol", {
+    className: "carousel-indicators"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    "data-target": "#carouselExampleCaptions",
+    "data-slide-to": "0",
+    className: "active"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    "data-target": "#carouselExampleCaptions",
+    "data-slide-to": "1"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    "data-target": "#carouselExampleCaptions",
+    "data-slide-to": "2"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-inner"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-item active"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://as01.epimg.net/betech/imagenes/2018/09/12/portada/1536784865_386895_1536799374_noticia_normal.jpg",
+    className: "d-block w-100",
+    alt: "...",
+    style: style.div
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-caption d-none d-md-block"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Iphone XR"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://lamanzanamordida.net/app/uploads/2019/05/Apple-Watch-Series-4.jpg",
+    style: style.div,
+    className: "d-block w-100",
+    alt: "..."
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-caption d-none d-md-block"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Apple Watch"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "https://http2.mlstatic.com/case-apple-original-iphone-7-8-D_NQ_NP_747069-MPE27568012317_062018-F.jpg",
+    style: style.div,
+    className: "d-block w-100",
+    alt: "..."
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "carousel-caption d-none d-md-block"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Cases Apple")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "carousel-control-prev",
+    href: "#carouselExampleCaptions",
+    role: "button",
+    "data-slide": "prev"
+  }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "carousel-control-prev-icon",
+    "aria-hidden": "true"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "sr-only"
+  }, "Previous")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    className: "carousel-control-next",
+    href: "#carouselExampleCaptions",
+    role: "button",
+    "data-slide": "next"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "carousel-control-next-icon",
+    "aria-hidden": "true"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "sr-only"
+  }, "Next"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    "class": "container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    "class": "float-right",
+    style: style.text2
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#"
+  }, "Back to top")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "\xA9 2017-2019 Company, Inc. \xB7 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#"
+  }, "Privacy"), " ", "\xB7 ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#"
+  }, "Terms"))));
+});
 
 /***/ }),
 
@@ -52994,27 +53114,21 @@ function (_React$Component) {
   _inherits(HomeContainer, _React$Component);
 
   function HomeContainer(props) {
-    var _this;
-
     _classCallCheck(this, HomeContainer);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(HomeContainer).call(this, props));
-    _this.state = {
-      products: ""
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(HomeContainer).call(this, props));
   }
 
   _createClass(HomeContainer, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchProductsById(this.props.products);
+      this.props.fetchProducts();
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Home__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        product: this.props.products
+        products: this.props.products
       }));
     }
   }]);
@@ -53024,14 +53138,15 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   return {
-    state: state.products,
-    productsName: ownProps.match.params.id
+    products: state.products
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps() {
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
   return {
-    fetchProductsById: _store_actions_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProductsById"]
+    fetchProducts: function fetchProducts(products) {
+      return dispatch(Object(_store_actions_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProducts"])(products));
+    }
   };
 };
 
@@ -53386,12 +53501,13 @@ var fetchCarrito = function fetchCarrito(user) {
 /*!**************************************!*\
   !*** ./store/actions/getProducts.js ***!
   \**************************************/
-/*! exports provided: addProduct, fetchProductsByName, fetchProductsByCat, fetchProductsById */
+/*! exports provided: addProduct, fetchProducts, fetchProductsByName, fetchProductsByCat, fetchProductsById */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addProduct", function() { return addProduct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProducts", function() { return fetchProducts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProductsByName", function() { return fetchProductsByName; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProductsByCat", function() { return fetchProductsByCat; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchProductsById", function() { return fetchProductsById; });
@@ -53416,6 +53532,13 @@ var addProduct = function addProduct(product) {
     product: product
   };
 };
+var fetchProducts = function fetchProducts() {
+  return function (dispatch, getState) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/all").then(function (res) {
+      dispatch(addProducts(res));
+    });
+  };
+};
 var fetchProductsByName = function fetchProductsByName(name) {
   return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(name)).then(function (products) {
     return _store_index__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch(addProducts(products));
@@ -53427,7 +53550,7 @@ var fetchProductsByCat = function fetchProductsByCat(cat) {
   });
 };
 var fetchProductsById = function fetchProductsById(id) {
-  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/id/".concat(id)).then(function (product) {
+  return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/products/".concat(id)).then(function (product) {
     return _store_index__WEBPACK_IMPORTED_MODULE_2__["default"].dispatch(addProduct(product));
   });
 };

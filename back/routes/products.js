@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Product = require('../db/models/products');
-const Sequelize = require('sequelize');
+const Sequelize= require('sequelize')
 const Op = Sequelize.Op;
 
 // router.get('/api/products/:name', function (req, res) {
@@ -37,6 +37,20 @@ router.get('/all', function (req, res) {
             res.json(products)
         })
 })
+
+router.get('/all', function (req, res) {
+    Product.findAll({
+        where:{
+            id:{
+                [Op.lt]:5
+            }
+        }
+    })
+        .then((products) => {
+            res.json(products)
+        })
+ })
+ 
 
 
 module.exports = router;

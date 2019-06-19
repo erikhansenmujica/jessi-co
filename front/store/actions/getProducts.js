@@ -12,14 +12,22 @@ export const addProduct = (product)=>({
     product
 })
 
-export const fetchProductsByName =(name)=> 
-Axios.get(`/api/products/${name}`)
-.then(products=>store.dispatch(addProducts(products)))
+export const fetchProducts = function () {
+    return function (dispatch, getState) {
+      Axios.get(`/api/products/all`)
+        .then(res => {
+          dispatch(addProducts(res));
+        });
+    };
+  };
+export const fetchProductsByName = (name) => 
+    Axios.get(`/api/products/${name}`)
+        .then(products=>store.dispatch(addProducts(products)))
 
-export const fetchProductsByCat =(cat)=> 
-Axios.get(`/api/products/${cat}`)
-.then(products=>store.dispatch(addProducts(products)))
+export const fetchProductsByCat = (cat) => 
+    Axios.get(`/api/products/${cat}`)
+        .then(products=>store.dispatch(addProducts(products)))
 
-export const fetchProductsById =(id)=> 
-Axios.get(`/api/id/${id}`)
-.then(product=>store.dispatch(addProduct(product)))
+export const fetchProductsById = (id) => 
+    Axios.get(`/api/products/${id}`)
+        .then(product=>store.dispatch(addProduct(product)))
