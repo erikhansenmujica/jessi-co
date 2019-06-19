@@ -6,8 +6,23 @@ const productsRoutes = require('./routes/products');
 const carritoRoutes = require('./routes/carrito');
 const cookieParser = require('cookie-parser');
 const session = require("express-session");
+const faker = require ("faker")
 //const passport = require('./config/passportConfig');
 const db = require('./db/db')
+const Products = require("./db/models/products")
+// var i=0
+// while (i<55) {
+//     Products.create({
+//         name: faker.commerce.productName(),
+//           price:  parseInt(faker.commerce.price()),
+//           stock: parseInt(faker.random.number()),
+//           description: faker.lorem.sentence(),
+//           images:faker.image.technics(),
+//           reviews : faker.hacker.phrase(),
+//           rating : parseInt(faker.random.number())
+//     })
+//     i++
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

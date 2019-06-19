@@ -21,7 +21,7 @@ const Product = db.define('products', {
     type : S.STRING
   },
   reviews : {
-    type : S.STRING
+    type : S.ARRAY(S.STRING)
   },
   rating : {
     type : S.INTEGER
