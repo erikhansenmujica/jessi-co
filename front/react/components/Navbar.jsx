@@ -16,19 +16,29 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { withStyles } from '@material-ui/core/styles'; // para carrito
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'; // icon carrito 
+import Button from '@material-ui/core/Button';
+
+
+
 
 const StyledBadge = withStyles(theme => ({
-    badge: {
-      top: '50%',
-      right: -3,
-      // The border color match the background color.
-      border: `2px solid ${
-        theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
-      }`,
-    },
-  }))(Badge);
+  badge: {
+    top: '50%',
+    right: -3,
+    // The border color match the background color.
+    border: `2px solid ${
+      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
+    }`,
+  },
+}))(Badge);
 
 const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
   grow: {
     flexGrow: 1,
   },
@@ -90,7 +100,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -188,11 +198,15 @@ export default function PrimarySearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             {"Tessie&Co"}
           </Typography>
-          <div className={classes.search}>
+          <form onSubmit={handleSubmit}><div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
+            <InputBase 
+              inputProps = {
+                {type: "submit"}
+              }
+              onChange={handleSearch}
               placeholder="Búsqueda..."
               classes={{
                 root: classes.inputRoot,
@@ -201,6 +215,7 @@ export default function PrimarySearchAppBar() {
               inputProps={{ 'aria-label': 'Search' }}
             />
           </div>
+      </form>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
           <IconButton aria-label="Cart">
