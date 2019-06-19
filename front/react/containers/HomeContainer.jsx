@@ -1,21 +1,42 @@
 import React from "react";
 import Home from "../components/Home";
 import { connect } from "react-redux";
-import { fetchProductsByCat } from "../../store/actions/getProducts";
+import { fetchProductsById } from "../../store/actions/getProducts";
 
-export default class HomeContainer extends React.Component {
+class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state={
+      products:""
+    }
+  }
+  componentDidMount(){
+    this.props.fetchProductsById(this.props.products)
   }
   render() {
-    return <Home />;
+    return (
+      <div>
+        <Home product={this.props.products} />
+      </div>
+    );
   }
 }
 
-// const mapDispatchToProps=(state, ownProps)=>{
-// return({
-//     state:state.home
-// })
-// }
+const mapStateToProps = (state, ownProps) => {
+  
+  return {
+    state: state.products, 
+    productsName: ownProps.match.params.id
+  };
+};
 
-// export default connect(null, mapDispatchToProps)(HomeContainer)
+const mapDispatchToProps = () => {
+  return{
+    fetchProductsById: fetchProductsById
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeContainer);
