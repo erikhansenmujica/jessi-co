@@ -10,16 +10,17 @@ const faker = require ("faker")
 //const passport = require('./config/passportConfig');
 const db = require('./db/db')
 const Products = require("./db/models/products")
+
 // var i=0
 // while (i<55) {
 //     Products.create({
 //         name: faker.commerce.productName(),
 //           price:  parseInt(faker.commerce.price()),
-//           stock: parseInt(faker.random.number()),
+//           stock: Math.round(Math.random()*2),
 //           description: faker.lorem.sentence(),
 //           images:faker.image.technics(),
-//           reviews : faker.hacker.phrase(),
-//           rating : parseInt(faker.random.number())
+//           reviews : [faker.hacker.phrase(),faker.hacker.phrase()],
+//           rating : Math.round(Math.random()*2)
 //     })
 //     i++
 // }

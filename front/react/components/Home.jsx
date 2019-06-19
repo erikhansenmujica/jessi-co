@@ -5,7 +5,6 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
-//import tileData from './tileData';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,34 +24,41 @@ const useStyles = makeStyles(theme => ({
   },
   titleBar: {
     background:
-      "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
+      "linear-gradient(to top, rgb(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)"
   }
 }));
 
-export default function SingleLineGridList(props) {
+export default ({ products }) => {
   const classes = useStyles();
-  console.log(props, "props del home");
   return (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={2.5}>
-        {/* {tileData.map(tile => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              classes={{
-                root: classes.titleBar,
-                title: classes.title
-              }}
-              actionIcon={
-                <IconButton aria-label={`star ${tile.title}`}>
-                  <StarBorderIcon className={classes.title} />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))} */}
-      </GridList>
+      {products.products.data && (
+        <GridList className={classes.gridList} cols={2.5}>
+          {products.products ? (
+            products.products.data.map(product => (
+            
+              <GridListTile key={product.images}>
+                <img src={product.images} alt={product.name} />
+                <GridListTileBar
+                  title={product.name}
+                  classes={{
+                    root: classes.titleBar,
+                    title: classes.title
+                  }}
+                  actionIcon={
+                    <IconButton aria-label={`star ${product.name}`}>
+                      <StarBorderIcon className={classes.title} />
+                    </IconButton>
+                  }
+                />
+              </GridListTile>
+            ))
+          ) : (
+            <div>Cargando ...</div>
+          )}
+        
+        </GridList>
+      )}
     </div>
   );
-}
+};
