@@ -34,8 +34,8 @@ export default function SingleLineGridList(props) {
   console.log(props, "props del home");
   return (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={2.5}>
-        {/* {tileData.map(tile => (
+      {/*  <GridList className={classes.gridList} cols={2.5}>
+       {tileData.map(tile => (
           <GridListTile key={tile.img}>
             <img src={tile.img} alt={tile.title} />
             <GridListTileBar
@@ -51,8 +51,8 @@ export default function SingleLineGridList(props) {
               }
             />
           </GridListTile>
-        ))} */}
-      </GridList>
+        ))} 
+      </GridList>*/}
     </div>
   );
 }

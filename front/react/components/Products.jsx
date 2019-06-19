@@ -36,9 +36,15 @@ export default function TitlebarGridList(props) {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Products</ListSubheader>
         </GridListTile>
+<<<<<<< HEAD
         {props.products.name&&props.products.map(prod=>
             <GridListTile onClick={()=>props.handleClick(prod.id)}key={prod.id}>
           <img src={prod.images} alt={"not found"} />
+=======
+        {props.products&&props.products.map((elem)=>
+          <GridListTile key={elem.id}>
+            <img src={"!"} alt={"1"} />
+>>>>>>> f60c42ccd844e2a3b516bc8f768dda8cc55849fe
             <GridListTileBar
               title={prod.name}
               subtitle={<span>stock: {prod.stock}</span>}

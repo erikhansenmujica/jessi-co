@@ -15,11 +15,16 @@ const Products = require("./db/models/products")
 //     Products.create({
 //         name: faker.commerce.productName(),
 //           price:  parseInt(faker.commerce.price()),
-//           stock: parseInt(faker.random.number()),
+//           stock: Math.floor(Math.random() * 3),
 //           description: faker.lorem.sentence(),
 //           images:faker.image.technics(),
+<<<<<<< HEAD
 //           reviews : [faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase()],
 //           rating : parseInt(faker.random.number())
+=======
+//           reviews : [faker.hacker.phrase(), faker.hacker.phrase()],
+//           rating : Math.floor(Math.random() * 3)
+>>>>>>> f60c42ccd844e2a3b516bc8f768dda8cc55849fe
 //     })
 //     i++
 // }

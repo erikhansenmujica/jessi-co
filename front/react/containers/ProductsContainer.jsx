@@ -18,7 +18,7 @@ class PorductsContainer extends React.Component{
     }
 }
 const mapStateToProps = ({products})=>({
-    products:products.products
+    products:products.products.data
 })
 
 const mapDispatchToProps = ()=>({
