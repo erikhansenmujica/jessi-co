@@ -17,7 +17,7 @@ class SingleProductContainer extends React.Component {
   render() {
     return (
       <SingleProduct
-        product={this.props.producto}
+        product={this.props.product}
         setCart={this.addToCarrito}
       />
     );

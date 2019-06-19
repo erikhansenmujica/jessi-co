@@ -7,7 +7,7 @@ const addProducts = (products)=>({
     products
 })
 
-const addProduct = (product)=>({
+export const addProduct = (product)=>({
     type:ADD_PRODUCT,
     product
 })
@@ -21,5 +21,5 @@ Axios.get(`/api/products/${cat}`)
 .then(products=>store.dispatch(addProducts(products)))
 
 export const fetchProductsById =(id)=> 
-Axios.get(`/api/products/${id}`)
+Axios.get(`/api/id/${id}`)
 .then(product=>store.dispatch(addProduct(product)))

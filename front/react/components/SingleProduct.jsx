@@ -1,4 +1,13 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+
 
 const carouselStyle = {
   display: "block",
@@ -10,73 +19,69 @@ const carouselStyle = {
 const iconStyle = {
   textAlign: "center"
 };
+const useStyles = makeStyles(theme => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  input: {
+    display: 'none',
+  },
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    width:"80%",
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+  title: {
+    color: theme.palette.primary.light,
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+  },
+  images:{
+    height:"vh"
+  }
+}));
 
 export default props => {
+  const classes = useStyles();
+
   return (
-    <div>
-      {props.product.data && (
-        <div
-          id="carouselExampleIndicators"
-          className="carousel slide"
-          data-ride="carousel"
-          style={carouselStyle}
-        >
-          <ol className="carousel-indicators">
-            <li
-              data-target="#carouselExampleIndicators"
-              data-slide-to="0"
-              className="active"
-            />
-            <li data-target="#carouselExampleIndicators" data-slide-to="1" />
-            <li data-target="#carouselExampleIndicators" data-slide-to="2" />
-          </ol>
-          <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src={props.product.data.images}
-                className="d-block w-100 rounded"
-                alt="..."
-              />
-            </div>
-            {/* <div className="carousel-item">
-            <img src="..." className="d-block w-100" alt="..." />
-          </div> */}
-          </div>
-          <a
-            className="carousel-control-prev"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="prev"
-          >
-            <span className="carousel-control-prev-icon" aria-hidden="true" />
-            <span className="sr-only">Previous</span>
-          </a>
-          <a
-            className="carousel-control-next"
-            href="#carouselExampleIndicators"
-            role="button"
-            data-slide="next"
-          >
-            <span className="carousel-control-next-icon" aria-hidden="true" />
-            <span className="sr-only">Next</span>
-          </a>
-        </div>
+    <div className="container" style={{marginTop:"3%"}}>
+      {props.product.name && (
+        <div className={classes.root}>
+        <GridList className={classes.gridList} cols={2.5}>
+          {props.product.images.map(image => (
+            <GridListTile key={image}>
+              <img src={image} alt={image} />
+              
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
       )}
-      {props.product.data && (
+      {props.product.name && (
         <div>
-          <h2 className="text-center">{props.product.data.name}</h2>
+          <h2 className="text-center">{props.product.name}</h2>
           <p className="text-center text-wrap">
-            {props.product.data.description}
+            {props.product.description}
           </p>
           <div style={iconStyle}>
-            <h4>${props.product.data.price}</h4>
-            <span onClick={props.addToCart}>
-              {console.log(props)}
-              <i className="fas fa-cart-plus fa-3x" />
-            </span>
-            <span>
-              <i class="fas fa-cart-arrow-down fa-3x" />
-            </span>
+            <h4>${props.product.price}</h4>
+            <IconButton size="large" color="primary" className={classes.button} aria-label="Add to shopping cart" onClick={props.addToCart}>
+              <AddShoppingCartIcon />
+            </IconButton>
+            <IconButton size="large" className={classes.button} aria-label="Delete" >
+              <DeleteIcon />
+            </IconButton>
           </div>
         </div>
       )}

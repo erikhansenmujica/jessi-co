@@ -10,19 +10,6 @@ const faker = require("faker")
 //const passport = require('./config/passportConfig');
 const db = require('./db/db')
 const Products = require("./db/models/products")
-<<<<<<< HEAD
-
-// var i = 0
-// while (i < 55) {
-//     Products.create({
-//         name: faker.commerce.productName(),
-//         price: parseInt(faker.commerce.price()),
-//         stock:Math.round(Math.random()*2),
-//         description: faker.lorem.sentence(),
-//         images: faker.image.technics(),
-//         reviews: [faker.hacker.phrase(),faker.hacker.phrase()],
-//         rating: Math.round(Math.random()*2)
-=======
 // var i=0
 // while (i<55) {
 //     Products.create({
@@ -30,10 +17,9 @@ const Products = require("./db/models/products")
 //           price:  parseInt(faker.commerce.price()),
 //           stock: Math.floor(Math.random() * 3),
 //           description: faker.lorem.sentence(),
-//           images:faker.image.technics(),
+//           images:[faker.image.technics(),faker.image.technics(),faker.image.technics(),faker.image.technics()],
 //           reviews : [faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase()],
 //           rating : parseInt(faker.random.number())
->>>>>>> a854eb196c8b4e9995b0939d1e19ef7720e9baf3
 //     })
 //     i++
 // }

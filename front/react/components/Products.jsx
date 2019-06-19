@@ -35,7 +35,9 @@ export default function TitlebarGridList(props) {
             <div className="card-body">
               <h5 className="card-title">{prod.name}</h5>
               <p className="card-text">Cantidad disponible: {prod.stock} precio: ${prod.price} </p>
-              <Link to={`/products/${prod.name}`} className="btn btn-primary">Check Product</Link>
+              <Link to={`/products/${prod.name}`} className="btn btn-primary" onClick={()=>{
+                props.handleClick(prod)
+                }}>Check Product</Link>
             </div>
           </div>
         )}
