@@ -29,25 +29,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SingleLineGridList() {
+export default function SingleLineGridList(props) {
   const classes = useStyles();
-
+  console.log(props, "props del home");
   return (
     <div className={classes.root}>
-
-    <h1 className={classes.title}>
-      Estoy entrando
-    </h1>
-    {/* <GridList className={classes.gridList} cols={2.5}>
-
-        {tileData.map(tile => (
+      <GridList className={classes.gridList} cols={2.5}>
+        {/* {tileData.map(tile => (
           <GridListTile key={tile.img}>
             <img src={tile.img} alt={tile.title} />
             <GridListTileBar
               title={tile.title}
               classes={{
                 root: classes.titleBar,
-                title: classes.title,
+                title: classes.title
               }}
               actionIcon={
                 <IconButton aria-label={`star ${tile.title}`}>
@@ -56,8 +51,8 @@ export default function SingleLineGridList() {
               }
             />
           </GridListTile>
-        ))}
-      </GridList> */}
+        ))} */}
+      </GridList>
     </div>
   );
 }
