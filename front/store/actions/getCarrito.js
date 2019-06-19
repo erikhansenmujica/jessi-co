@@ -2,7 +2,7 @@ import {SET_CART} from "../../utils/constants"
 import Axios from "axios";
 import store from "../../store/index"
 
-const setCart = (carrito)=>({
+export const setCart = (carrito)=>({
     type: SET_CART,
     carrito
 })
