@@ -10243,7 +10243,7 @@ var defaultTheme = Object(_createMuiTheme__WEBPACK_IMPORTED_MODULE_0__["default"
 /*!************************************************************!*\
   !*** ./node_modules/@material-ui/core/esm/styles/index.js ***!
   \************************************************************/
-/*! exports provided: createMuiTheme, createStyles, makeStyles, MuiThemeProvider, responsiveFontSizes, styled, useTheme, withStyles, withTheme, hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, easing, duration, formatMs, isString, isNumber */
+/*! exports provided: hexToRgb, rgbToHex, hslToRgb, decomposeColor, recomposeColor, getContrastRatio, getLuminance, emphasize, fade, darken, lighten, createMuiTheme, createStyles, makeStyles, MuiThemeProvider, responsiveFontSizes, styled, easing, duration, formatMs, isString, isNumber, useTheme, withStyles, withTheme */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52179,10 +52179,7 @@ function SingleLineGridList(props) {
   console.log(props, "props del home");
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: classes.root
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_GridList__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    className: classes.gridList,
-    cols: 2.5
-  }));
+  });
 }
 
 /***/ }),
@@ -52210,7 +52207,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_containers_NavbarContainer__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    component: _containers_NavbarContainer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/",
     component: _containers_HomeContainer__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -52563,19 +52562,21 @@ function TitlebarGridList(props) {
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_ListSubheader__WEBPACK_IMPORTED_MODULE_5__["default"], {
     component: "div"
-  }, "December")), props.products.name && props.products.map(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_GridListTile__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    key: "1"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    src: "!",
-    alt: "1"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_GridListTileBar__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    title: "1",
-    subtitle: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "by: ", "1"),
-    actionIcon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      "aria-label": "info about ".concat("1"),
-      className: classes.icon
-    })
-  })))));
+  }, "December")), props.products && props.products.map(function (elem) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_GridListTile__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      key: elem.id
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+      src: "!",
+      alt: "1"
+    }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_GridListTileBar__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      title: "1",
+      subtitle: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "by: ", "1"),
+      actionIcon: react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        "aria-label": "info about ".concat("1"),
+        className: classes.icon
+      })
+    }));
+  })));
 }
 
 /***/ }),
@@ -52721,11 +52722,9 @@ var mapStateToProps = function mapStateToProps(state, ownProps) {
   };
 };
 
-var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+var mapDispatchToProps = function mapDispatchToProps() {
   return {
-    fetchProductsById: function fetchProductsById(products) {
-      return dispatch(Object(_store_actions_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProductsById"])(products));
-    }
+    fetchProductsById: _store_actions_getProducts__WEBPACK_IMPORTED_MODULE_3__["fetchProductsById"]
   };
 };
 
@@ -52747,6 +52746,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Navbar */ "./react/components/Navbar.jsx");
 /* harmony import */ var _store_actions_getProducts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/actions/getProducts */ "./store/actions/getProducts.js");
+/* harmony import */ var _ProductsContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ProductsContainer */ "./react/containers/ProductsContainer.jsx");
+/* harmony import */ var _store_reducers_products__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/reducers/products */ "./store/reducers/products.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52764,6 +52765,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -52805,6 +52808,7 @@ function (_React$Component) {
       if (this.state.inputValue) {
         Object(_store_actions_getProducts__WEBPACK_IMPORTED_MODULE_2__["fetchProductsByName"])(this.state.inputValue);
         console.log("Hola soy un submit", this.state);
+        this.props.history.push("/products");
       }
     }
   }, {
@@ -52884,7 +52888,7 @@ function (_React$Component) {
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    products: state.products
+    products: state.products.products.data
   };
 };
 

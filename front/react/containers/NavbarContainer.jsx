@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { fetchProductsByName } from '../../store/actions/getProducts';
+import ProductsContainer from './ProductsContainer';
+import products from '../../store/reducers/products';
 
 export default class NavbarContainer extends React.Component {
     constructor(props){
@@ -21,18 +23,25 @@ export default class NavbarContainer extends React.Component {
         if (this.state.inputValue) {
             fetchProductsByName(this.state.inputValue)
             console.log("Hola soy un submit", this.state)
+            this.props.history.push("/products")
         }
         
     }
     render (){
         return (
+        
             <Navbar 
             handleSearch = {this.handleSearch}
             handleSubmit = {this.handleSubmit}
+
             />
+            
+        
         )
     }
 }
+
+
 
 
 

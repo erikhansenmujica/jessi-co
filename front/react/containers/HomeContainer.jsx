@@ -30,9 +30,9 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = () => {
   return{
-    fetchProductsById: (products)=>dispatch(fetchProductsById(products))
+    fetchProductsById: fetchProductsById
   }
 };
 
