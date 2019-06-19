@@ -18,8 +18,8 @@ const Products = require("./db/models/products")
 //           stock: Math.floor(Math.random() * 3),
 //           description: faker.lorem.sentence(),
 //           images:faker.image.technics(),
-//           reviews : [faker.hacker.phrase(), faker.hacker.phrase()],
-//           rating : Math.floor(Math.random() * 3)
+//           reviews : [faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase()],
+//           rating : parseInt(faker.random.number())
 //     })
 //     i++
 // }
