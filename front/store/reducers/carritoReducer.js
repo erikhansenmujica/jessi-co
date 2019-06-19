@@ -1,15 +1,19 @@
-import { ADD_CART } from '../../utils/constants';
+import {SET_CART} from '../../utils/constants'
 
-const initialState = {
-    carrito: []
+const initialState ={
+    products: []
 }
 
-export default (state = initialState, action) => {
+export default (state=initialState, action) =>{
     switch (action.type) {
-        case ADD_CART: {
-            return Object.assign({}, state, { carrito: [...state, action.product] })
+        case SET_CART: {
+            return Object.assign({}, state, {
+                products : [...state.products, action.carrito]
+            })
         }
         default:
             return state;
     }
 }
+
+

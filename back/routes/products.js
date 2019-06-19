@@ -9,7 +9,20 @@ const Op = Sequelize.Op;
 //         .then((products) => res.send(products))
 // })
 
-/* ESTAMOS PARADOS EN /api/products */
+
+router.get('/:name', function (req, res) {
+   let nombre = req.params.name;
+   Product.findAll({
+       where: {
+           name: {
+               [Op.like]: "%" + nombre + "%"
+           }
+       }
+   })
+       .then((products) => {
+           res.json(products)
+       })
+})
 
 router.get('/all', function (req, res) {
     Product.findAll({})
@@ -24,18 +37,5 @@ router.get('/id/:id', function (req, res) {
         .then(product => res.json(product))
 })
 
-router.get('/:name', function (req, res) {
-    let nombre = req.params.name;
-    Product.findAll({
-        where: {
-            name: {
-                [Op.like]: "%" + nombre + "%"
-            }
-        }
-    })
-        .then((products) => {
-            res.json(products)
-        })
-})
 
 module.exports = router;
