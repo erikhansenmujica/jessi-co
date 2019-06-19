@@ -6,23 +6,24 @@ const productsRoutes = require('./routes/products');
 const carritoRoutes = require('./routes/carrito');
 const cookieParser = require('cookie-parser');
 const session = require("express-session");
-const faker = require ("faker")
+const faker = require("faker")
 //const passport = require('./config/passportConfig');
 const db = require('./db/db')
 const Products = require("./db/models/products")
-var i=0
-while (i<55) {
-    Products.create({
-        name: faker.commerce.productName(),
-          price:  parseInt(faker.commerce.price()),
-          stock: parseInt(faker.random.number()),
-          description: faker.lorem.sentence(),
-          images:faker.image.technics(),
-          reviews : faker.hacker.phrase(),
-          rating : parseInt(faker.random.number())
-    })
-    i++
-}
+
+// var i = 0
+// while (i < 55) {
+//     Products.create({
+//         name: faker.commerce.productName(),
+//         price: parseInt(faker.commerce.price()),
+//         stock:Math.round(Math.random()*2),
+//         description: faker.lorem.sentence(),
+//         images: faker.image.technics(),
+//         reviews: [faker.hacker.phrase(),faker.hacker.phrase()],
+//         rating: Math.round(Math.random()*2)
+//     })
+//     i++
+// }
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -61,7 +62,7 @@ app.use(function (err, req, res, next) {
     res.sendStatus(err.status || 500);
 });
 
-db.sync({ force:true }).then((c)=> console.log(`connected to ${c.config.database} DB`))
+db.sync({ force: false, logging: false }).then((c) => console.log(`connected to ${c.config.database} DB`))
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`server started on port ${PORT}`))

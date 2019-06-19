@@ -1,22 +1,41 @@
 const router = require('express').Router();
 const Product = require('../db/models/products');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
-
-router.get('/api/products/:name', function (req, res) {
-    let name = req.params.name;
-    Product.findAll({ where: { name: name } })
-        .then((products) => res.send(products))
-})
-
-
-// router.get('/api/products/:category', function (req, res) {
-//     let category = req.params.category;
+// router.get('/api/products/:name', function (req, res) {
+//     let name = req.params.name;
+//     Product.findAll({ where: { name: name } })
+//         .then((products) => res.send(products))
 // })
 
-router.get('/api/products/:id', function (req, res) {
+/* ESTAMOS PARADOS EN /api/products */
+
+router.get('/all', function (req, res) {
+    Product.findAll({})
+        .then((products) => {
+            res.json(products)
+        })
+})
+
+router.get('/id/:id', function (req, res) {
     let id = req.params.id;
-    Product.findByPk({ where: { id: id } })
-    then((product) => res.send(product))
+    Product.findOne({ where: { id: id } })
+        .then(product => res.json(product))
+})
+
+router.get('/:name', function (req, res) {
+    let nombre = req.params.name;
+    Product.findAll({
+        where: {
+            name: {
+                [Op.like]: "%" + nombre + "%"
+            }
+        }
+    })
+        .then((products) => {
+            res.json(products)
+        })
 })
 
 module.exports = router;

@@ -13,8 +13,8 @@ class PorductsContainer extends React.Component{
         )
     }
 }
-const mapStateToProps = (state)=>({
-    products:state.products
+const mapStateToProps = ({products})=>({
+    products: products.products
 })
 export default connect (
     mapStateToProps
