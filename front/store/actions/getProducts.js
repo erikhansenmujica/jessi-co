@@ -7,19 +7,27 @@ const addProducts = (products)=>({
     products
 })
 
-const addProduct = (product)=>({
+export const addProduct = (product)=>({
     type:ADD_PRODUCT,
     product
 })
 
-export const fetchProductsByName =(name)=> 
-Axios.get(`/api/products/${name}`)
-.then(products=>store.dispatch(addProducts(products)))
+export const fetchProducts = function () {
+    return function (dispatch, getState) {
+      Axios.get(`/api/products/all`)
+        .then(res => {
+          dispatch(addProducts(res));
+        });
+    };
+  };
+export const fetchProductsByName = (name) => 
+    Axios.get(`/api/products/${name}`)
+        .then(products=>store.dispatch(addProducts(products)))
 
-export const fetchProductsByCat =(cat)=> 
-Axios.get(`/api/products/${cat}`)
-.then(products=>store.dispatch(addProducts(products)))
+export const fetchProductsByCat = (cat) => 
+    Axios.get(`/api/products/${cat}`)
+        .then(products=>store.dispatch(addProducts(products)))
 
-export const fetchProductsById =(id)=> 
-Axios.get(`/api/products/${id}`)
-.then(product=>store.dispatch(addProduct(product)))
+export const fetchProductsById = (id) => 
+    Axios.get(`/api/products/${id}`)
+        .then(product=>store.dispatch(addProduct(product)))

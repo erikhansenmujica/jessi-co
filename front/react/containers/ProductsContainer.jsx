@@ -1,21 +1,30 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Products from '../components/Products';
-
-class PorductsContainer extends React.Component{
+import {addProduct} from '../../store/actions/getProducts'
+class ProductsContainer extends React.Component{
     constructor(props){
         super(props);
-        
+        this.handleClick=this.handleClick.bind(this)
     }
+    handleClick(item){
+        this.props.fetchProduct(item)
+    }
+
     render(){
         return (
-            <Products products={this.props.products}/>
+            <Products products={this.props.products} handleClick={this.handleClick} history={this.props.history}/>
         )
     }
 }
-const mapStateToProps = (state)=>({
-    products:state.products
+const mapStateToProps = ({products})=>({
+    products:products.products.data
+})
+
+const mapDispatchToProps = (dispatch)=>({
+    fetchProduct : (item)=>dispatch(addProduct(item))
 })
 export default connect (
-    mapStateToProps
-)(PorductsContainer)
+    mapStateToProps,
+    mapDispatchToProps
+)(ProductsContainer)

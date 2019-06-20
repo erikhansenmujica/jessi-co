@@ -18,10 +18,10 @@ const Product = db.define('products', {
     type : S.TEXT
   },
   images: {
-    type : S.STRING
+    type : S.ARRAY(S.STRING)
   },
   reviews : {
-    type : S.STRING
+    type : S.ARRAY(S.STRING)
   },
   rating : {
     type : S.INTEGER
