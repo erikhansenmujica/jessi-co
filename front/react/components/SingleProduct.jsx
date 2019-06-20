@@ -1,13 +1,6 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import IconButton from '@material-ui/core/IconButton';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-
+import { Button, Icon } from 'semantic-ui-react'
 
 const carouselStyle = {
   display: "block",
@@ -26,47 +19,46 @@ const useStyles = makeStyles(theme => ({
   input: {
     display: 'none',
   },
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
-  },
-  gridList: {
-    width:"80%",
-    flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)',
-  },
-  title: {
-    color: theme.palette.primary.light,
-  },
-  titleBar: {
-    background:
-      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-  },
-  images:{
-    height:"vh"
+  icon: {
+    height: "100vh"
   }
+
 }));
 
 export default props => {
   const classes = useStyles();
+  var i = 0
 
   return (
-    <div className="container" style={{marginTop:"3%"}}>
+    <div className="container" style={{ marginTop: "3%" }}>
       {props.product.name && (
-        <div className={classes.root}>
-        <GridList className={classes.gridList} cols={2.5}>
-          {props.product.images.map(image => (
-            <GridListTile key={image}>
-              <img src={image} alt={image} />
-              
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
+        <div id="carouselExampleIndicators" className="carousel slide" style={{ height: "55vh" }} data-ride="carousel">
+          <ol className="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+            {props.product.images.map(img =>
+              <div className="carousel-item active">
+                <li data-target="#carouselExampleIndicators" data-slide-to={`{i}`}></li>
+                {i += 1}
+              </div>
+            )}
+
+          </ol>
+          <div className="carousel-inner">
+            {props.product.images.map(img =>
+              <div className="carousel-item active">
+                <img src={img} className="d-block w-100" alt="..." style={{ height: "55vh" }} />
+              </div>
+            )}
+          </div>
+          <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </a>
+          <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="sr-only">Next</span>
+          </a>
+        </div>
       )}
       {props.product.name && (
         <div>
@@ -76,12 +68,12 @@ export default props => {
           </p>
           <div style={iconStyle}>
             <h4>${props.product.price}</h4>
-            <IconButton size="large" color="primary" className={classes.button} aria-label="Add to shopping cart" onClick={props.addToCart}>
-              <AddShoppingCartIcon />
-            </IconButton>
-            <IconButton size="large" className={classes.button} aria-label="Delete" >
-              <DeleteIcon />
-            </IconButton>
+            <Button icon onClick={props.addToCart}>
+              <Icon name='add to cart' size='large' />
+            </Button>
+            <Button icon onClick={props.addToCart}>
+              <Icon name='trash alternate' size='large' />
+            </Button>
           </div>
         </div>
       )}

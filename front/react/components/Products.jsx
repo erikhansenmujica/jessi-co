@@ -31,7 +31,7 @@ export default function TitlebarGridList(props) {
                                           width: "18rem",
                                           margin: "2% 2% 2% 2%"
                                             }}>
-            <img src={prod.images}className="card-img-top" alt="no images"/>
+            <img src={prod.images[0]}className="card-img-top" alt="no images"/>
             <div className="card-body">
               <h5 className="card-title">{prod.name}</h5>
               <p className="card-text">Cantidad disponible: {prod.stock} precio: ${prod.price} </p>

@@ -95,18 +95,18 @@ export default () => {
       <br />
       <br />
       <div
-        id="carouselExampleCaptions"
+        id="carouselExampleCaptions1"
         className="carousel slide"
         data-ride="carousel"
       >
         <ol className="carousel-indicators">
           <li
-            data-target="#carouselExampleCaptions"
+            data-target="#carouselExampleCaptions1"
             data-slide-to="0"
             className="active"
           />
-          <li data-target="#carouselExampleCaptions" data-slide-to="1" />
-          <li data-target="#carouselExampleCaptions" data-slide-to="2" />
+          <li data-target="#carouselExampleCaptions1" data-slide-to="1" />
+          <li data-target="#carouselExampleCaptions1" data-slide-to="2" />
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -145,7 +145,7 @@ export default () => {
         </div>
         <a
           className="carousel-control-prev"
-          href="#carouselExampleCaptions"
+          href="#carouselExampleCaptions1"
           role="button"
           data-slide="prev"
         >
@@ -155,7 +155,7 @@ export default () => {
         </a>
         <a
           className="carousel-control-next"
-          href="#carouselExampleCaptions"
+          href="#carouselExampleCaptions1"
           role="button"
           data-slide="next"
         >
