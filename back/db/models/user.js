@@ -1,5 +1,4 @@
 const S = require('sequelize');
-const Order = require('./order')
 const db = require('../db');
 const crypto = require("crypto")
 
@@ -41,7 +40,5 @@ User.prototype.hashFunction = function (password) {
 User.prototype.autenticate = function (password) {
  return this.hashFunction(password) === this.password
 }
-
-User.hasMany(Order)
 
 module.exports = User

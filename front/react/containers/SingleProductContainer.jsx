@@ -10,7 +10,7 @@ class SingleProductContainer extends React.Component {
     this.addToCarrito = this.addToCarrito.bind(this);
     this.remFromCarrito = this.remFromCarrito.bind(this);
   }
-  
+
   addToCarrito(product) {
     this.props.setCart(product);
     Axios.post("/api/carrito/storageCarrito",this.props.carrito)

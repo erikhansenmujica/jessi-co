@@ -8,12 +8,12 @@ const style = {
     width: "200px"
   },
   text: {
-    "textAlign": "center",
-    "fontFamily": 'Francois One',
-    "fontSize": "80px"
+    textAlign: "center",
+    fontFamily: 'Francois One',
+    fontSize: "80px"
   },
   text2: {
-    "textAlign": "center"
+    textAlign: "center"
   },
   footer: {
     "backgroundColor": "#2A2A36"

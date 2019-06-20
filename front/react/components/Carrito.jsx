@@ -19,79 +19,110 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const cardStyle = {
+  height: "5%",
+  width: "85%",
+  padding: "1%",
+  margin: "auto"
+};
+
+const buttonStyle = {
+  display: "inline",
+  margin: "auto"
+};
+
+const inputStyle = {
+  width: "85%",
+  margin: "auto",
+  padding: "1%"
+};
+
+const buyButton = {
+  float: "right"
+};
+
 export default function CenteredGrid(props) {
   const classes = useStyles();
-  
-  const totprice = function(props){
-    let partprice = 0;
-  for (i = 0 ; i < props.carrito.length ; i++){
-    partprice += props.carrito[i].price
-  }      
-  return partprice
-  }
+
+  // const totprice = function(props) {
+  //   let partprice = 0;
+  //   for (i = 0; i < props.carrito.length; i++) {
+  //     partprice += props.carrito[i].price;
+  //   }
+  //   return partprice;
+  // };
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
+    <div className="container">
+      <div className={classes.root}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>WELCOME TO CARRITO</Paper>
         </Grid>
-        {props.carrito &&
-          props.carrito.Map(product => (
-            <div>
-              <Grid item xs={4}>
-                <Paper img src={product.images}>
-                  {" "}
-                  className={classes.paper}>PRODUCT IMAGE
-                </Paper>
-              </Grid>
-              <Grid item xs={4}>
-                <span>
-                  <Paper className={classes.paper}> {product.name} </Paper>
-                  <Paper className={classes.paper}> {product.price} </Paper>
-                </span>
-              </Grid>
-              <Grid item xs={1}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                >
-                  <AddIcon className={classes.rightIcon} />
-                </Button>
-              </Grid>
-              <Grid item xs={1}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.button}
-                >
-                  <RemoveIcon className={classes.rightIcon} />
-                </Button>
-              </Grid>
-              <Grid item xs={1}>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  className={classes.button}
-                >
-                  <DeleteIcon className={classes.rightIcon} />
-                </Button>
-              </Grid>
+      </div>
+      {props.carrito.length >= 1 ? (
+        <div>
+          {" "}
+          {props.carrito.map(product => (
+            <div className="card mb-3" style={cardStyle}>
+              <div className="row no-gutters">
+                <div className="col-md-4">
+                  <img src={product.images[0]} className="card-img" alt="..." />
+                </div>
+                <div className="col-md-8">
+                  <div className="card-body">
+                    <h5 className="card-title">{product.name}</h5>
+                    <p className="card-text">{product.description}</p>
+                    <p className="card-text" />
+                    <h3 className={"card-title"}>${product.price}</h3>
+                    <Grid item xs={1} style={buttonStyle}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        <AddIcon className={classes.rightIcon} />
+                      </Button>
+                    </Grid>
+                    <Grid item xs={1} style={buttonStyle}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                      >
+                        <RemoveIcon className={classes.rightIcon} />
+                      </Button>
+                    </Grid>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
-        <div>
-          <ul>
-            <li> PRECIO TOTAL : {totprice} </li>
-          </ul>
+
+          <div className="input-group mb-3" style={inputStyle}>
+            <div className="input-group-prepend">
+              <span className="input-group-text" id="inputGroup-sizing-default">
+                Address:
+              </span>
+            </div>
+            <input
+              type="text"
+              className="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+            />
+          </div>
+          
+          <button
+            type="button"
+            className="btn btn-primary btn-lg"
+            style={buyButton}
+          >
+            Buy
+          </button>
         </div>
-        <div>
-          <form method="POST" action="/comprado">
-            <input placeholder="Address" name="address" />            
-            <button>PURCHASE</button>
-          </form>
-        </div>
-      </Grid>
+      ) : (
+        "No hay productos en el carrito..."
+      )}
     </div>
   );
 }
