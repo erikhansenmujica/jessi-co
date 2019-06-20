@@ -9,11 +9,14 @@ const style = {
   },
   text: {
     "text-align": "center",
-    "font-family": "Anton",
+    "font-family": 'Francois One',
     "font-size": "80px"
-  }, 
-  text2:{
-    "text-align":"center"
+  },
+  text2: {
+    "text-align": "center"
+  },
+  footer: {
+    backgroundColor: "#2A2A36"
   }
 };
 export default () => {
@@ -89,7 +92,6 @@ export default () => {
           <span className="sr-only">Next</span>
         </a>
       </div>
-
       <br />
       <br />
       <br />
@@ -149,7 +151,6 @@ export default () => {
           role="button"
           data-slide="prev"
         >
-          {" "}
           <span className="carousel-control-prev-icon" aria-hidden="true" />
           <span className="sr-only">Previous</span>
         </a>
@@ -163,18 +164,18 @@ export default () => {
           <span className="sr-only">Next</span>
         </a>
       </div>
-        <br/>
-        <br/>
-        <br/>
-      <footer class="container">
-        <p class="float-right" style={style.text2}>
-          <a href="#">Back to top</a>
-        </p>
-        <p>
-          &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
-          &middot; <a href="#">Terms</a>
-        </p>
-      </footer>
+      <br />
+      <br />
+      <br />
+      <footer>
+          <p className="float-right" style={style.text2}>
+            <a href="#">Back to top</a>
+          </p>
+          <p>
+            &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
+            &middot; <a href="#">Terms</a>
+          </p>
+        </footer>
     </div>
   );
 };
