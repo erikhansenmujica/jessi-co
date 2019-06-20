@@ -1,5 +1,4 @@
 const S = require('sequelize');
-const Product = require('./products')
 const db = require('../db');
 
 const Order = db.define('orders', {
@@ -15,8 +14,5 @@ const Order = db.define('orders', {
     type: S.DATE, 
   }
 })
-
-Order.hasMany(Product)
-
 
 module.exports = Order

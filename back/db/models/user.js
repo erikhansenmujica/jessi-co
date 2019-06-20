@@ -1,5 +1,4 @@
 const S = require('sequelize');
-const Order = require('./order')
 const db = require('../db');
 
 const User = db.define('users', {
@@ -24,7 +23,5 @@ const User = db.define('users', {
       type : S.BOOLEAN
   }
 })
-
-User.hasMany(Order)
 
 module.exports = User
