@@ -1,21 +1,25 @@
-const { Users } = require("../db/models/user")
+const  Users  = require("../db/models/user")
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy;
-
 passport.serializeUser(function (user, done) {
+    console.log("serialize")
     done(null, user.id);
 });
 
 passport.deserializeUser(function (id, done) {
-    Users.findById(id, function (err, user) {
+    console.log("deserialize")
+    Users.findByPk(id)
+    .then( user=> {
         done(err, user);
-    });
+    })
+    .catch(done)
 });
 
 passport.use(new LocalStrategy({usernameField :'email', passwordField:"password"},
-    function (name, password, done) {
+function (email, password, done) {
+    console.log("hey anda")
         Users.findOne({where:{ email: email}  })
-        .then((user)=> {       
+        .then((user)=> {    
             if (!user) {
                 console.log("error")
                 return done(null, false, { message: 'Incorrect username.' });

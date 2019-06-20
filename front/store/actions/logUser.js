@@ -7,4 +7,4 @@ const logUser = (user)=>({
     user
 })
 
-export const fetchUser= (user)=>Axios.post("/api/user/login", user).then(user=>store.dispatch(logUser(user)))
+export const fetchUser= (user)=>Axios.post("/api/user/login", user).then(user=>store.dispatch(logUser(user.data)))

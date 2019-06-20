@@ -22,8 +22,12 @@ const User = db.define('users', {
   },
   admin : {
       type : S.BOOLEAN
+  },
+  salt:{
+    type:S.STRING
   }
 })
+
 User.beforeCreate((user) => {
   user.salt=crypto.randomBytes(20).toString('hex')
   user.password=crypto.createHmac('sha1', user.salt).update(user.password).digest('hex')
@@ -38,7 +42,10 @@ User.prototype.hashFunction = function (password) {
 }
 
 User.prototype.autenticate = function (password) {
- return this.hashFunction(password) === this.password
+  console.log(this.hashFunction(password)+ "password", this.password)
+
+  return  this.hashFunction(password) === this.password
+
 }
 
 module.exports = User
