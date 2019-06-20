@@ -4,25 +4,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const productsRoutes = require('./routes/products');
 const carritoRoutes = require('./routes/carrito');
+const usersRoutes = require('./routes/users');
 const cookieParser = require('cookie-parser');
 const session = require("express-session");
-const faker = require("faker")
 //const passport = require('./config/passportConfig');
-const db = require('./db/db')
-const Products = require("./db/models/products")
-// var i=0
-// while (i<55) {
-//     Products.create({
-//         name: faker.commerce.productName(),
-//           price:  parseInt(faker.commerce.price()),
-//           stock: Math.round(Math.random()*2),
-//           description: faker.lorem.sentence(),
-//           images:[faker.image.technics(),faker.image.technics(),faker.image.technics(),faker.image.technics()],
-//           reviews : [faker.hacker.phrase(),faker.hacker.phrase()],
-//           rating : parseInt(faker.random.number())
-//     })
-//     i++
-// }
+const db = require('./db/db');
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,6 +29,7 @@ app.use(session({
 /*Configuración de rutas*/
 app.use('/api/products', productsRoutes);
 app.use('/api/carrito', carritoRoutes);
+app.use('/api/users', usersRoutes)
 /***********************/
 
 

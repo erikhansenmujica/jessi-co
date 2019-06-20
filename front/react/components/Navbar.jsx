@@ -16,12 +16,14 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const StyledBadge = withStyles(theme => ({
   badge: {
-    top: '50%',
+    top: "50%",
     right: -3,
     border: `2px solid ${
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
-    }`,
-  },
+      theme.palette.type === "light"
+        ? theme.palette.grey[200]
+        : theme.palette.grey[900]
+    }`
+  }
 }))(Badge);
 const style={
   text:{
@@ -30,70 +32,70 @@ const style={
 }
 const useStyles = makeStyles(theme => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   input: {
-    display: 'none',
+    display: "none"
   },
   grow: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(2)
   },
   title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
+    display: "none",
+    [theme.breakpoints.up("sm")]: {
+      display: "block"
+    }
   },
   search: {
-    position: 'relative',
+    position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+    "&:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
+      width: "auto"
+    }
   },
   searchIcon: {
     width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
   },
   inputRoot: {
-    color: 'inherit',
+    color: "inherit"
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 200,
-    },
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: 200
+    }
   },
   sectionDesktop: {
-    display: 'none',
-    [theme.breakpoints.up('md')]: {
-      display: 'flex',
-    },
+    display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex"
+    }
   },
   sectionMobile: {
-    display: 'flex',
-    [theme.breakpoints.up('md')]: {
-      display: 'none',
-    },
-  },
+    display: "flex",
+    [theme.breakpoints.up("md")]: {
+      display: "none"
+    }
+  }
 }));
 
 export default function PrimarySearchAppBar( { handleSearch, handleSubmit, redirectHome, carrito} ) {
@@ -121,30 +123,32 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, redir
     setMobileMoreAnchorEl(event.currentTarget);
   }
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={menuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+      <Link to="/register">
+        <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+      </Link>
     </Menu>
   );
 
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={mobileMenuId}
       keepMounted
-      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
@@ -170,38 +174,38 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, redir
             className={classes.menuButton}
             color="inherit"
             aria-label="Open drawer"
-          >   
-          </IconButton>
+          />
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to="/">
-            <h3 style={style.text}>Tessie&Co</h3>
+            <Link to='/'>
+              <h3 style={style.text}>Tessie&Co</h3>
             </Link>
-            </Typography>
-        <form onSubmit={handleSubmit}><div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          </Typography>
+          <form onSubmit={handleSubmit}>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                inputProps={{ type: "submit" }}
+                onChange={handleSearch}
+                placeholder="Búsqueda..."
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+                inputProps={{ "aria-label": "Search" }}
+              />
             </div>
-            <InputBase 
-              inputProps = {
-                {type: "submit"}
-              }
-              onChange={handleSearch}
-              placeholder="Búsqueda..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'Search' }}
-            />
-          </div>
-      </form>
+          </form>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-          <IconButton aria-label="Cart">
-      <StyledBadge badgeContent={carrito.length} color="primary">
-        <ShoppingCartIcon />
-      </StyledBadge>
-    </IconButton> 
+            <Link to="/carrito">
+              <IconButton aria-label="Cart">
+                <StyledBadge badgeContent={0} color="primary">
+                  <ShoppingCartIcon />
+                </StyledBadge>
+              </IconButton>
+            </Link>
             <IconButton
               edge="end"
               aria-label="Account of current user"
