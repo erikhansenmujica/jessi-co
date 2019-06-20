@@ -9,6 +9,5 @@ const Category = db.define('categories', {
   }
 })
 
-//Category.belongsTo(Product)
 
 module.exports = Category

@@ -28,7 +28,6 @@ const Product = db.define('products', {
   }
 })
 
-Product.hasMany(Category)
 
 
 module.exports = Product
