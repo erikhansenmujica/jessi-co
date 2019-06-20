@@ -1,8 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { fetchProductsByName } from '../../store/actions/getProducts';
-// import ProductsContainer from './ProductsContainer';
-// import products from '../../store/reducers/products';
 import { connect } from 'react-redux';
 
 class NavbarContainer extends React.Component {
@@ -13,7 +11,6 @@ class NavbarContainer extends React.Component {
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.redirectHome = this.redirectHome.bind(this);
     }
     handleSearch (e) {
         const inputValue = e.target.value;
@@ -26,9 +23,7 @@ class NavbarContainer extends React.Component {
             this.props.history.push("/products")
         }
     }
-    redirectHome () {
-        return this.props.history.push('/')
-    }
+
         
     
     render (){

@@ -98,7 +98,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimarySearchAppBar( { handleSearch, handleSubmit, redirectHome, carrito} ) {
+export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito} ) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -201,7 +201,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, redir
           <div className={classes.sectionDesktop}>
             <Link to="/carrito">
               <IconButton aria-label="Cart">
-                <StyledBadge badgeContent={0} color="primary">
+                <StyledBadge badgeContent={carrito.length} color="primary">
                   <ShoppingCartIcon />
                 </StyledBadge>
               </IconButton>
