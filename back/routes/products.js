@@ -1,6 +1,7 @@
-const router = require('express').Router();
-const Product = require('../db/models/products');
-const Sequelize= require('sequelize')
+const express = require('express');
+const router = express.Router();
+const Product = require('../db/models');
+const Sequelize= require('sequelize');
 const Op = Sequelize.Op;
 
 // router.get('/api/products/:name', function (req, res) {
