@@ -1,18 +1,20 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import {  withStyles, makeStyles, fade } from '@material-ui/core/styles';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import React from "react";
+import { Link } from "react-router-dom";
+import { fade, makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import InputBase from "@material-ui/core/InputBase";
+import Badge from "@material-ui/core/Badge";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import SearchIcon from "@material-ui/icons/Search";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import MoreIcon from "@material-ui/icons/MoreVert";
+import { withStyles } from "@material-ui/core/styles"; // para carrito
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"; // icon carrito
+import LogInContainer from "../containers/LogInContainer"
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -134,7 +136,10 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
+      
+     <a data-toggle="modal" data-target="#modalLoginForm">
+     <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
+     </a>
       <Link to="/register">
         <MenuItem onClick={handleMenuClose}>Register</MenuItem>
       </Link>
@@ -232,6 +237,8 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <LogInContainer/>
+
     </div>
   );
 }

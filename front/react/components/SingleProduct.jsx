@@ -91,11 +91,11 @@ export default props => {
           <p className="text-center text-wrap">{props.product.description}</p>
           <div style={iconStyle}>
             <h4>${props.product.price}</h4>
-            <Button icon onClick={() => props.setCart(props.product)}>
-              <Icon name="add to cart" size="large" />
-            </Button>
             <Button icon onClick={props.setCart}>
-              <Icon name="trash alternate" size="large" />
+              <Icon name='add to cart' size='large' />
+            </Button>
+            <Button icon onClick={props.remCart}>
+              <Icon name='trash alternate' size='large' />
             </Button>
           </div>
         </div>
