@@ -6,18 +6,20 @@ class CarritoContainer extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount(){
+
+  }
   render() {
-    return <Carrito carrito={this.props.carrito} user={this.props.user}/>;
+    return <Carrito carrito={this.props.carrito} />;
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({carrito}) => {
   return {
-    user: state.user,
-    carrito: state.carrito.products
+    carrito: carrito.products
   };
 };
-
 
 export default connect(
   mapStateToProps,

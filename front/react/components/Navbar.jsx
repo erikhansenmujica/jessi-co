@@ -18,6 +18,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import { withStyles } from "@material-ui/core/styles"; // para carrito
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"; // icon carrito
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -101,7 +102,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     [theme.breakpoints.up("md")]: {
       display: "none"
-    },
+    }
   }
 }));
 
@@ -206,12 +207,13 @@ export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
           </form>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="Cart">
-              <StyledBadge badgeContent={0} color="primary">
-                <ShoppingCartIcon />
-              </StyledBadge>
-            </IconButton>
-
+            <Link to="/carrito">
+              <IconButton aria-label="Cart">
+                <StyledBadge badgeContent={0} color="primary">
+                  <ShoppingCartIcon />
+                </StyledBadge>
+              </IconButton>
+            </Link>
             <IconButton
               edge="end"
               aria-label="Account of current user"
