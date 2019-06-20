@@ -16,13 +16,11 @@ export default class NavbarContainer extends React.Component {
     handleSearch (e) {
         const inputValue = e.target.value;
         this.setState({inputValue: inputValue})
-        console.log(this.state)
     }
     handleSubmit (e) {
         e.preventDefault();
         if (this.state.inputValue) {
             fetchProductsByName(this.state.inputValue)
-            console.log("Hola soy un submit", this.state)
             this.props.history.push("/products")
         }
         
