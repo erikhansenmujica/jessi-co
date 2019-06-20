@@ -68,10 +68,10 @@ export default props => {
           </p>
           <div style={iconStyle}>
             <h4>${props.product.price}</h4>
-            <Button icon onClick={props.addToCart}>
+            <Button icon onClick={props.setCart}>
               <Icon name='add to cart' size='large' />
             </Button>
-            <Button icon onClick={props.addToCart}>
+            <Button icon onClick={props.remCart}>
               <Icon name='trash alternate' size='large' />
             </Button>
           </div>

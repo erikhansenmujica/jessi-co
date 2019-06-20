@@ -8,16 +8,13 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { withStyles } from '@material-ui/core/styles'; // para carrito
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'; // icon carrito 
-import Button from '@material-ui/core/Button';
-
+import LogIn from "./LogIn"
+import LogInContainer from '../containers/LogInContainer';
 
 
 
@@ -137,7 +134,10 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
       onClose={handleMenuClose}
     >
       {/* <MenuItem onClick={handleMenuClose}>Log-In</MenuItem> CAMBIE */}
-      <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
+      <a   data-toggle="modal" data-target="#modalLoginForm">
+          <MenuItem onClick={handleMenuClose}>Log-In</MenuItem></a>
+      
+    
       <MenuItem onClick={handleMenuClose}>Register</MenuItem>
     </Menu>
   );
@@ -259,6 +259,8 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <LogInContainer/>
+
     </div>
   );
 }
