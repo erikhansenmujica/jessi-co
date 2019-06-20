@@ -22,7 +22,6 @@ export default class NavbarContainer extends React.Component {
         e.preventDefault();
         if (this.state.inputValue) {
             fetchProductsByName(this.state.inputValue)
-            console.log("Hola soy un submit", this.state)
             this.props.history.push("/products")
         }
         
