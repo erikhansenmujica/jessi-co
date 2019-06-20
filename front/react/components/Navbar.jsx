@@ -1,5 +1,5 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import {Link} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,30 +8,26 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import { withStyles } from '@material-ui/core/styles'; // para carrito
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'; // icon carrito 
-import Button from '@material-ui/core/Button';
-
-
-
+import {  withStyles, makeStyles, fade } from '@material-ui/core/styles';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 const StyledBadge = withStyles(theme => ({
   badge: {
     top: '50%',
     right: -3,
-    // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
     }`,
   },
 }))(Badge);
-
+const style={
+  text:{
+    color:'white'
+  }
+}
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1),
@@ -100,7 +96,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
+export default function PrimarySearchAppBar( { handleSearch, handleSubmit, redirectHome, carrito} ) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -136,7 +132,6 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {/* <MenuItem onClick={handleMenuClose}>Log-In</MenuItem> CAMBIE */}
       <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
       <MenuItem onClick={handleMenuClose}>Register</MenuItem>
     </Menu>
@@ -153,22 +148,6 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton aria-label="Show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem> */}
-      {/* <MenuItem>
-        <IconButton aria-label="Show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="Account of current user"
@@ -178,7 +157,6 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
         >
           <AccountCircle />
         </IconButton>
-        {/* <p>Profile</p> */}
       </MenuItem>
     </Menu>
   );
@@ -192,13 +170,14 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
             className={classes.menuButton}
             color="inherit"
             aria-label="Open drawer"
-          >
-           
+          >   
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            {"Tessie&Co"}
-          </Typography>
-          <form onSubmit={handleSubmit}><div className={classes.search}>
+            <Link to="/">
+            <h3 style={style.text}>Tessie&Co</h3>
+            </Link>
+            </Typography>
+        <form onSubmit={handleSubmit}><div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -219,20 +198,10 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit} ) {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
           <IconButton aria-label="Cart">
-      <StyledBadge badgeContent={0} color="primary">
+      <StyledBadge badgeContent={carrito.length} color="primary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton> 
-            {/* <IconButton aria-label="Show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            {/* <IconButton aria-label="Show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               edge="end"
               aria-label="Account of current user"

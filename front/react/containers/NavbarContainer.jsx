@@ -1,10 +1,11 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { fetchProductsByName } from '../../store/actions/getProducts';
-import ProductsContainer from './ProductsContainer';
-import products from '../../store/reducers/products';
+// import ProductsContainer from './ProductsContainer';
+// import products from '../../store/reducers/products';
+import { connect } from 'react-redux';
 
-export default class NavbarContainer extends React.Component {
+class NavbarContainer extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -12,6 +13,7 @@ export default class NavbarContainer extends React.Component {
         }
         this.handleSearch = this.handleSearch.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.redirectHome = this.redirectHome.bind(this);
     }
     handleSearch (e) {
         const inputValue = e.target.value;
@@ -22,17 +24,30 @@ export default class NavbarContainer extends React.Component {
         e.preventDefault();
         if (this.state.inputValue) {
             fetchProductsByName(this.state.inputValue)
-            console.log("Hola soy un submit", this.state)
             this.props.history.push("/products")
         }
-        
     }
+    redirectHome () {
+        return this.props.history.push('/')
+    }
+        
+    
     render (){
         return (
             <Navbar 
             handleSearch = {this.handleSearch}
             handleSubmit = {this.handleSubmit}
+            redirectHome = {this.redirectHome}
+            carrito= {this.props.carrito}
             />
         )
     }
 }
+
+const mapStateToProps = ({carrito}) => {
+    return {
+        carrito: carrito.products
+    }
+}
+
+export default connect(mapStateToProps)(NavbarContainer)

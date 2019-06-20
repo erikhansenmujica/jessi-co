@@ -18,14 +18,14 @@ const Products = require("./db/models/products")
 //           stock: Math.round(Math.random()*2),
 //           description: faker.lorem.sentence(),
 //           images:[faker.image.technics(),faker.image.technics(),faker.image.technics(),faker.image.technics()],
-//           reviews : [faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase(),faker.hacker.phrase()],
+//           reviews : [faker.hacker.phrase(),faker.hacker.phrase()],
 //           rating : parseInt(faker.random.number())
 //     })
 //     i++
 // }
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(cookieParser())
 /****Passport configuration****/
