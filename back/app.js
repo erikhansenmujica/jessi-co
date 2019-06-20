@@ -11,6 +11,7 @@ const faker = require("faker")
 const passport = require('./validations/passport');
 const db = require('./db/db')
 const Products = require("./db/models/products")
+const usersRoutes = require('./routes/users');
 // var i=0
 // while (i<55) {
 //     Products.create({
@@ -24,6 +25,7 @@ const Products = require("./db/models/products")
 //     })
 //     i++
 // }
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,6 +46,7 @@ app.use(passport.session());
 app.use('/api/products', productsRoutes);
 app.use('/api/carrito', carritoRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/users', usersRoutes)
 /***********************/
 
 

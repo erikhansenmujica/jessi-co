@@ -12,9 +12,9 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
-passport.use(new LocalStrategy({usernameField :'name', passwordField:"password"},
+passport.use(new LocalStrategy({usernameField :'email', passwordField:"password"},
     function (name, password, done) {
-        Users.findOne({ name: name  })
+        Users.findOne({where:{ email: email}  })
         .then((user)=> {       
             if (!user) {
                 console.log("error")

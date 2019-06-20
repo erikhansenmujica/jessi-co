@@ -28,7 +28,6 @@ const User = db.define('users', {
 User.beforeCreate((user) => {
   user.salt=crypto.randomBytes(20).toString('hex')
   user.password=crypto.createHmac('sha1', user.salt).update(user.password).digest('hex')
-  console.log( "password: ",user.password)
 });
 User.saltGenerator = function () {
 return crypto.randomBytes(20).toString('hex')

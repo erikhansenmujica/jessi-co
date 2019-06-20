@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Carrito = require('../db/models/carrito');
+const Carrito = require('../db/models');
 
 const asyncLocalStorage = {
     setItem: function (key, value) {
