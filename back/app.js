@@ -31,7 +31,7 @@ const usersRoutes = require('./routes/users');
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(cookieParser())
 /****Passport configuration****/

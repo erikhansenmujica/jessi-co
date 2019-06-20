@@ -20,7 +20,6 @@ const StyledBadge = withStyles(theme => ({
   badge: {
     top: "50%",
     right: -3,
-    // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === "light"
         ? theme.palette.grey[200]
@@ -28,10 +27,9 @@ const StyledBadge = withStyles(theme => ({
     }`
   }
 }))(Badge);
-
 const style={
   text:{
-    "color":'white'
+    color:'white'
   }
 }
 const useStyles = makeStyles(theme => ({
@@ -102,7 +100,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
+export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito} ) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -208,7 +206,7 @@ export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
           <div className={classes.sectionDesktop}>
             <Link to="/carrito">
               <IconButton aria-label="Cart">
-                <StyledBadge badgeContent={0} color="primary">
+                <StyledBadge badgeContent={carrito.length} color="primary">
                   <ShoppingCartIcon />
                 </StyledBadge>
               </IconButton>
