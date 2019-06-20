@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -32,6 +33,11 @@ const StyledBadge = withStyles(theme => ({
   }
 }))(Badge);
 
+const style={
+  text:{
+    "color":'white'
+  }
+}
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -136,9 +142,10 @@ export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {/* <MenuItem onClick={handleMenuClose}>Log-In</MenuItem> CAMBIE */}
       <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+      <Link to="/register">
+        <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -153,22 +160,6 @@ export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton aria-label="Show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem> */}
-      {/* <MenuItem>
-        <IconButton aria-label="Show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="Account of current user"
@@ -178,7 +169,6 @@ export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
         >
           <AccountCircle />
         </IconButton>
-        {/* <p>Profile</p> */}
       </MenuItem>
     </Menu>
   );
@@ -194,7 +184,9 @@ export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
             aria-label="Open drawer"
           />
           <Typography className={classes.title} variant="h6" noWrap>
-            {"Tessie&Co"}
+            <Link to='/'>
+              <h3 style={style.text}>Tessie&Co</h3>
+            </Link>
           </Typography>
           <form onSubmit={handleSubmit}>
             <div className={classes.search}>
@@ -222,16 +214,6 @@ export default function PrimarySearchAppBar({ handleSearch, handleSubmit }) {
                 </StyledBadge>
               </IconButton>
             </Link>
-            {/* <IconButton aria-label="Show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            {/* <IconButton aria-label="Show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
             <IconButton
               edge="end"
               aria-label="Account of current user"

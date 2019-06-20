@@ -16,7 +16,7 @@ const style = {
     textAlign: "center"
   },
   footer: {
-    backgroundColor: "#2A2A36"
+    "backgroundColor": "#2A2A36"
   }
 };
 export default () => {

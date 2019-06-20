@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Carrito = require('../db/models/carrito');
+const Carrito = require('../db/models');
 
 router.get('/api/carrito/:userId', function (req, res) {
     let userId = req.params.userId;
