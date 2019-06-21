@@ -11,9 +11,10 @@ const session = require("express-session");
 const faker = require("faker")
 const passport = require('./validations/passport');
 const db = require('./db/db')
-const Products = require("./db/models/products")
+const {Product} = require("./db/models")
 const usersRoutes = require('./routes/users');
 
+//object fit
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));

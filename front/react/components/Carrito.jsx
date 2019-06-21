@@ -3,8 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
-import Icon from "@material-ui/core/Icon";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
@@ -44,14 +42,6 @@ const buyButton = {
 export default function CenteredGrid(props) {
   const classes = useStyles();
 
-  // const totprice = function(props) {
-  //   let partprice = 0;
-  //   for (i = 0; i < props.carrito.length; i++) {
-  //     partprice += props.carrito[i].price;
-  //   }
-  //   return partprice;
-  // };
-
   return (
     <div className="container">
       <div className={classes.root}>
@@ -63,10 +53,10 @@ export default function CenteredGrid(props) {
         <div>
           {" "}
           {props.carrito.map(product => (
-            <div className="card mb-3" style={cardStyle}>
+            <div className="card mb-3" style={cardStyle} key={product.id}>
               <div className="row no-gutters">
                 <div className="col-md-4">
-                  <img src={product.images[0]} className="card-img" alt="..." />
+                  <img src={product.images[0]} className="card-img" style={{ objectFit: "contain"}} alt="..." />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">

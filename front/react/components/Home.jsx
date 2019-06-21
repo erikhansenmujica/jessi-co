@@ -5,7 +5,9 @@ const style = {
     display: "block",
     margin: "auto",
     height: "300px",
-    width: "200px"
+    width: "200px",
+    objectFit:"contain"
+
   },
   text: {
     textAlign: "center",
@@ -17,12 +19,15 @@ const style = {
   },
   footer: {
     "backgroundColor": "#2A2A36"
-  }
+  },
+  
 };
+//<h1 style={style.text}>TESSIE&CO</h1>
 export default () => {
   return (
     <div className="container">
-      <h1 style={style.text}>TESSIE&CO</h1>
+    <br/>
+    <br/>
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
