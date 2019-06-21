@@ -18,6 +18,7 @@ const usersRoutes = require('./routes/users');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(morgan('dev'));
 app.use(cookieParser())
 /****Passport configuration****/
 app.use(session({
@@ -25,7 +26,6 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(morgan());
 
 app.use(passport.initialize());
 app.use(passport.session());

@@ -12,11 +12,11 @@ router.get('/all', function (req, res) {
         })
 })
 
-router.get('/api/products/:name', function (req, res) {
-        let name = req.params.name;
-        Product.findAll({ where: { name: name } })
-            .then((products) => res.send(products))
-    })
+// router.get('/api/products/:name', function (req, res) {
+//         let name = req.params.name;
+//         Product.findAll({ where: { name: name } })
+//             .then((products) => res.send(products))
+//     })
     
 router.get('/id/:id', function (req, res) {
     console.log("entre")
