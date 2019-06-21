@@ -16,7 +16,7 @@ export const fetchProducts = function () {
     return function (dispatch, getState) {
       Axios.get(`/api/products/all`)
         .then(res => {
-          dispatch(addProducts(res));
+          dispatch(addProducts(res.data));
         });
     };
   };
