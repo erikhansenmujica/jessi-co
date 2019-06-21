@@ -13,12 +13,13 @@ class SingleProductContainer extends React.Component {
 
   addToCarrito(product) {
     this.props.setCart(product);
-    Axios.post("/api/carrito/storageCarrito",this.props.carrito)
+    //Axios.post("/api/carrito/storageCarrito",this.props.carrito)
 
   }
   remFromCarrito(product) {
-    this.props.remCart(product);
-    Axios.post("/api/carrito/storageCarrito",this.props.carrito)
+    const newArr=this.props.carrito.filter(prod=>prod.id!==product.id)
+    this.props.remCart(newArr);
+    //Axios.post("/api/carrito/storageCarrito",this.props.carrito)
   }
 
   render() {
