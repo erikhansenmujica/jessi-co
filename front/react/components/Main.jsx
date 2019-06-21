@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 const Main= (props) => {
   console.log(props.carrito[0])
-  !props.carrito[0]&&remCart(JSON.parse(sessionStorage.getItem('product')));
+  !props.carrito[0]&&props.addOldCart(JSON.parse(sessionStorage.getItem('product')));
   props.carrito[0]&&sessionStorage.setItem("product",JSON.stringify(props.carrito))
 
   return (

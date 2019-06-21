@@ -100,7 +100,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito} ) {
+export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito, user} ) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -136,13 +136,27 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      
      <a href="" data-toggle="modal" data-target="#modalLoginForm">
      <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
      </a>
       <Link to="/register">
         <MenuItem onClick={handleMenuClose}>Register</MenuItem>
       </Link>
+    </Menu>
+  );
+  const renderMenu2 = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+     <MenuItem onClick={handleMenuClose}>Log-Out</MenuItem> 
+      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      
     </Menu>
   );
 
@@ -203,6 +217,9 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
             </div>
           </form>
           <div className={classes.grow} />
+           <Typography className={classes.title} variant="h6" noWrap>
+           { user.name&&<p style={{fontSize:"80%"}}>Hola {user.name}!</p>}
+          </Typography>
           <div className={classes.sectionDesktop}>
             <Link to="/carrito">
               <IconButton aria-label="Cart">
@@ -236,7 +253,8 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
+      {!user.name&&renderMenu}
+      {user.name&&renderMenu2}
       <LogInContainer/>
 
     </div>
