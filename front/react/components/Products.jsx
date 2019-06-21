@@ -7,9 +7,10 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'space-around',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
+    justifyContent: 'space-around',
+    
   },
   gridList: {
     width: "100vw",
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme => ({
  
 export default function TitlebarGridList(props) {
   const classes = useStyles();
-
+  
   return (
     <div className={classes.root}>
       <GridList cellHeight={400} className={classes.gridList} >
