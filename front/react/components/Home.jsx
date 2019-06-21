@@ -1,9 +1,14 @@
 import React from "react";
 
 const style = {
-  // div: {
-  //  cs:sdlcm
-  // },
+  div: {
+    display: "block",
+    margin: "auto",
+    height: "300px",
+    width: "200px",
+    objectFit:"contain"
+
+  },
   text: {
     textAlign: "center",
     fontFamily: "Francois One",
@@ -13,13 +18,16 @@ const style = {
     textAlign: "center"
   },
   footer: {
-    backgroundColor: "#2A2A36"
-  }
+    "backgroundColor": "#2A2A36"
+  },
+  
 };
-export default ({ products }) => {
+//<h1 style={style.text}>TESSIE&CO</h1>
+export default () => {
   return (
-<div className="container">
-      <h1 style={style.text}>TESSIE&CO</h1>
+    <div className="container">
+    <br/>
+    <br/>
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
