@@ -12,9 +12,8 @@ export default (state=initialState, action) =>{
             })
         }
         case REM_CART: {
-            const newArr=state.products.filter(prod=>prod!==action.carrito)
             return Object.assign({}, state, {
-                products : newArr
+                products : action.carrito
             })
         }
         default:

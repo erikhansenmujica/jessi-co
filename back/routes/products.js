@@ -29,9 +29,7 @@ router.get('/:name', function (req, res) {
    let nombre = req.params.name;
   Product.findAll({
        where: {
-           name: {
-               [Op.like]: "%" + nombre + "%"
-           }
+           name:  Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('name')), 'LIKE', '%' + nombre + '%')
        }
    })
        .then((products) => {

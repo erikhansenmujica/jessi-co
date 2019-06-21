@@ -1,19 +1,6 @@
 const router = require('express').Router();
 const {Carrito} = require('../db/models');
 
-const asyncLocalStorage = {
-    setItem: function (key, value) {
-        return Promise.resolve().then(function () {
-            localStorage.setItem(key, value);
-        });
-    },
-    getItem: function (key) {
-        return Promise.resolve().then(function () {
-            return localStorage.getItem(key);
-        });
-    }
-};
-
 router.get('/api/carrito/:userId', function (req, res) {
     let userId = req.params.userId;
     Carrito.findAll({ where: { userId: id } })
@@ -22,7 +9,7 @@ router.get('/api/carrito/:userId', function (req, res) {
 
 router.post('/storageCarrito', function (req, res) {
     console.log(req.body)
-    asyncLocalStorage.setItem(req.body).then(carrito=>console.log(carrito))
+    res.send(localStorage.setItem(req.body))
 })
 router.post('/getCarrito', function (req, res) {
     res.send(localStorage.getItem(req.body));
