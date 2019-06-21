@@ -7,9 +7,6 @@ class CarritoContainer extends Component {
     super(props);
   }
 
-  componentDidMount(){
-
-  }
   render() {
     return <Carrito carrito={this.props.carrito} />;
   }

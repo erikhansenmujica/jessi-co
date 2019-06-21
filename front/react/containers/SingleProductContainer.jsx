@@ -2,7 +2,6 @@ import React from "react";
 import SingleProduct from "../components/SingleProduct";
 import { connect } from "react-redux";
 import {setCart,remCart} from "../../store/actions/getCarrito";
-import Axios from "axios"
 
 class SingleProductContainer extends React.Component {
   constructor(props) {
@@ -13,18 +12,16 @@ class SingleProductContainer extends React.Component {
 
   addToCarrito(product) {
     this.props.setCart(product);
-
   }
   remFromCarrito(product) {
     const newArr=this.props.carrito.filter(prod=>prod.id!==product.id)
     this.props.remCart(newArr);
-    localStorage.removeItem("carrito")
+    sessionStorage.setItem("product",JSON.stringify(newArr))
   }
 
   render() {
     console.log(this.props.carrito)
-    localStorage.clear()
-    sessionStorage.setItem("product",JSON.stringify(this.props.carrito))
+    
 
     return (
       <SingleProduct
