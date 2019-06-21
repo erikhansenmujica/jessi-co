@@ -2,7 +2,6 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import { fetchProductsByName } from '../../store/actions/getProducts';
 import { connect } from 'react-redux';
-
 class NavbarContainer extends React.Component {
     constructor(props){
         super(props);
@@ -25,6 +24,7 @@ class NavbarContainer extends React.Component {
     }
     
     render (){
+
         return (
             <Navbar 
             handleSearch = {this.handleSearch}
@@ -40,5 +40,7 @@ const mapStateToProps = ({carrito}) => {
         carrito: carrito.products
     }
 }
+
+
 
 export default connect(mapStateToProps)(NavbarContainer)

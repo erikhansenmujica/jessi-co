@@ -7,8 +7,14 @@ import ProductsContainer from "../containers/ProductsContainer";
 import CarritoContainer from "../containers/CarritoContainer";
 import LogIn from "../components/LogIn";
 import RegisterContainer from "../containers/RegisterContainer"
+import {remCart} from "../../store/actions/getCarrito";
+import { connect } from 'react-redux';
 
-export default () => {
+remCart(JSON.parse(sessionStorage.getItem('product')));
+
+const Main= (props) => {
+  props.carrito[0]&&sessionStorage.setItem("product",JSON.stringify(props.carrito))
+
   return (
     <div>
       <Route component={NavbarContainer} />
@@ -23,3 +29,13 @@ export default () => {
     </div>
   );
 };
+const mapStateToProps = ({  carrito }) => ({
+  carrito: carrito.products
+});
+const mapDispatchToProps = (dispatch) => {
+  return {
+      addOldCart: product => dispatch(remCart(product))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main)
