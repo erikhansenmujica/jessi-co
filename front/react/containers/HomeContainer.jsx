@@ -12,10 +12,9 @@ class HomeContainer extends React.Component {
     this.props.fetchProducts()
   }
   render() {
-    
+  
     return (
       <div>
-
         <Home products={this.props.products}/>
       </div>
     );

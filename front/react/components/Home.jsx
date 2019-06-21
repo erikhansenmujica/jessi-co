@@ -11,7 +11,7 @@ const style = {
   },
   text: {
     textAlign: "center",
-    fontFamily: 'Francois One',
+    fontFamily: "Francois One",
     fontSize: "80px"
   },
   text2: {

@@ -10,9 +10,10 @@ import RegisterContainer from "../containers/RegisterContainer"
 import {remCart} from "../../store/actions/getCarrito";
 import { connect } from 'react-redux';
 
-remCart(JSON.parse(sessionStorage.getItem('product')));
 
 const Main= (props) => {
+  console.log(props.carrito[0])
+  !props.carrito[0]&&remCart(JSON.parse(sessionStorage.getItem('product')));
   props.carrito[0]&&sessionStorage.setItem("product",JSON.stringify(props.carrito))
 
   return (
