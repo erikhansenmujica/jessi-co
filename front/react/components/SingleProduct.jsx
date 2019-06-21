@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 export default props => {
   const classes = useStyles();
-  var i = 0;
+  var i = -1;
 
   return (
     <div className="container" style={{ marginTop: "3%" }}>
@@ -38,24 +38,20 @@ export default props => {
           data-ride="carousel"
         >
           <ol className="carousel-indicators">
-            <li
+          
+            {props.product.images.map(img =>{
+              
+              return <li
               data-target="#carouselExampleIndicators"
-              data-slide-to="0"
-              className="active"
-            />
-            {props.product.images.map(img => (
-              <div className="carousel-item active">
-                <li
-                  data-target="#carouselExampleIndicators"
-                  data-slide-to={`{i}`}
-                />
-                {(i += 1)}
-              </div>
-            ))}
+              data-slide-to={props.product.images.indexOf(img)}
+              className={!props.product.images.indexOf(img)&&"active"}
+              key={img}
+              />
+            })}
           </ol>
           <div className="carousel-inner">
             {props.product.images.map(img => (
-              <div className="carousel-item active">
+              <div className={!props.product.images.indexOf(img)?"carousel-item active":"carousel-item"}>
                 <img
                   src={img}
                   className="d-block w-100"
@@ -85,21 +81,34 @@ export default props => {
           </a>
         </div>
       )}
+      
       {props.product.name && (
+        
         <div>
+          <br/>
+        
           <h2 className="text-center">{props.product.name}</h2>
           <p className="text-center text-wrap">{props.product.description}</p>
           <div style={iconStyle}>
             <h4>${props.product.price}</h4>
-            <Button icon onClick={props.setCart}>
+            <Button icon onClick={()=>props.setCart(props.product)}>
               <Icon name='add to cart' size='large' />
             </Button>
-            <Button icon onClick={props.remCart}>
+            <Button icon onClick={()=>props.remCart(props.product)}>
               <Icon name='trash alternate' size='large' />
             </Button>
           </div>
         </div>
       )}
+       <footer>
+          <p className="float-right" >
+            <a href="#">Back to top</a>
+          </p>
+          <p>
+            &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
+            &middot; <a href="#">Terms</a>
+          </p>
+        </footer>
     </div>
   );
 };

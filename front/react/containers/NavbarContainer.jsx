@@ -23,15 +23,12 @@ class NavbarContainer extends React.Component {
             this.props.history.push("/products")
         }
     }
-
-        
     
     render (){
         return (
             <Navbar 
             handleSearch = {this.handleSearch}
             handleSubmit = {this.handleSubmit}
-            redirectHome = {this.redirectHome}
             carrito= {this.props.carrito}
             />
         )
