@@ -12,14 +12,6 @@ export const addProduct = (product)=>({
     product
 })
 
-export const fetchProducts = function () {
-    return function (dispatch, getState) {
-      Axios.get(`/api/products/all`)
-        .then(res => {
-          dispatch(addProducts(res.data));
-        });
-    };
-  };
 export const fetchProductsByName = (name) => 
     Axios.get(`/api/products/${name}`)
         .then(products=>store.dispatch(addProducts(products)))
