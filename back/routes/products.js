@@ -27,7 +27,7 @@ router.get('/id/:id', function (req, res) {
 
 router.get('/:name', function (req, res) {
    let nombre = req.params.name;
-   Product.findAll({
+  Product.findAll({
        where: {
            name: {
                [Op.like]: "%" + nombre + "%"
@@ -35,7 +35,7 @@ router.get('/:name', function (req, res) {
        }
    })
        .then((products) => {
-           res.json(products)
+          return res.json(products)
        })
 })
  

@@ -4,15 +4,18 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const productsRoutes = require('./routes/products');
 const carritoRoutes = require('./routes/carrito');
-const usersRoutes = require('./routes/users');
+const userRoutes = require('./routes/user');
 const cookieParser = require('cookie-parser');
+const morgan = require ("morgan")
 const session = require("express-session");
-//const passport = require('./config/passportConfig');
-const db = require('./db/db');
-
+const faker = require("faker")
+const passport = require('./validations/passport');
+const db = require('./db/db')
+const Products = require("./db/models/products")
+const usersRoutes = require('./routes/users');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(cookieParser())
 /****Passport configuration****/
@@ -21,14 +24,16 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(morgan());
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 /*****************************/
 
 /*Configuración de rutas*/
 app.use('/api/products', productsRoutes);
 app.use('/api/carrito', carritoRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/users', usersRoutes)
 /***********************/
 

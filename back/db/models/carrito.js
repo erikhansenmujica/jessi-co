@@ -1,9 +1,4 @@
 const S = require('sequelize');
-
-const User = require('./user')
-const Product = require ('./products')
-
-
 const db = require('../db');
 
 const Carrito = db.define('carritos', {
@@ -14,7 +9,5 @@ const Carrito = db.define('carritos', {
   }
 })
 
-Carrito.belongsTo(User)
-Carrito.hasMany(Product)
 
 module.exports = Carrito
