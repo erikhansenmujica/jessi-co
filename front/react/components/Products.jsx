@@ -9,14 +9,12 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
-    justifyContent: 'space-around',
-    
+    paddingLeft: "7%"
   },
   gridList: {
     width: "100vw",
     height: "100vh",
   },
-
 }));
 
  
@@ -31,8 +29,9 @@ export default function TitlebarGridList(props) {
             <div className="card" style={{
                                           width: "18rem",
                                           margin: "2% 2% 2% 2%"
-                                            }}>
-            <img src={prod.images[0]}className="card-img-top" alt="no images"/>
+                                            }} key={prod.id}>
+            <img src={prod.images[0]}className="card-img-top" style={{height:"60%",
+          objectFit:"contain"}} alt="no images"/>
             <div className="card-body">
               <h5 className="card-title">{prod.name}</h5>
               <p className="card-text">Cantidad disponible: {prod.stock} precio: ${prod.price} </p>

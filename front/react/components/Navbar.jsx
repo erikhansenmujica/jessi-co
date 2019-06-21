@@ -137,7 +137,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       onClose={handleMenuClose}
     >
       
-     <a data-toggle="modal" data-target="#modalLoginForm">
+     <a href="" data-toggle="modal" data-target="#modalLoginForm">
      <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
      </a>
       <Link to="/register">
