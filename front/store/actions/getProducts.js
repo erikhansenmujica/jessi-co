@@ -12,11 +12,11 @@ export const addProduct = (product)=>({
     product
 })
 
-
-export const fetchProducts = (name) => 
+export const fetchProducts = () => 
+(dispatch)=>
     Axios.get(`/api/products/all`)
-        .then(products=>store.dispatch(addProducts(products)))
-    
+        .then(products=>dispatch(addProducts(products.data)))
+
 export const fetchProductsByName = (name) => 
     Axios.get(`/api/products/${name}`)
         .then(products=>store.dispatch(addProducts(products)))
