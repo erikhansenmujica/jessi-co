@@ -6,8 +6,7 @@ const style = {
     margin: "auto",
     height: "300px",
     width: "200px",
-    objectFit:"contain"
-
+    objectFit: "contain"
   },
   text: {
     textAlign: "center",
@@ -18,16 +17,18 @@ const style = {
     textAlign: "center"
   },
   footer: {
-    "backgroundColor": "#2A2A36"
+    backgroundColor: "#2A2A36"
   },
-  
+  arrowcolor: {
+    filter: "invert(100%)"
+  }
 };
 //<h1 style={style.text}>TESSIE&CO</h1>
 export default () => {
   return (
     <div className="container">
-    <br/>
-    <br/>
+      <br />
+      <br />
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
@@ -82,6 +83,7 @@ export default () => {
           href="#carouselExampleCaptions"
           role="button"
           data-slide="prev"
+          style={style.arrowcolor}
         >
           {" "}
           <span className="carousel-control-prev-icon" aria-hidden="true" />
@@ -92,6 +94,7 @@ export default () => {
           href="#carouselExampleCaptions"
           role="button"
           data-slide="next"
+          style={style.arrowcolor}
         >
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="sr-only">Next</span>
@@ -155,6 +158,7 @@ export default () => {
           href="#carouselExampleCaptions1"
           role="button"
           data-slide="prev"
+          style={style.arrowcolor}
         >
           <span className="carousel-control-prev-icon" aria-hidden="true" />
           <span className="sr-only">Previous</span>
@@ -164,6 +168,7 @@ export default () => {
           href="#carouselExampleCaptions1"
           role="button"
           data-slide="next"
+          style={style.arrowcolor}
         >
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="sr-only">Next</span>
@@ -173,14 +178,14 @@ export default () => {
       <br />
       <br />
       <footer>
-          <p className="float-right" style={style.text2}>
-            <a href="#">Back to top</a>
-          </p>
-          <p>
-            &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
-            &middot; <a href="#">Terms</a>
-          </p>
-        </footer>
+        <p className="float-right" style={style.text2}>
+          <a href="#">Back to top</a>
+        </p>
+        <p>
+          &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
+          &middot; <a href="#">Terms</a>
+        </p>
+      </footer>
     </div>
   );
 };

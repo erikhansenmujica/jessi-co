@@ -2,16 +2,15 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Icon } from "semantic-ui-react";
 
-const carouselStyle = {
-  display: "block",
-  width: "35%",
-  height: "40%",
-  margin: "auto",
-  padding: "1%",
+const style = {
+  iconStyle: {
+    textAlign: "center"
+  },
+  arrowcolor: {
+    filter: "invert(100%)"
+  }
 };
-const iconStyle = {
-  textAlign: "center"
-};
+
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -38,20 +37,29 @@ export default props => {
           data-ride="carousel"
         >
           <ol className="carousel-indicators">
-
             {props.product.images.map(img => {
-
-              return <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to={props.product.images.indexOf(img)}
-                className={!props.product.images.indexOf(img)  ?"active":"nothing"}
-                key={img}
-              />
+              return (
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to={props.product.images.indexOf(img)}
+                  className={
+                    !props.product.images.indexOf(img) ? "active" : "nothing"
+                  }
+                  key={img}
+                />
+              );
             })}
           </ol>
           <div className="carousel-inner">
             {props.product.images.map(img => (
-              <div key={img} className={!props.product.images.indexOf(img) ? "carousel-item active" : "carousel-item"}>
+              <div
+                key={img}
+                className={
+                  !props.product.images.indexOf(img)
+                    ? "carousel-item active"
+                    : "carousel-item"
+                }
+              >
                 <img
                   src={img}
                   className="d-block w-100"
@@ -60,7 +68,6 @@ export default props => {
                     height: "55vh",
                     objectFit: "contain"
                   }}
-                  
                 />
               </div>
             ))}
@@ -70,6 +77,7 @@ export default props => {
             href="#carouselExampleIndicators"
             role="button"
             data-slide="prev"
+            style={style.arrowcolor}
           >
             <span className="carousel-control-prev-icon" aria-hidden="true" />
             <span className="sr-only">Previous</span>
@@ -79,6 +87,7 @@ export default props => {
             href="#carouselExampleIndicators"
             role="button"
             data-slide="next"
+            style={style.arrowcolor}
           >
             <span className="carousel-control-next-icon" aria-hidden="true" />
             <span className="sr-only">Next</span>
@@ -87,25 +96,24 @@ export default props => {
       )}
 
       {props.product.name && (
-
         <div>
           <br />
 
           <h2 className="text-center">{props.product.name}</h2>
           <p className="text-center text-wrap">{props.product.description}</p>
-          <div style={iconStyle}>
+          <div style={style.iconStyle}>
             <h4>${props.product.price}</h4>
             <Button icon onClick={() => props.setCart(props.product)}>
-              <Icon name='add to cart' size='large' />
+              <Icon name="add to cart" size="large" />
             </Button>
             <Button icon onClick={() => props.remCart(props.product)}>
-              <Icon name='trash alternate' size='large' />
+              <Icon name="trash alternate" size="large" />
             </Button>
           </div>
         </div>
       )}
       <footer>
-        <p className="float-right" >
+        <p className="float-right">
           <a href="#">Back to top</a>
         </p>
         <p>
