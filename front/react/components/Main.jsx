@@ -7,6 +7,7 @@ import ProductsContainer from "../containers/ProductsContainer";
 import CarritoContainer from "../containers/CarritoContainer";
 import LogIn from "../components/LogIn";
 import RegisterContainer from "../containers/RegisterContainer"
+import AddProductsContainer from "../containers/AddProductsContainer"
 import {remCart} from "../../store/actions/getCarrito";
 import { connect } from 'react-redux';
 
@@ -25,6 +26,7 @@ const Main= (props) => {
         <Route path="/products" component={ProductsContainer} />
         <Route path="/login" component={LogIn} />
         <Route exact path="/carrito" component={CarritoContainer}/>
+        <Route path ="/add" component ={AddProductsContainer} />
         <Route path="/" component={HomeContainer} />
       </Switch>
     </div>
