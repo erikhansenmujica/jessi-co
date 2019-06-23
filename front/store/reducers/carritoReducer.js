@@ -12,9 +12,13 @@ export default (state=initialState, action) =>{
             })
         }
         case REM_CART: {
+            if(action.carrito)
             return Object.assign({}, state, {
                 products : action.carrito
             })
+            else {return Object.assign({}, state, {
+                products : state.products
+            })}
         }
         default:
             return state;

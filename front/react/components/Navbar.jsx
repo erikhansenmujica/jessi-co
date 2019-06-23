@@ -15,6 +15,9 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import { withStyles } from "@material-ui/core/styles"; // para carrito
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"; // icon carrito
 import LogInContainer from "../containers/LogInContainer"
+import Axios from "axios"
+import {deLogUser} from "../../store/actions/logUser"
+import store from "../../store"
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -124,7 +127,10 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
   function handleMobileMenuOpen(event) {
     setMobileMoreAnchorEl(event.currentTarget);
   }
-
+  function handleLogOut(){
+        Axios.get("/api/user/logout").then(()=>store.dispatch(deLogUser()))
+      
+  }
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -154,7 +160,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-     <MenuItem onClick={handleMenuClose}>Log-Out</MenuItem> 
+     <div onClick={handleLogOut}><MenuItem onClick={handleMenuClose}>Log-Out</MenuItem></div> 
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       
     </Menu>

@@ -19,7 +19,6 @@ router.get('/api/products/:name', function (req, res) {
     })
     
 router.get('/id/:id', function (req, res) {
-    console.log("entre")
     let id = req.params.id;
     Product.findOne({ where: { id: id } })
         .then(product => res.json(product))

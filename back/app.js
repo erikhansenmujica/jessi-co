@@ -32,9 +32,9 @@ app.use(passport.session());
 /*****************************/
 
 /*Configuración de rutas*/
+app.use('/api/user', userRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/carrito', carritoRoutes);
-app.use('/api/user', userRoutes);
 app.use('/api/users', usersRoutes)
 /***********************/
 
