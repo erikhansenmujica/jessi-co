@@ -6,17 +6,10 @@ import NavbarContainer from "../containers/NavbarContainer";
 import ProductsContainer from "../containers/ProductsContainer";
 import CarritoContainer from "../containers/CarritoContainer";
 import LogIn from "../components/LogIn";
-<<<<<<< HEAD
 import RegisterContainer from "../containers/RegisterContainer"
 import AddProductsContainer from "../containers/AddProductsContainer"
 import {remCart} from "../../store/actions/getCarrito";
 import { connect } from 'react-redux';
-=======
-import RegisterContainer from "../containers/RegisterContainer";
-import { remCart } from "../../store/actions/getCarrito";
-import { connect } from "react-redux";
-
->>>>>>> 0f4ca4cbfaff5f41411562fdeeb23aa6c861f3ad
 
 
 const Main= (props) => {
