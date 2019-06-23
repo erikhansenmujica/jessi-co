@@ -5,14 +5,15 @@ const path = require('path');
 const productsRoutes = require('./routes/products');
 const carritoRoutes = require('./routes/carrito');
 const userRoutes = require('./routes/user');
+const usersRoutes = require('./routes/users');
+const orderRoutes = require('./routes/order');
 const cookieParser = require('cookie-parser');
-const morgan = require ("morgan")
+const morgan = require("morgan")
 const session = require("express-session");
-const faker = require("faker")
 const passport = require('./validations/passport');
 const db = require('./db/db')
-const {Product} = require("./db/models")
-const usersRoutes = require('./routes/users');
+const { Product } = require("./db/models")
+
 
 //object fit
 app.use(bodyParser.json());
@@ -32,12 +33,15 @@ app.use(passport.session());
 /*****************************/
 
 /*Configuración de rutas*/
+app.use('/api/user', userRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/carrito', carritoRoutes);
-app.use('/api/user', userRoutes);
-app.use('/api/users', usersRoutes)
-/***********************/
 
+
+
+app.use('/api/user', userRoutes);
+app.use('/api/users', usersRoutes);
+app.use('/api/order', orderRoutes);
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './public', 'index.html'));
@@ -55,7 +59,7 @@ app.use(function (err, req, res, next) {
     res.sendStatus(err.status || 500);
 });
 
-db.sync({ force:false }).then((c)=> console.log(`connected to ${c.config.database} DB`))
+db.sync({ force: false }).then((c) => console.log(`connected to ${c.config.database} DB`))
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`server started on port ${PORT}`))

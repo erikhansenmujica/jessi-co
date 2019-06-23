@@ -17,7 +17,6 @@ passport.deserializeUser(function (id, done) {
 
 passport.use(new LocalStrategy({usernameField :'email', passwordField:"password"},
 function (email, password, done) {
-    console.log("hey anda")
         Users.findOne({where:{ email: email}  })
         .then((user)=> {    
             if (!user) {
@@ -28,7 +27,6 @@ function (email, password, done) {
                 console.log("error2")
                 return done(null, false, { message: 'Incorrect password.' });
             }
-            console.log(user)
             return done(null, user);
         })
         .catch(done)

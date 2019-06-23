@@ -30,14 +30,16 @@ class NavbarContainer extends React.Component {
             handleSearch = {this.handleSearch}
             handleSubmit = {this.handleSubmit}
             carrito= {this.props.carrito}
+            user= {this.props.user}
             />
         )
     }
 }
 
-const mapStateToProps = ({carrito}) => {
+const mapStateToProps = ({carrito, user}) => {
     return {
-        carrito: carrito.products
+        carrito: carrito.products,
+        user: user.user
     }
 }
 
