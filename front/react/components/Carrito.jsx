@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 const cardStyle = {
   height: "5%",
   width: "85%",
-  padding: "1%",
+  padding: "4%",
   margin: "auto"
 };
 
@@ -30,7 +30,7 @@ const buttonStyle = {
 };
 
 const inputStyle = {
-  width: "85%",
+  width: "60%",
   margin: "auto",
   padding: "1%"
 };
@@ -42,6 +42,13 @@ const buyButton = {
 export default function CenteredGrid(props) {
   const classes = useStyles();
 
+  const handleEmail = e => {
+    props.handleEmail(e.target.value);
+  };
+
+  const handleAdress = e => {
+    props.handleAdress(e.target.value);
+  };
   return (
     <div className="container">
       <div className={classes.root}>
@@ -56,7 +63,12 @@ export default function CenteredGrid(props) {
             <div className="card mb-3" style={cardStyle} key={product.id}>
               <div className="row no-gutters">
                 <div className="col-md-4">
-                  <img src={product.images[0]} className="card-img" style={{ objectFit: "contain"}} alt="..." />
+                  <img
+                    src={product.images[0]}
+                    className="card-img"
+                    style={{ objectFit: "contain" }}
+                    alt="..."
+                  />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
@@ -87,7 +99,6 @@ export default function CenteredGrid(props) {
               </div>
             </div>
           ))}
-
           <div className="input-group mb-3" style={inputStyle}>
             <div className="input-group-prepend">
               <span className="input-group-text" id="inputGroup-sizing-default">
@@ -96,16 +107,35 @@ export default function CenteredGrid(props) {
             </div>
             <input
               type="text"
+              required
+              placeholder="Calle siempreviva 742"
               className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
+              onChange={handleAdress}
             />
           </div>
-          
+          <div className="input-group mb-3" style={inputStyle}>
+            <div className="input-group-prepend">
+              <span className="input-group-text" id="inputGroup-sizing-default">
+                Email:
+              </span>
+            </div>
+            <input
+              type="email"
+              required
+              placeholder="example@gmail.com"
+              className="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              onChange={handleEmail}
+            />
+          </div>
           <button
             type="button"
             className="btn btn-primary btn-lg"
             style={buyButton}
+            onClick={props.handleBuyButton}
           >
             Buy
           </button>
