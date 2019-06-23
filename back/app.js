@@ -33,13 +33,15 @@ app.use(passport.session());
 /*****************************/
 
 /*Configuración de rutas*/
+app.use('/api/user', userRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/carrito', carritoRoutes);
+
+
+
 app.use('/api/user', userRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/order', orderRoutes);
-/***********************/
-
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './public', 'index.html'));
