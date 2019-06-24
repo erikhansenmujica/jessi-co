@@ -83,32 +83,6 @@ export default ({ handleChange, handleSubmit }) => {
             />
           </div>
         </div>
-        <div className="form-group row">
-          <label style={letters} className="col-sm-2 col-form-label">
-            Reviews
-          </label>
-          <div className="col-sm-10">
-            <input
-              name="reviews"
-              type="text"
-              className="form-control"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
-        <div className="form-group row">
-          <label style={letters} className="col-sm-2 col-form-label">
-            Rating
-          </label>
-          <div className="col-sm-10">
-            <input
-              name="rating"
-              type="number"
-              className="form-control"
-              onChange={handleChange}
-            />
-          </div>
-        </div>
         <div style={center}>
           <button type="button" className="btn btn-primary">
             Add Category

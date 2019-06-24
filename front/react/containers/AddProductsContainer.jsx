@@ -11,8 +11,6 @@ export default class addProducts extends React.Component {
       images: "",
       price: "",
       stock: "",
-      reviews: "",
-      rating: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -36,8 +34,6 @@ export default class addProducts extends React.Component {
       stock: parseInt(this.state.stock),
       description: this.state.description,
       images: arr,
-      reviews: [this.state.reviews],
-      rating: parseInt(this.state.rating)
     });
   }
 
