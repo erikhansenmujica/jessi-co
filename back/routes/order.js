@@ -20,7 +20,7 @@ router.post('/neworder', function (req, res) {
     for (let i = 0; i < req.body.data.carrito.length; i++) {
         total += req.body.data.carrito[i].price;
     }
-    console.log(total)
+    
     const mailOptions = {
         from: 'tessiecompany@gmail.com',
         to: req.body.data.email,
