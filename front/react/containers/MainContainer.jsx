@@ -40,3 +40,4 @@ const mapStateToProps = ({ carrito }) => ({
     mapStateToProps,
     mapDispatchToProps
   )(MainContainer);
+  

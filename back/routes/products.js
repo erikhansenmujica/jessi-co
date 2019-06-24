@@ -5,7 +5,6 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 router.get('/all', function (req, res) {
-
    Product.findAll()
         .then((products) => {
             res.status(200).send(products)
@@ -29,5 +28,6 @@ router.get('/:name', function (req, res) {
             return res.json(products)
         })
 })
+
 
 module.exports = router;

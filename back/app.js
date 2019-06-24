@@ -7,6 +7,7 @@ const carritoRoutes = require('./routes/carrito');
 const userRoutes = require('./routes/user');
 const usersRoutes = require('./routes/users');
 const orderRoutes = require('./routes/order');
+const addProduct = require('./routes/addProduct')
 const cookieParser = require('cookie-parser');
 const morgan = require("morgan")
 const session = require("express-session");
@@ -17,6 +18,7 @@ const { Product } = require("./db/models")
 
 //object fit
 app.use(express.static('public'));
+app.use(morgan('dev'));
 app.use(cookieParser())
 /****Passport configuration****/
 app.use(session({
@@ -36,6 +38,7 @@ app.use(bodyParser.json());
 app.use('/api/products', productsRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/carrito', carritoRoutes);
+app.use('/api/product', addProduct);
 app.use('/api/user', userRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/order', orderRoutes);
@@ -43,8 +46,6 @@ app.use('/api/order', orderRoutes);
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './public', 'index.html'));
 })
-
-
 
 db.sync({ force: false }).then((c) => console.log(`connected to ${c.config.database} DB`))
 
