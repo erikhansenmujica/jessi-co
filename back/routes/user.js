@@ -8,7 +8,6 @@ router.post('/login',passport.authenticate("local"), function (req, res) {
 
 
 router.get('/logout', function (req, res) {
-    console.log("skereeeasdjalfhlkghlkhflksFNLKSDFNLKFNkDFN.KSDFNKSADFNAKSNFLJKSFNSDLKJFNBLKFLSKDJNLSKDNLK")
     req.logout()
 })
 

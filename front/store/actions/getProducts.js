@@ -28,3 +28,11 @@ export const fetchProductsByCat = (cat) =>
 export const fetchProductsById = (id) => 
     Axios.get(`/api/products/${id}`)
         .then(product=>store.dispatch(addProduct(product)))
+
+//ver si es necesario
+export const product = (product) => {
+    return function(dispatch){
+        Axios.post('/api/products/add', {product})
+            .then(product=> store.dispatch(product))
+    }
+}

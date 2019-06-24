@@ -5,11 +5,11 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 router.get('/all', function (req, res) {
-
+    
     Product.findAll()
-        .then((products) => {
-            res.json(products)
-        })
+    .then((products) => {
+        res.json(products)
+    })
 })
 
 router.get('/id/:id', function (req, res) {
@@ -29,5 +29,6 @@ router.get('/:name', function (req, res) {
             return res.json(products)
         })
 })
+
 
 module.exports = router;

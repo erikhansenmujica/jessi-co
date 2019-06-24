@@ -7,6 +7,7 @@ const carritoRoutes = require('./routes/carrito');
 const userRoutes = require('./routes/user');
 const usersRoutes = require('./routes/users');
 const orderRoutes = require('./routes/order');
+const addProduct = require('./routes/addProduct')
 const cookieParser = require('cookie-parser');
 const morgan = require("morgan")
 const session = require("express-session");
@@ -36,7 +37,7 @@ app.use(passport.session());
 app.use('/api/user', userRoutes);
 app.use('/api/products', productsRoutes);
 app.use('/api/carrito', carritoRoutes);
-
+app.use('/api/prueba', addProduct)
 
 
 app.use('/api/user', userRoutes);

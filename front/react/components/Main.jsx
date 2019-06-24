@@ -6,18 +6,16 @@ import NavbarContainer from "../containers/NavbarContainer";
 import ProductsContainer from "../containers/ProductsContainer";
 import CarritoContainer from "../containers/CarritoContainer";
 import LogIn from "../components/LogIn";
-import RegisterContainer from "../containers/RegisterContainer"
-import AddProductsContainer from "../containers/AddProductsContainer"
-import {remCart} from "../../store/actions/getCarrito";
-import { connect } from 'react-redux';
+import RegisterContainer from "../containers/RegisterContainer";
+import AddProductsContainer from "../containers/AddProductsContainer";
+import { remCart } from "../../store/actions/getCarrito";
+import { connect } from "react-redux";
 
-
-const Main= (props) => {
-  
-  !props.carrito[0]&&props.addOldCart(JSON.parse(sessionStorage.getItem('product')));
-  props.carrito[0]&&sessionStorage.setItem("product",JSON.stringify(props.carrito))
-
-
+const Main = props => {
+  !props.carrito[0] &&
+    props.addOldCart(JSON.parse(sessionStorage.getItem("product")));
+  props.carrito[0] &&
+    sessionStorage.setItem("product", JSON.stringify(props.carrito));
 
   return (
     <div>
@@ -31,8 +29,8 @@ const Main= (props) => {
         <Route path="/register" component={RegisterContainer} />
         <Route path="/products" component={ProductsContainer} />
         <Route path="/login" component={LogIn} />
-        <Route exact path="/carrito" component={CarritoContainer}/>
-        <Route path ="/add" component ={AddProductsContainer} />
+        <Route exact path="/carrito" component={CarritoContainer} />
+        <Route path="/add" component={AddProductsContainer} />
         <Route path="/" component={HomeContainer} />
       </Switch>
     </div>

@@ -1,59 +1,130 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Button, Icon } from "semantic-ui-react";
 
-const carouselStyle = {
-  display: "block",
-  width: "35%",
-  height: "40%",
-  margin: "auto",
-  padding: "1%"
-};
-const iconStyle = {
+const center = {
   textAlign: "center"
 };
-const useStyles = makeStyles(theme => ({
-  button: {
-    margin: theme.spacing(1)
-  },
-  input: {
-    display: "none"
-  },
-  icon: {
-    height: "100vh"
-  }
-}));
 
-export default () => {
+const letters = {
+  fontSize: "20px"
+};
+const title = {
+  textAlign: "center",
+  fontSize: "56px"
+};
+
+export default ({ handleChange, handleSubmit }) => {
   return (
-    <div className='container'>
-      <form>
-        <div className="form-group">
-          <h3>Titulo</h3>
-          <input
-            type="text"
-            className="form-control"
-            id="formGroupExampleInput"
-            placeholder="Title"
-          />
+    <div className="container">
+      <h1 style={title}>Agregar Productos</h1>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group row">
+          <label style={letters} className="col-sm-2 col-form-label">
+            Nombre
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="name"
+              onChange={handleChange}
+              type="text"
+              className="form-control"
+            />
+          </div>
         </div>
-        <div className="form-group">
-          <h3>Descripcion</h3>
-          <input
-            type="text"
-            className="form-control"
-            id="formGroupExampleInput2"
-            placeholder="Description"
-          />
+        <div className="form-group row">
+          <label style={letters} className="col-sm-2 col-form-label">
+            Precio
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="price"
+              onChange={handleChange}
+              type="number"
+              className="form-control"
+            />
+          </div>
         </div>
-        <div className="form-group">
-          <h3>Imagenes</h3>
-          <input
-            type="text"
-            className="form-control"
-            id="formGroupExampleInput2"
-            placeholder="Images"
-          />
+        <div className="form-group row">
+          <label style={letters} className="col-sm-2 col-form-label">
+            Stock
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="stock"
+              type="number"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <label style={letters} className="col-sm-2 col-form-label">
+            Descripcion
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="description"
+              type="text"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <label style={letters} className="col-sm-2 col-form-label">
+            Imagenes (Links)
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="images"
+              type="text"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <label style={letters} className="col-sm-2 col-form-label">
+            Reviews
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="reviews"
+              type="text"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="form-group row">
+          <label style={letters} className="col-sm-2 col-form-label">
+            Rating
+          </label>
+          <div className="col-sm-10">
+            <input
+              name="rating"
+              type="number"
+              className="form-control"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div style={center}>
+          <button type="button" className="btn btn-primary">
+            Add Category
+          </button>
+
+          <button type="button" className="btn btn-danger">
+            Remove Category
+          </button>
+          <br />
+          <br />
+          <br />
+          <div>
+            <button type="submit" className="btn btn-primary btn-lg">
+              Agregar
+            </button>
+          </div>
         </div>
       </form>
     </div>
