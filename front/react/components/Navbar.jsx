@@ -15,6 +15,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import { withStyles } from "@material-ui/core/styles"; // para carrito
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"; // icon carrito
 import LogInContainer from "../containers/LogInContainer"
+import RegisterContainer from "../containers/RegisterContainer"
 import Axios from "axios"
 import {deLogUser} from "../../store/actions/logUser"
 import store from "../../store"
@@ -145,9 +146,9 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
      <a href="" data-toggle="modal" data-target="#modalLoginForm">
      <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
      </a>
-      <Link to="/register">
+     <a href="" data-toggle="modal" data-target="#modalRegisterForm">
         <MenuItem onClick={handleMenuClose}>Register</MenuItem>
-      </Link>
+      </a>
     </Menu>
   );
   const renderMenu2 = (
@@ -262,7 +263,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       {!user.name&&renderMenu}
       {user.name&&renderMenu2}
       <LogInContainer/>
-
+      <RegisterContainer/>
     </div>
   );
 }

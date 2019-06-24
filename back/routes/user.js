@@ -5,11 +5,15 @@ var passport = require('../validations/passport')
 router.post('/login',passport.authenticate("local"), function (req, res) {
     res.send(req.user)
 })
+router.get('/get-user', function (req, res) {
+    if(req.user) res.send(req.user)
+     else res.send({})
+})
 
 
 router.get('/logout', function (req, res) {
-    console.log("skereeeasdjalfhlkghlkhflksFNLKSDFNLKFNkDFN.KSDFNKSADFNAKSNFLJKSFNSDLKJFNBLKFLSKDJNLSKDNLK")
     req.logout()
+    res.sendStatus(200)
 })
 
 module.exports = router;

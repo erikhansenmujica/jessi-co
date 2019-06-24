@@ -3,48 +3,50 @@ const db = require('../db');
 const crypto = require("crypto")
 
 const User = db.define('users', {
-  name: { 
+  name: {
     type: S.STRING,
     allowNull: false
   },
-  lastname : {
-      type: S.STRING,
-      allowNull: false
-  },
-  email: {
-    type:S.STRING,
-    isEmail:true,
+  lastname: {
+    type: S.STRING,
     allowNull: false
   },
-  password:{
-    type:S.STRING,
-    allowNull:false
+  email: {
+    type: S.STRING,
+    allowNull: false,
+    isEmail: true,
+    unique: {
+      args: true,
+      msg: 'Email address already in use!'
+    }
   },
-  admin : {
-      type : S.BOOLEAN
+  password: {
+    type: S.STRING,
+    allowNull: false
   },
-  salt:{
-    type:S.STRING
+  admin: {
+    type: S.BOOLEAN
+  },
+  salt: {
+    type: S.STRING
   }
 })
 
 User.beforeCreate((user) => {
-  user.salt=crypto.randomBytes(20).toString('hex')
-  user.password=crypto.createHmac('sha1', user.salt).update(user.password).digest('hex')
+  user.salt = crypto.randomBytes(20).toString('hex')
+  user.password = crypto.createHmac('sha1', user.salt).update(user.password).digest('hex')
 });
-User.saltGenerator = function () {
-return crypto.randomBytes(20).toString('hex')
-}
+
 
 
 User.prototype.hashFunction = function (password) {
- return crypto.createHmac('sha1', this.salt).update(password).digest('hex')
+  return crypto.createHmac('sha1', this.salt).update(password).digest('hex')
 }
 
 User.prototype.autenticate = function (password) {
-  console.log(this.hashFunction(password)+ "password", this.password)
+  console.log(this.hashFunction(password) + "password", this.password, "salt", this.salt)
 
-  return  this.hashFunction(password) === this.password
+  return this.hashFunction(password) === this.password
 
 }
 

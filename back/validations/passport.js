@@ -1,4 +1,4 @@
-const  Users  = require("../db/models/user")
+const  {User}  = require("../db/models")
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy;
 passport.serializeUser(function (user, done) {
@@ -8,16 +8,16 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
     console.log("deserialize")
-    Users.findByPk(id)
+   User.findByPk(id)
     .then( user=> {
-        done(err, user);
+        done(null, user);
     })
     .catch(done)
 });
 
 passport.use(new LocalStrategy({usernameField :'email', passwordField:"password"},
 function (email, password, done) {
-        Users.findOne({where:{ email: email}  })
+        User.findOne({where:{ email: email}  })
         .then((user)=> {    
             if (!user) {
                 console.log("error")
