@@ -6,9 +6,9 @@ const Op = Sequelize.Op;
 
 router.get('/all', function (req, res) {
 
-    Product.findAll()
+   Product.findAll()
         .then((products) => {
-            res.json(products)
+            res.status(200).send(products)
         })
 })
 
