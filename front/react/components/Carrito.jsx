@@ -81,6 +81,7 @@ export default function CenteredGrid(props) {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => props.setCart(product)}
                       >
                         <AddIcon className={classes.rightIcon} />
                       </Button>
@@ -90,6 +91,7 @@ export default function CenteredGrid(props) {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => props.remCart(product)}
                       >
                         <RemoveIcon className={classes.rightIcon} />
                       </Button>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Carrito from "../components/Carrito";
 import { connect } from "react-redux";
+import { setCart, remCart } from "../../store/actions/getCarrito";
 import axios from "axios";
 
 class CarritoContainer extends Component {
@@ -13,6 +14,8 @@ class CarritoContainer extends Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handleAdress = this.handleAdress.bind(this);
     this.handleBuyButton = this.handleBuyButton.bind(this);
+    this.addToCarrito = this.addToCarrito.bind(this);
+    this.remFromCarrito = this.remFromCarrito.bind(this);
   }
 
   handleAdress(adress) {
@@ -20,6 +23,14 @@ class CarritoContainer extends Component {
   }
   handleEmail(email) {
     this.setState({ buyerEmail: email });
+  }
+  addToCarrito(product) {
+    this.props.setCart(product);
+  }
+  remFromCarrito(product) {
+    const newArr = this.props.carrito.filter(prod => prod.id !== product.id);
+    this.props.remCart(newArr);
+    sessionStorage.setItem("product", JSON.stringify(newArr));
   }
 
   handleBuyButton() {
@@ -49,6 +60,8 @@ class CarritoContainer extends Component {
         handleAdress={this.handleAdress}
         handleEmail={this.handleEmail}
         history={this.props.history}
+        setCart={this.addToCarrito}
+        remCart={this.remFromCarrito}
       />
     );
   }
@@ -60,7 +73,12 @@ const mapStateToProps = ({ carrito }) => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  setCart: product => dispatch(setCart(product)),
+  remCart: product => dispatch(remCart(product))
+});
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(CarritoContainer);

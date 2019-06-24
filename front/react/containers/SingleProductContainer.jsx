@@ -11,7 +11,10 @@ class SingleProductContainer extends React.Component {
   }
 
   addToCarrito(product) {
-    this.props.setCart(product);
+    if (!this.props.carrito.includes(product)){
+      this.props.setCart(product);
+      alert("Product added to cart.")
+    } else alert("Modifique la cantidad en el carrito. ")
   }
   remFromCarrito(product) {
     const newArr = this.props.carrito.filter(prod => prod.id !== product.id);
