@@ -5,11 +5,19 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 router.get('/all', function (req, res) {
+<<<<<<< HEAD
     
     Product.findAll()
     .then((products) => {
         res.json(products)
     })
+=======
+
+   Product.findAll()
+        .then((products) => {
+            res.status(200).send(products)
+        })
+>>>>>>> 364b5596db7375bffa7d7b8ec7625a4432d9af67
 })
 
 router.get('/id/:id', function (req, res) {

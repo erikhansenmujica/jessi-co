@@ -9,10 +9,10 @@ export default class addProducts extends React.Component {
       name: "",
       description: "",
       images: "",
-      price:'',
-      stock:'',
-      reviews:"",
-      rating:'',
+      price: "",
+      stock: "",
+      reviews: "",
+      rating: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -25,21 +25,20 @@ export default class addProducts extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    var arr=[]
-    var images=this.state.images.split(", ")
-    images.forEach(img=>{
-      arr.push(img)
-    })
-    return Axios.post('/api/prueba/add', {
-    
+    var arr = [];
+    var images = this.state.images.split(", ");
+    images.forEach(img => {
+      arr.push(img);
+    });
+    return Axios.post("/api/product/add", {
       name: this.state.name,
       price: parseInt(this.state.price),
       stock: parseInt(this.state.stock),
       description: this.state.description,
       images: arr,
-      reviews:[this.state.reviews],
-      rating:parseInt(this.state.rating)
-    })
+      reviews: [this.state.reviews],
+      rating: parseInt(this.state.rating)
+    });
   }
 
   render() {

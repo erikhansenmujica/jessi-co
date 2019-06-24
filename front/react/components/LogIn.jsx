@@ -29,7 +29,7 @@ export default (props)=>{
       
             </div>
             <div className="modal-footer d-flex justify-content-center">
-              <button type="submit" className="btn btn-default" style={{backgroundColor:"#113692"}}>Login</button>
+              <button type="submit" className="btn btn-default"data-toggle="modal" data-target="#modalLoginForm" style={{backgroundColor:"#113692"}}>Login</button>
             </div>
             </form>
           </div>
