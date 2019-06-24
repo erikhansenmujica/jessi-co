@@ -5,6 +5,7 @@ const Order = db.define('orders', {
   status: {
     type: S.STRING,
     allowNull: false,
+    defaultValue: "pending"
   },
   address: {
     type: S.STRING,
