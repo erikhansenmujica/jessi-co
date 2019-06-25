@@ -5,7 +5,8 @@ import SingleProductContainer from "../containers/SingleProductContainer";
 import NavbarContainer from "../containers/NavbarContainer";
 import ProductsContainer from "../containers/ProductsContainer";
 import CarritoContainer from "../containers/CarritoContainer";
-import AddProductsContainer from "../containers/AddProductsContainer"
+import AddProductsContainer from "../containers/AddProductsContainer";
+import OrderContainer from "../containers/OrderContainer"
 
 export default () => {
   return (
@@ -20,6 +21,7 @@ export default () => {
         <Route path="/products" component={ProductsContainer} />
         <Route exact path="/carrito" component={CarritoContainer} />
         <Route path="/add" component={AddProductsContainer} />
+        <Route path ='/order' component={OrderContainer} />
         <Route path="/" component={HomeContainer} />
       </Switch>
     </div>
