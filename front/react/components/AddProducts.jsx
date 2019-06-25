@@ -12,7 +12,7 @@ const title = {
   fontSize: "56px"
 };
 
-export default ({ handleChange, handleSubmit }) => {
+export default ({ handleChange, handleSubmit, cat, handleCatChange }) => {
   return (
     <div className="container">
       <h1 style={title}>Agregar Productos</h1>
@@ -82,23 +82,26 @@ export default ({ handleChange, handleSubmit }) => {
               onChange={handleChange}
             />
           </div>
-        </div>
-        <div style={center}>
-          <button type="button" className="btn btn-primary">
-            Add Category
-          </button>
 
-          <button type="button" className="btn btn-danger">
-            Remove Category
-          </button>
-          <br />
-          <br />
-          <br />
-          <div>
-            <button type="submit" className="btn btn-primary btn-lg">
-              Agregar
+          <label style={letters} className="col-sm-2 col-form-label">
+            Categorias del producto
+          </label>
+          <select class="selectpicker"multiple onChange={handleCatChange}>
+           {cat[0]&&cat.map(cati=>
+            <option key={cati.id} value={cati.name}>{cati.name}</option>
+            )} 
+            
+          </select>
+        </div>
+
+
+        <br />
+        <br />
+        <br />
+        <div>
+          <button type="submit" className="btn btn-primary btn-lg">
+            Agregar
             </button>
-          </div>
         </div>
       </form>
     </div>

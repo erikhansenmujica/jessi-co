@@ -27,6 +27,7 @@ class NavbarContainer extends React.Component {
 
         return (
             <Navbar 
+            history={this.props.history}
             handleSearch = {this.handleSearch}
             handleSubmit = {this.handleSubmit}
             carrito= {this.props.carrito}
