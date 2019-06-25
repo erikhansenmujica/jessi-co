@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,7 +42,6 @@ const buyButton = {
 
 export default function CenteredGrid(props) {
   const classes = useStyles();
-
   const handleEmail = e => {
     props.handleEmail(e.target.value);
   };
@@ -49,6 +49,7 @@ export default function CenteredGrid(props) {
   const handleAddress = e => {
     props.handleAddress(e.target.value);
   };
+
   return (
     <div className="container">
       <div className={classes.root}>
@@ -81,6 +82,7 @@ export default function CenteredGrid(props) {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => props.handleQuantityUp(product.id)}
                       >
                         <AddIcon className={classes.rightIcon} />
                       </Button>
@@ -90,10 +92,24 @@ export default function CenteredGrid(props) {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => props.handleQuantityDown(product.id)}
                       >
                         <RemoveIcon className={classes.rightIcon} />
                       </Button>
                     </Grid>
+                    <Grid item xs={1} style={buttonStyle}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                        onClick={() => props.handleDeleteProduct(product.id)}
+                      >
+                        <DeleteIcon className={classes.rightIcon} />
+                      </Button>
+                    </Grid>
+                    <div>
+                      Cantidad: {product.quantity ? product.quantity : 1}
+                    </div>
                   </div>
                 </div>
               </div>

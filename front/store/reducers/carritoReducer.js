@@ -1,5 +1,4 @@
-import { SET_CART, REM_CART, QUANTITY_DOWN, QUANTITY_UP } from '../../utils/constants'
-import { array } from 'prop-types';
+import { SET_CART, REM_CART, QUANTITY_DOWN, QUANTITY_UP, DELETE_PRODUCT } from '../../utils/constants'
 
 const initialState = {
     products: []
@@ -29,13 +28,25 @@ export default (state = initialState, action) => {
             if (!selectedProduct.quantity) selectedProduct.quantity = 2
             else selectedProduct.quantity += 1
             return Object.assign({}, state, {
-                products: [...state.products.slice(0, index), selectedProduct, ...state.products.slice(index)]
+                products: [...state.products.slice(0, index), ...state.products.slice(index)]
+            })
+        }
+
+        case QUANTITY_DOWN: {
+            let index = state.products.findIndex(product => product.id == action.id)
+            const selectedProduct = state.products[index]
+            if (selectedProduct.quantity > 1) selectedProduct.quantity -= 1
+            return Object.assign({}, state, { products: [...state.products] })
+        }
+        case DELETE_PRODUCT: {
+            let index = state.products.findIndex(product => product.id == action.id)
+            const selectedProduct = state.products[index]
+            state.products.splice(index, 1)
+            return Object.assign({}, state, {
+                products: [...state.products]
             })
         }
         default:
             return state;
     }
 }
-
-
-[...array.slice(0, i), product, ...array.slice(i)]

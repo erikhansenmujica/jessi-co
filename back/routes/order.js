@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
 const { Order, Product } = require('../db/models');
 const nodemailer = require('nodemailer');
 
@@ -27,7 +26,6 @@ router.post('/', function (req, res) {
     for (let i = 0; i < req.body.data.carrito.length; i++) {
         productsId.push(req.body.data.carrito[i].id)
     }
-
     Order.create(req.body.data)
         .then(order => order.addProducts(productsId))
 

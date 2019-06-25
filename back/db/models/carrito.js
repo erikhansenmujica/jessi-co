@@ -2,12 +2,9 @@ const S = require('sequelize');
 const db = require('../db');
 
 const Carrito = db.define('carritos', {
-  productsID: {
-
+  productsId: {
     type: S.INTEGER,
-
   }
 })
-
 
 module.exports = Carrito
