@@ -1,10 +1,11 @@
 import React from "react";
 import SingleProduct from "../components/SingleProduct";
 import { connect } from "react-redux";
-import { setCart, remCart } from "../../store/actions/getCarrito";
+import { setCart, remCart, addUserCart } from "../../store/actions/getCarrito";
 import Axios from "axios";
 import Reviews from "../components/Reviews";
  
+
 class SingleProductContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -18,8 +19,15 @@ class SingleProductContainer extends React.Component {
   }
 
   addToCarrito(product) {
-    this.props.setCart(product);
+    if (!this.props.carrito.includes(product)) {
+      if (this.props.user.id > 0) {
+        axios.post(`/api/carrito/${this.props.user.id}`, { product: product });
+      }
+      this.props.setCart(product);
+      alert("Producto agregado al carrito");
+    } else alert("Modifique la cantidad desde el carrito.");
   }
+
   remFromCarrito(product) {
     const newArr = this.props.carrito.filter(prod => prod.id !== product.id);
     this.props.remCart(newArr);
@@ -57,9 +65,10 @@ class SingleProductContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ products, carrito }) => ({
+const mapStateToProps = ({ products, carrito, user }) => ({
   product: products.product,
-  carrito: carrito.products
+  carrito: carrito.products,
+  user: user.user
 });
 
 const mapDispatchToProps = dispatch => ({
