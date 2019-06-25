@@ -141,7 +141,8 @@ export default function CenteredGrid(props) {
           </button>
         </div>
       ) : (
-        "No hay productos en el carrito..."
+        <div className="container text-danger"> "No hay productos en el carrito..." </div>
+       
       )}
     </div>
   );
