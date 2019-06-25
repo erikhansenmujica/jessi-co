@@ -4,17 +4,18 @@ import { connect } from "react-redux";
 import { setCart, remCart } from "../../store/actions/getCarrito";
 import Axios from "axios";
 import Reviews from "../components/Reviews";
- 
+import { fetchProductReviewsById } from "../../store/actions/getProducts";
+import ReviewContainer from "./ReviewContainer";
+
 class SingleProductContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      review: ""
+      input: "",
+      reviews: []
     };
     this.addToCarrito = this.addToCarrito.bind(this);
     this.remFromCarrito = this.remFromCarrito.bind(this);
-    this.handleReviewChange = this.handleReviewChange.bind(this);
-    this.handleSubmitChange = this.handleSubmitChange.bind(this);
   }
 
   addToCarrito(product) {
@@ -25,34 +26,18 @@ class SingleProductContainer extends React.Component {
     this.props.remCart(newArr);
     sessionStorage.setItem("product", JSON.stringify(newArr));
   }
-  handleReviewChange(e) {
-    var input = e.target.value;
-    this.setState({ review: input });
-  }
-  handleSubmitChange(e) {
-    e.preventDefault();
-    let review = this.state.review;
-    let productId = this.props.product.id;
-    if (this.state.review) {
-      Axios.post("/api/reviews/addreview", { review, productId })
-        .then(data => console.log("Esta la data:", data))
-        .catch(err => console.log("Este es el error que recibe:", err));
-    }
-  }
 
   render() {
     //console.log(this.state.review)
     return (
       <div>
-      <SingleProduct
-        product={this.props.product}
-        setCart={this.addToCarrito}
-        remCart={this.remFromCarrito}
-        handleReviewChange={this.handleReviewChange}
-        handleSubmitChange={this.handleSubmitChange}
-      />
-     <Reviews reviews={this.props.product.reviews}/>
-     </div>
+        <SingleProduct
+          product={this.props.product}
+          setCart={this.addToCarrito}
+          remCart={this.remFromCarrito}
+        />
+        <ReviewContainer />
+      </div>
     );
   }
 }
@@ -64,7 +49,8 @@ const mapStateToProps = ({ products, carrito }) => ({
 
 const mapDispatchToProps = dispatch => ({
   setCart: product => dispatch(setCart(product)),
-  remCart: product => dispatch(remCart(product))
+  remCart: product => dispatch(remCart(product)),
+  fetchProductReviewsById: product => dispatch(fetchProductReviewsById(product))
 });
 
 export default connect(

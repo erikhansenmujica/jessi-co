@@ -98,20 +98,8 @@ export default props => {
       {props.product.name && (
         <div>
           <br />
-
           <h2 className="text-center">{props.product.name}</h2>
           <p className="text-center text-wrap">{props.product.description}</p>
-         {console.log(props.product.reviews.length)}
-          {/* <div>
-            {props.product.reviews.length > 0 ? 
-              props.product.reviews.map(review => 
-                // {console.log(review)} 
-                <p className="text-center text-wrap">{review}</p>
-              
-            ) : (
-              <h1>No tienes reviews disponibles, carga uno!</h1>
-            )}
-          </div> */}
           <div style={style.iconStyle}>
             <h4>${props.product.price}</h4>
             <Button icon onClick={() => props.setCart(props.product)}>
@@ -121,14 +109,6 @@ export default props => {
               <Icon name="trash alternate" size="large" />
             </Button>
           </div>
-          <form>
-            DEJAR REVIEW
-            <input
-              onChange={e => props.handleReviewChange(e)}
-              placeholder="Escriba su review"
-            />
-          </form>
-          <button onClick={props.handleSubmitChange}>Submit Review</button>
         </div>
       )}
       <footer>
