@@ -19,6 +19,7 @@ import RegisterContainer from "../containers/RegisterContainer"
 import Axios from "axios"
 import {deLogUser} from "../../store/actions/logUser"
 import store from "../../store"
+import SecondNavbarContainer from "../containers/SecondNavbarContainer";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -264,6 +265,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       {user.name&&renderMenu2}
       <LogInContainer/>
       <RegisterContainer/>
+      <SecondNavbarContainer/>
     </div>
   );
 }
