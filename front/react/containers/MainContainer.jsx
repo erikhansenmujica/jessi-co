@@ -20,7 +20,7 @@ class MainContainer extends Component {
     if(!this.props.product.name)this.props.addOldProduct(JSON.parse(sessionStorage.getItem("selectedProduct")))
  }
  componentDidUpdate(){
-    this.props.carrito[0]&&sessionStorage.setItem("product",JSON.stringify(this.props.carrito))
+    sessionStorage.setItem("product",JSON.stringify(this.props.carrito))
     this.props.products[0]&&sessionStorage.setItem("products",JSON.stringify(this.props.products))
     this.props.product.name&&sessionStorage.setItem("selectedProduct",JSON.stringify(this.props.product))
  }

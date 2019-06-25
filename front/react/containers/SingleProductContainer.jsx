@@ -19,7 +19,9 @@ class SingleProductContainer extends React.Component {
   }
 
   addToCarrito(product) {
-    if (!this.props.carrito.includes(product)) {
+    
+    var arr=this.props.carrito.filter(prod=>prod.id===product.id)
+    if (!arr.length) {
       if (this.props.user.id > 0) {
         axios.post(`/api/carrito/${this.props.user.id}`, { product: product });
       }
