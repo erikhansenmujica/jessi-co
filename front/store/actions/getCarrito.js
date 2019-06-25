@@ -23,6 +23,7 @@ export const quantityDown = (id) => ({
     id
 })
 
+
 export const deleteSingleProduct = (id) => ({
     type: DELETE_PRODUCT,
     id
@@ -32,4 +33,8 @@ export const deleteSingleProduct = (id) => ({
 //     Axios.post(`/api/carrito/${userId}`)
 //         .then(carrito => store.dispatch(setCart(carrito)))
 
+
+export const fetchCarrito = (user) =>
+    Axios.get(`/api/carrito/${user.id}`)
+        .then(carrito => store.dispatch(setCart(carrito)))
 
