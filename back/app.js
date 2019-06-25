@@ -7,6 +7,7 @@ const carritoRoutes = require('./routes/carrito');
 const userRoutes = require('./routes/user');
 const usersRoutes = require('./routes/users');
 const orderRoutes = require('./routes/order');
+const reviewRoutes = require('./routes/reviews')
 const addProduct = require('./routes/addProduct')
 const categories = require('./routes/categories')
 const cookieParser = require('cookie-parser');
@@ -44,6 +45,7 @@ app.use('/api/product', addProduct);
 app.use('/api/user', userRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/order', orderRoutes);
+app.use('/api/reviews', reviewRoutes)
 
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, './public', 'index.html'));

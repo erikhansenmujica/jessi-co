@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import Carrito from "../components/Carrito";
 import { connect } from "react-redux";
 import axios from "axios";
+import { quantityUp } from "../../store/actions/getCarrito";
 
 class CarritoContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       buyerEmail: "",
-      buyerAdress: ""
+      buyerAddress: ""
     };
     this.handleEmail = this.handleEmail.bind(this);
-    this.handleAdress = this.handleAdress.bind(this);
+    this.handleAddress = this.handleAddress.bind(this);
     this.handleBuyButton = this.handleBuyButton.bind(this);
   }
-
-  handleAdress(adress) {
-    this.setState({ buyerAdress: adress });
+  handleAddress(address) {
+    this.setState({ buyerAddress: address });
   }
   handleEmail(email) {
     this.setState({ buyerEmail: email });
@@ -24,10 +24,10 @@ class CarritoContainer extends Component {
 
   handleBuyButton() {
     axios
-      .post("/api/order/neworder", {
+      .post("/api/order", {
         data: {
           email: this.state.buyerEmail,
-          adress: this.state.buyerAdress,
+          address: this.state.buyerAddress,
           carrito: this.props.carrito
         }
       })
@@ -46,7 +46,7 @@ class CarritoContainer extends Component {
       <Carrito
         carrito={this.props.carrito}
         handleBuyButton={this.handleBuyButton}
-        handleAdress={this.handleAdress}
+        handleAddress={this.handleAddress}
         handleEmail={this.handleEmail}
         history={this.props.history}
       />
@@ -60,7 +60,11 @@ const mapStateToProps = ({ carrito }) => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  quantityUp: id => dispatch(quantityUp(id)),
+  
+});
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(CarritoContainer);

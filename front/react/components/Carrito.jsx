@@ -36,7 +36,7 @@ const inputStyle = {
 };
 
 const buyButton = {
-  float: "right"
+  textAlign: "center"
 };
 
 export default function CenteredGrid(props) {
@@ -46,8 +46,8 @@ export default function CenteredGrid(props) {
     props.handleEmail(e.target.value);
   };
 
-  const handleAdress = e => {
-    props.handleAdress(e.target.value);
+  const handleAddress = e => {
+    props.handleAddress(e.target.value);
   };
   return (
     <div className="container">
@@ -112,7 +112,7 @@ export default function CenteredGrid(props) {
               className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
-              onChange={handleAdress}
+              onChange={handleAddress}
             />
           </div>
           <div className="input-group mb-3" style={inputStyle}>
