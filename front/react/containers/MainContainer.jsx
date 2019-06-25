@@ -27,7 +27,8 @@ class MainContainer extends Component {
 }
 
 const mapStateToProps = ({ carrito }) => ({
-    carrito: carrito.products
+    carrito: carrito.products,
+    
   });
   const mapDispatchToProps = dispatch => {
     return {

@@ -1,23 +1,29 @@
 const router = require('express').Router();
-const {Carrito} = require('../db/models');
+const { Carrito, Product } = require('../db/models');
 
-router.get('/api/carrito/:userId', function (req, res) {
+
+router.get('/:userId', function (req, res) {
     let userId = req.params.userId;
-    Carrito.findAll({ where: { id: userId } })
-        .then((carrito) => res.send(carrito))
+    Carrito.findAll({ where: { userId: userId } }, {
+        include: [{
+            model: Product,
+        }]
+    }).then(carrito => res.send(carrito))
 })
 
-router.post('/storageCarrito', function (req, res) {
-   try{
-      localStorage.setItem(req.body)
-   }catch(err){
-       console.log(err)
-   }
+router.get('/', function (req, res) {
+    Carrito.findAll({
+        include: [{
+            model: Product,
+        }]
     })
-router.post('/getCarrito', function (req, res) {
-    res.send(localStorage.getItem(req.body));
+        .then(carrito => res.send(carrito))
 })
 
-
+router.post('/:userId', function (req, res) {
+    let userId = req.params.userId;
+    Carrito.create({ where: { userId: userId } })
+        .then(carrito => carrito.addProduct(req.body.product))
+})
 
 module.exports = router;
