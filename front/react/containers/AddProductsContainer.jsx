@@ -1,5 +1,6 @@
 import React from "react";
 import AddProducts from "../components/AddProducts";
+import { fetchCategories } from "../../store/actions/getCategories";
 import { connect } from "react-redux";
 import Axios from "axios";
 
@@ -18,6 +19,9 @@ class addProducts extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCatChange = this.handleCatChange.bind(this);
   }
+  componentDidMount(){
+    this.props.addCats()
+  }
   handleChange(e) {
 
     this.setState({
@@ -25,11 +29,11 @@ class addProducts extends React.Component {
     });
   }
   handleCatChange(e) {
-    console.log(document.querySelectorAll(".selected").map(cosa=>cosa[0]==="l"))
+    var arr=[]
+    document.querySelectorAll(".dropdown-item").forEach(elem=>{if(elem.getAttribute("aria-selected")==="true")arr.push(elem.textContent)})
     this.setState({
-      categories: [...this.state.categories, e.target.value]
+      categories: arr
     });
-    console.log(this.state.categories, e.target.value)
   }
 
   handleSubmit(e) {
@@ -45,6 +49,7 @@ class addProducts extends React.Component {
       stock: parseInt(this.state.stock),
       description: this.state.description,
       images: arr,
+      categories:this.state.categories
       
     });
   }
@@ -64,5 +69,10 @@ class addProducts extends React.Component {
 const mapStateToProps = (store)=>({
     cat:store.categories.cats
 })
+const mapDispatchToProps = dispatch => {
+  return {
+    addCats: ()=>dispatch(fetchCategories()),
+  };
+};
 
-export default connect(mapStateToProps)(addProducts)
+export default connect(mapStateToProps, mapDispatchToProps)(addProducts)

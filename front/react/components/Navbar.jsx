@@ -105,7 +105,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito, user} ) {
+export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito, user, history} ) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -265,7 +265,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       {user.name&&renderMenu2}
       <LogInContainer/>
       <RegisterContainer/>
-      <SecondNavbarContainer/>
+      <SecondNavbarContainer history={history}/>
     </div>
   );
 }

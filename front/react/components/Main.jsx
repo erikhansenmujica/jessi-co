@@ -18,6 +18,7 @@ export default () => {
           component={SingleProductContainer}
         />
         <Route path="/products" component={ProductsContainer} />
+        <Route path="/category/:name" component={ProductsContainer} />
         <Route exact path="/carrito" component={CarritoContainer} />
         <Route path="/add" component={AddProductsContainer} />
         <Route path="/" component={HomeContainer} />

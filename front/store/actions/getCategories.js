@@ -11,7 +11,4 @@ export const fetchCategories = () =>
     Axios.get(`/api/categories/all`)
         .then(categories=>dispatch(addCategories(categories.data)))
 
-// export const fetchCategories = () => 
-// (dispatch)=>
-//     Axios.get(`/api/categories/all`)
-//         .then(categories=>dispatch(addCategories(categories.data)))
+

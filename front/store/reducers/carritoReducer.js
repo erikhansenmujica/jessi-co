@@ -38,4 +38,4 @@ export default (state = initialState, action) => {
 }
 
 
-[...array.slice(0, i), product, ...array.slice(i)]
+// [...array.slice(0, i), product, ...array.slice(i)]

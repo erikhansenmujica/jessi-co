@@ -12,10 +12,21 @@ router.get('/all', function (req, res) {
 })
 router.get('/:nombre', function (req, res) {
 
-    Product.findAll()
+    try {
+        Product.findAll({
+
+            include: [{
+                model: Category,
+                where: {
+                    name: req.params.nombre
+                }
+
+            }]
+        })
         .then((category) => {
             res.status(200).send(category)
         })
+    } catch (err) { console.log(err) }
 })
 
 

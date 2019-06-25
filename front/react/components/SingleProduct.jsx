@@ -101,7 +101,7 @@ export default props => {
 
           <h2 className="text-center">{props.product.name}</h2>
           <p className="text-center text-wrap">{props.product.description}</p>
-         {console.log(props.product.reviews.length)}
+        {/* {console.log(props.product.reviews.length)} */}
           {/* <div>
             {props.product.reviews.length > 0 ? 
               props.product.reviews.map(review => 
