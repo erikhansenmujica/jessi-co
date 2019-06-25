@@ -5,7 +5,8 @@ import axios from "axios";
 import {
   quantityUp,
   quantityDown,
-  deleteSingleProduct
+  deleteSingleProduct,
+  remCart
 } from "../../store/actions/getCarrito";
 
 class CarritoContainer extends Component {
@@ -49,6 +50,7 @@ class CarritoContainer extends Component {
       .then(res => {
         if (res.data.msg === "success") {
           alert("Order created.");
+          this.props.removeCart([])
           this.props.history.push("/");
         } else if (res.data.msg === "fail") {
           alert("Order failed.");
@@ -81,7 +83,8 @@ const mapStateToProps = ({ carrito }) => {
 const mapDispatchToProps = dispatch => ({
   quantityUp: id => dispatch(quantityUp(id)),
   quantityDown: id => dispatch(quantityDown(id)),
-  deleteSingleProduct: id => dispatch(deleteSingleProduct(id))
+  deleteSingleProduct: id => dispatch(deleteSingleProduct(id)),
+  removeCart: (arr )=> dispatch(remCart(arr))
 });
 
 export default connect(
