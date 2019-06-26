@@ -6,10 +6,12 @@ const addUsers = (users)=>({
     users
 })
 
+
 export const fetchUsers = () => 
 (dispatch)=>
     Axios.get(`/api/users/all`)
         .then(users=>dispatch(addUsers(users.data)))
+
 
 export const removeUsers = (user) => 
 (dispatch)=>
