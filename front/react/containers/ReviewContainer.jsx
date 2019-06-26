@@ -33,7 +33,7 @@ class ReviewContainer extends React.Component {
   handleSubmitChange(e) {
     e.preventDefault();
     let review = this.state.reviewInput;
-    let rating = this.state.ratingInput
+    let rating = this.state.ratingInput;
     let productId = this.props.product.id;
     if (this.state.reviewInput) {
       Axios.post("/api/reviews/addreview", { review, rating, productId })

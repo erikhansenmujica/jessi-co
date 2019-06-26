@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 import { remCart } from "../../store/actions/getCarrito";
 import { addProduct, addProducts } from "../../store/actions/getProducts";
 import { fetchLoggedUser } from "../../store/actions/logUser";
+import axios from "axios";
 import { matchPath } from 'react-router';
+
 class MainContainer extends Component {
   constructor(props) {
     super(props);
@@ -27,9 +29,7 @@ class MainContainer extends Component {
 
  }
   render() {
-    return (
-      <Main />
-    );
+    return <Main />;
   }
 }
 
@@ -39,6 +39,7 @@ const mapStateToProps = ({ carrito, products,user }) => ({
     products: products.products,
     user: user.user
   });
+
   const mapDispatchToProps = dispatch => {
     return {
       addOldCart: product => dispatch(remCart(product)),
@@ -47,9 +48,8 @@ const mapStateToProps = ({ carrito, products,user }) => ({
       addLoggedUser:fetchLoggedUser
     };
   };
-  
-  export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MainContainer);
-  
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MainContainer);
