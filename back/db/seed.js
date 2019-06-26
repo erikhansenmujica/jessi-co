@@ -1,4 +1,6 @@
 const Product = require('./models/products')
+const Category = require('./models/category')
+const User = require('./models/user')
 
 Product.bulkCreate(
    [ {  name:'iPhone XR',
@@ -79,3 +81,20 @@ Product.bulkCreate(
         }
 ])
 
+Category.bulkCreate([
+    {name:"Mac"},
+    {name:"iPad"},
+    {name:"iPhone"},
+    {name:"Watch"},
+    {name:"TV"},
+    {name:"Gadget"}])
+
+User.bulkCreate([
+    {
+        name:'Tessie',
+        lastname:'Sills', 
+        email:'tessie@sill.com',
+        password:"123456",
+        admin:true
+    }
+])
