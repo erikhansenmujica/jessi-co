@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import Carrito from "../components/Carrito";
 import { connect } from "react-redux";
 import axios from "axios";
-import { quantityUp } from "../../store/actions/getCarrito";
+import {
+  quantityUp,
+  quantityDown,
+  deleteSingleProduct,
+  remCart
+} from "../../store/actions/getCarrito";
 
 class CarritoContainer extends Component {
   constructor(props) {
@@ -14,6 +19,9 @@ class CarritoContainer extends Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handleAddress = this.handleAddress.bind(this);
     this.handleBuyButton = this.handleBuyButton.bind(this);
+    this.handleQuantityUp = this.handleQuantityUp.bind(this);
+    this.handleQuantityDown = this.handleQuantityDown.bind(this);
+    this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
   }
   handleAddress(address) {
     this.setState({ buyerAddress: address });
@@ -21,7 +29,15 @@ class CarritoContainer extends Component {
   handleEmail(email) {
     this.setState({ buyerEmail: email });
   }
-
+  handleQuantityUp(id) {
+    this.props.quantityUp(id);
+  }
+  handleQuantityDown(id) {
+    this.props.quantityDown(id);
+  }
+  handleDeleteProduct(id) {
+    this.props.deleteSingleProduct(id);
+  }
   handleBuyButton() {
     axios
       .post("/api/order", {
@@ -34,6 +50,7 @@ class CarritoContainer extends Component {
       .then(res => {
         if (res.data.msg === "success") {
           alert("Order created.");
+          this.props.removeCart([])
           this.props.history.push("/");
         } else if (res.data.msg === "fail") {
           alert("Order failed.");
@@ -48,6 +65,9 @@ class CarritoContainer extends Component {
         handleBuyButton={this.handleBuyButton}
         handleAddress={this.handleAddress}
         handleEmail={this.handleEmail}
+        handleQuantityUp={this.handleQuantityUp}
+        handleQuantityDown={this.handleQuantityDown}
+        handleDeleteProduct={this.handleDeleteProduct}
         history={this.props.history}
       />
     );
@@ -56,14 +76,17 @@ class CarritoContainer extends Component {
 
 const mapStateToProps = ({ carrito }) => {
   return {
-    carrito: carrito.products
+    carrito: carrito.products,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   quantityUp: id => dispatch(quantityUp(id)),
-  
+  quantityDown: id => dispatch(quantityDown(id)),
+  deleteSingleProduct: id => dispatch(deleteSingleProduct(id)),
+  removeCart: (arr )=> dispatch(remCart(arr))
 });
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

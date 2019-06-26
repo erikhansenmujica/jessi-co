@@ -2,7 +2,7 @@ import { ADD_PRODUCT, ADD_PRODUCTS } from "../../utils/constants"
 import Axios from "axios";
 import store from "../../store/index"
 
-const addProducts = (products) => ({
+export const addProducts = (products) => ({
     type: ADD_PRODUCTS,
     products
 })
