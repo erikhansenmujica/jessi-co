@@ -20,9 +20,14 @@ const rating = {
 }
 
 export default props => {
-  let ratingSum = props.rating.reduce(function(acumulador, siguienteValor) {
-    return acumulador + siguienteValor;
-  }, 0);
+  let i=0;
+  let ratingSum;
+  if (props.rating && props.rating.length > 0) {
+    ratingSum = props.rating.reduce(function(acumulador, siguienteValor) {
+      return acumulador + siguienteValor;
+    }, 0);
+  }
+   
 
   return (
     <div className="container">
@@ -105,8 +110,8 @@ export default props => {
           <div className="card-header">REVIEWS</div>
           <blockquote className="blockquote mb-0">
             {props.reviews.map(review => (
-              <div className="card-body">
-                <h4 style={square} key={review.id}>
+              <div className="card-body" key={i++}>
+                <h4 style={square} >
                   {review}
                 </h4>
               </div>

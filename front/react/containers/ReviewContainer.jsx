@@ -36,18 +36,15 @@ class ReviewContainer extends React.Component {
     let review = this.state.reviewInput;
     let rating = this.state.ratingInput
     let productId = this.props.product.id;
-    console.log(this.state.ratingInput)
     if (this.state.reviewInput) {
       Axios.post("/api/reviews/addreview", { review, rating, productId })
       .then((e)=> {
-        console.log(e.data)
         this.props.fetchProductReviewsById(productId)
       });
-    }else console.log("no devolvi nada!!!!")
+    }
   }
 
   render() {
-    console.log(this.state)
 
     return (
       <Reviews
@@ -66,7 +63,6 @@ const mapStateToProps = ({ products }) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchProductReviewsById: fetchProductReviewsById
-
 });
 export default connect(
   mapStateToProps,
