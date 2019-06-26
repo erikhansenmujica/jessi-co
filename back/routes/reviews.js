@@ -5,7 +5,6 @@ const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
 router.post("/addreview", function(req, res) {
-  //  console.log("SOY EL REQ.BODY", req.body)
   Product.update(
     {
       reviews: Sequelize.fn(
@@ -24,18 +23,19 @@ router.post("/addreview", function(req, res) {
         id: req.body.productId
       }
     }
-  );
-  Product.findAll({
+  ).then(()=>Product.findAll({
     where: {
       id: req.body.productId
     }
   }).then(data => {
     res.send(data);
-  });
+  }))
+  
 });
 router.get("/:id", function(req, res) {
+  console.log(req.params, "AJFLASJDGLASGJLAFKGJL;ASKFJGLKFJGLAFKJG;LADKFJGL;AKDFJGLAKDFJGLADFJGLADKFGJLADFJGLAFJGKJLAFGHKAJFGHKJAHGKJF")
   let id = req.params.id;
-  Product.findOne({ where: { id: id } }).then(product => res.json(product));
+  Product.findOne({ where: { id: id } }).then(product => res.send(product));
 });
 
 // router.get('/getreview', function(req,res){
