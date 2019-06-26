@@ -1,9 +1,7 @@
 import React from "react";
 import AddProducts from "../components/AddProducts";
-import { fetchCategories } from "../../store/actions/getCategories";
 import { connect } from "react-redux";
 import Axios from "axios";
-
 class addProducts extends React.Component {
   constructor(props) {
     super(props);
@@ -20,8 +18,9 @@ class addProducts extends React.Component {
     this.handleCatChange = this.handleCatChange.bind(this);
   }
   componentDidMount(){
-    this.props.addCats()
+    $('select').selectpicker();
   }
+ 
   handleChange(e) {
 
     this.setState({
@@ -55,7 +54,6 @@ class addProducts extends React.Component {
   }
 
   render() {
-
     return (
       <AddProducts
         cat={this.props.cat}
@@ -69,10 +67,5 @@ class addProducts extends React.Component {
 const mapStateToProps = (store)=>({
     cat:store.categories.cats
 })
-const mapDispatchToProps = dispatch => {
-  return {
-    addCats: ()=>dispatch(fetchCategories()),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(addProducts)
+export default connect(mapStateToProps)(addProducts)

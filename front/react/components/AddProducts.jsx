@@ -86,11 +86,10 @@ export default ({ handleChange, handleSubmit, cat, handleCatChange }) => {
           <label style={letters} className="col-sm-2 col-form-label">
             Categorias del producto
           </label>
-          <select class="selectpicker"multiple onChange={handleCatChange}>
-           {cat[0]&&cat.map(cati=>
+          <select className="selectpicker"multiple onChange={handleCatChange}>
+           {cat.length&&cat.map(cati=>
             <option key={cati.id} value={cati.name}>{cati.name}</option>
             )} 
-            
           </select>
         </div>
 

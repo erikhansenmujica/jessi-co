@@ -38,7 +38,6 @@ User.beforeCreate((user) => {
 });
 
 
-
 User.prototype.hashFunction = function (password) {
   return crypto.createHmac('sha1', this.salt).update(password).digest('hex')
 }

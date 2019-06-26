@@ -214,7 +214,7 @@ export default function PrimarySearchAppBar({
             aria-label="Open drawer"
           />
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to="/">
+            <Link to={user.admin===true?"/admin":"/"} >
               <h3 style={style.text}>Tessie&Co</h3>
             </Link>
           </Typography>
@@ -272,11 +272,11 @@ export default function PrimarySearchAppBar({
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {!user.name && renderMenu}
-      {user.name && renderMenu2}
-      <LogInContainer />
-      <RegisterContainer />
-      <SecondNavbarContainer history={history} />
+      {!user.name&&renderMenu}
+      {user.name&&renderMenu2}
+      <LogInContainer history={history}/>
+      <RegisterContainer/>
+      <SecondNavbarContainer history={history}/>
     </div>
   );
 }

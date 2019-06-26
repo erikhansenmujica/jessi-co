@@ -77,9 +77,10 @@ class CarritoContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ carrito }) => {
+const mapStateToProps = ({ carrito, user }) => {
   return {
-    carrito: carrito.products
+    carrito: carrito.products,
+    user: user.user
   };
 };
 
