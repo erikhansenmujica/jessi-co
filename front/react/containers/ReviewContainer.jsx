@@ -25,6 +25,8 @@ class ReviewContainer extends React.Component {
   }
 
   handleRatingChange(e) {
+    e.preventDefault()
+    console.log(e)
     var ratingInput = e.target.value;
     this.setState({ ratingInput: ratingInput });
   }
@@ -45,6 +47,7 @@ class ReviewContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state)
 
     return (
       <Reviews
