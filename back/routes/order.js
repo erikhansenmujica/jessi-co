@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
-const Op = Sequelize.Op;
-const { Order } = require('../db/models');
+const { Order, Product } = require('../db/models');
 const nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
@@ -13,14 +12,28 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+router.get('/', function (req, res) {
+    Order.findAll({
+        include: [{
+            model: Product,
+        }]
+    }).then(orders => res.send(orders))
+})
 
-router.post('/neworder', function (req, res) {
+
+router.post('/', function (req, res) {
+    let productsId = [];
+    for (let i = 0; i < req.body.data.carrito.length; i++) {
+        productsId.push(req.body.data.carrito[i].id)
+    }
+    Order.create(req.body.data)
+        .then(order => order.addProducts(productsId))
+
     let products = req.body.data.carrito.map(product => product.name);
     let total = 0
     for (let i = 0; i < req.body.data.carrito.length; i++) {
         total += req.body.data.carrito[i].price;
     }
-    console.log(total)
     const mailOptions = {
         from: 'tessiecompany@gmail.com',
         to: req.body.data.email,

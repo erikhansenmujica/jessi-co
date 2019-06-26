@@ -19,6 +19,7 @@ import RegisterContainer from "../containers/RegisterContainer"
 import Axios from "axios"
 import {deLogUser} from "../../store/actions/logUser"
 import store from "../../store"
+import SecondNavbarContainer from "../containers/SecondNavbarContainer";
 
 const StyledBadge = withStyles(theme => ({
   badge: {
@@ -104,7 +105,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito, user} ) {
+export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito, user, history} ) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -202,7 +203,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
             aria-label="Open drawer"
           />
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to='/'>
+            <Link to={user.admin===true?"/admin":"/"} >
               <h3 style={style.text}>Tessie&Co</h3>
             </Link>
           </Typography>
@@ -262,8 +263,9 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       {renderMobileMenu}
       {!user.name&&renderMenu}
       {user.name&&renderMenu2}
-      <LogInContainer/>
+      <LogInContainer history={history}/>
       <RegisterContainer/>
+      <SecondNavbarContainer history={history}/>
     </div>
   );
 }

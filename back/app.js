@@ -9,13 +9,13 @@ const usersRoutes = require('./routes/users');
 const orderRoutes = require('./routes/order');
 const reviewRoutes = require('./routes/reviews')
 const addProduct = require('./routes/addProduct')
+const categories = require('./routes/categories')
 const cookieParser = require('cookie-parser');
 const morgan = require("morgan")
 const session = require("express-session");
 const passport = require('./validations/passport');
 const db = require('./db/db')
-const { Product } = require("./db/models")
-
+const { Product, Category } = require("./db/models")
 
 //object fit
 app.use(express.static('public'));
@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 /*Configuración de rutas*/
 app.use('/api/products', productsRoutes);
-app.use('/api/user', userRoutes);
+app.use('/api/categories', categories);
 app.use('/api/carrito', carritoRoutes);
 app.use('/api/product', addProduct);
 app.use('/api/user', userRoutes);

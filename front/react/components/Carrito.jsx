@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -36,19 +37,19 @@ const inputStyle = {
 };
 
 const buyButton = {
-  float: "right"
+  textAlign: "center"
 };
 
 export default function CenteredGrid(props) {
   const classes = useStyles();
-
   const handleEmail = e => {
     props.handleEmail(e.target.value);
   };
 
-  const handleAdress = e => {
-    props.handleAdress(e.target.value);
+  const handleAddress = e => {
+    props.handleAddress(e.target.value);
   };
+
   return (
     <div className="container">
       <div className={classes.root}>
@@ -81,6 +82,7 @@ export default function CenteredGrid(props) {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => props.handleQuantityUp(product.id)}
                       >
                         <AddIcon className={classes.rightIcon} />
                       </Button>
@@ -90,10 +92,24 @@ export default function CenteredGrid(props) {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => props.handleQuantityDown(product.id)}
                       >
                         <RemoveIcon className={classes.rightIcon} />
                       </Button>
                     </Grid>
+                    <Grid item xs={1} style={buttonStyle}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                        onClick={() => props.handleDeleteProduct(product.id)}
+                      >
+                        <DeleteIcon className={classes.rightIcon} />
+                      </Button>
+                    </Grid>
+                    <div>
+                      Cantidad: {product.quantity ? product.quantity : 1}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -112,7 +128,7 @@ export default function CenteredGrid(props) {
               className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default"
-              onChange={handleAdress}
+              onChange={handleAddress}
             />
           </div>
           <div className="input-group mb-3" style={inputStyle}>
@@ -141,7 +157,8 @@ export default function CenteredGrid(props) {
           </button>
         </div>
       ) : (
-        "No hay productos en el carrito..."
+        <div className="container text-danger"> "No hay productos en el carrito..." </div>
+       
       )}
     </div>
   );
