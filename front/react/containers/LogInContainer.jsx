@@ -19,9 +19,11 @@ class LogInContainer extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.logUser(this.state)
-    .then((user)=>user.admin && this.props.history.push('/admin'))
   }
+  componentDidUpdate(){
+    this.props.user.admin===true&&this.props.history.push("/admin")
 
+  }
   render() {
     return (
       <LogIn
@@ -31,7 +33,9 @@ class LogInContainer extends Component {
     );
   }
 }
-
+const mapStateToProps = (state) =>({
+    user:state.user.user
+})
 const mapDispatchToProps = dispatch => {
   return {
     logUser: fetchUser
@@ -39,6 +43,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LogInContainer);
