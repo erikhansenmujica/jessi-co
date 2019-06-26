@@ -32,6 +32,10 @@ export const fetchProductsById = (id) =>
     Axios.get(`/api/products/${id}`)
         .then(product => store.dispatch(addProduct(product)))
 
+export const fetchProductReviewsById = (id) => 
+    Axios.get(`/api/reviews/${id}`)
+        .then(product=>store.dispatch(addProduct(product.data)))
+        
 //ver si es necesario
 export const product = (product) => {
     return function (dispatch) {

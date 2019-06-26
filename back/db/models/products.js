@@ -20,10 +20,10 @@ const Product = db.define('products', {
     type : S.ARRAY(S.STRING)
   },
   reviews : {
-    type : S.ARRAY(S.STRING)
+    type : S.ARRAY(S.TEXT)
   },
   rating : {
-    type : S.INTEGER
+    type : S.ARRAY(S.INTEGER)
   }
 })
 
