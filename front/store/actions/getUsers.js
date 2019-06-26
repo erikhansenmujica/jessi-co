@@ -11,4 +11,14 @@ export const fetchUsers = () =>
     Axios.get(`/api/users/all`)
         .then(users=>dispatch(addUsers(users.data)))
 
+export const removeUsers = (user) => 
+(dispatch)=>
+    Axios.post(`/api/users/remove`, user)
+        .then(users=>dispatch(addUsers(users.data)))
+
+export const updateUser = (user) => 
+(dispatch)=>
+    Axios.post(`/api/users/update`, user)
+        .then(users=>dispatch(addUsers(users.data)))
+
 

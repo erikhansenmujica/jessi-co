@@ -1,25 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchUsers } from "../../store/actions/getUsers";
+import { fetchUsers,removeUsers, updateUser } from "../../store/actions/getUsers";
 import ListOfUsers from "../components/ListOfUsers";
 
 class ListOfUsersContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.onClick=this.onClick.bind(this)
+    this.delete=this.delete.bind(this)
+    this.update=this.update.bind(this)
   }
   componentDidMount(){
     this.props.giveMeAllUsers()
   }
-  onClick(name){
-    this.props.fetchPbyCat(name)
-    
-    this.props.history.push(`/category/${name}`)
+  delete(user){
+    this.props.removeUser(user)
+  }
+  update(user){
+    this.props.updateUser(user)
   }
   render() {
     return (
       <div>
-        <ListOfUsers users={this.props.users} onClick={this.onClick}/>
+        <ListOfUsers users={this.props.users} delete={this.delete} update={this.update}/>
       </div>
     );
   }
@@ -34,6 +36,8 @@ const mapStateToProps = ({users}) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     giveMeAllUsers: (name)=>dispatch(fetchUsers(name)),
+    removeUser: (user)=>dispatch(removeUsers(user)),
+    updateUser: (user)=>dispatch(updateUser(user)),
   };
 };
 
