@@ -1,12 +1,15 @@
 import React from "react";
-import Home from "../components/Home";
 import { connect } from "react-redux";
-import { filterProductsByCat } from "../../store/actions/getProducts";
+import { fetchUsers } from "../../store/actions/getUsers";
+import ListOfUsers from "../components/ListOfUsers";
 
-class HomeContainer extends React.Component {
+class ListOfUsersContainer extends React.Component {
   constructor(props) {
     super(props);
     this.onClick=this.onClick.bind(this)
+  }
+  componentDidMount(){
+    this.props.giveMeAllUsers()
   }
   onClick(name){
     this.props.fetchPbyCat(name)
@@ -16,25 +19,25 @@ class HomeContainer extends React.Component {
   render() {
     return (
       <div>
-        <Home products={this.props.products} onClick={this.onClick}/>
+        <ListOfUsers users={this.props.users} onClick={this.onClick}/>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({users}) => {
   return {
-    cats: state.categories.cats
+    users: users.all
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchPbyCat: (name)=>dispatch(filterProductsByCat(name)),
+    giveMeAllUsers: (name)=>dispatch(fetchUsers(name)),
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomeContainer);
+)(ListOfUsersContainer);
