@@ -10,5 +10,9 @@ export const deLogUser = ()=>({
     type:DELOG_USER,
 })
 
-export const fetchUser= (user)=>Axios.post("/api/user/login", user).then(user=>store.dispatch(logUser(user.data)))
+export const fetchUser= (user, history)=>Axios.post("/api/user/login", user)
+.then(user=>{
+    store.dispatch(logUser(user.data))
+    user.data.admin==true&&history.push("/admin")
+})
 export const fetchLoggedUser= ()=>Axios.get("/api/user/get-user").then(user=>store.dispatch(logUser(user.data)))
