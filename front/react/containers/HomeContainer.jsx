@@ -8,6 +8,7 @@ class HomeContainer extends React.Component {
     super(props);
     this.onClick=this.onClick.bind(this)
   }
+
   onClick(name){
     this.props.fetchPbyCat(name)
     
@@ -24,7 +25,7 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    cats: state.categories.cats
+    cats: state.categories.cats,
   };
 };
 

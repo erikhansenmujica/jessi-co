@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { remCart } from "../../store/actions/getCarrito";
 import { addProduct, addProducts } from "../../store/actions/getProducts";
 import { fetchLoggedUser } from "../../store/actions/logUser";
-
+import { matchPath } from 'react-router';
 class MainContainer extends Component {
   constructor(props) {
     super(props);
@@ -18,11 +18,13 @@ class MainContainer extends Component {
     this.props.addLoggedUser()
     if(!this.props.products[0])this.props.addOldProducts(JSON.parse(sessionStorage.getItem("products")))
     if(!this.props.product.name)this.props.addOldProduct(JSON.parse(sessionStorage.getItem("selectedProduct")))
- }
+
+  }
  componentDidUpdate(){
     sessionStorage.setItem("product",JSON.stringify(this.props.carrito))
     this.props.products[0]&&sessionStorage.setItem("products",JSON.stringify(this.props.products))
     this.props.product.name&&sessionStorage.setItem("selectedProduct",JSON.stringify(this.props.product))
+
  }
   render() {
     return (
@@ -31,10 +33,11 @@ class MainContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ carrito, products }) => ({
+const mapStateToProps = ({ carrito, products,user }) => ({
     carrito: carrito.products,
     product: products.product,
-    products: products.products
+    products: products.products,
+    user: user.user
   });
   const mapDispatchToProps = dispatch => {
     return {
