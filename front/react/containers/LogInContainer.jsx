@@ -18,7 +18,8 @@ class LogInContainer extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.logUser(this.state);
+    this.props.logUser(this.state)
+    .then((user)=>user.admin && this.props.history.push('/admin'))
   }
 
   render() {

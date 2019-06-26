@@ -89,12 +89,3 @@ Category.bulkCreate([
     {name:"TV"},
     {name:"Gadget"}])
 
-User.bulkCreate([
-    {
-        name:'Tessie',
-        lastname:'Sills', 
-        email:'tessie@sill.com',
-        password:"123456",
-        admin:true
-    }
-])

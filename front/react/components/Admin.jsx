@@ -11,6 +11,10 @@ const style = {
   },
   padding: {
     paddingTop: "55px"
+  },
+  prueba:{
+      display: "block",
+      margin:"auto"
   }
 };
 export default () => (
@@ -22,6 +26,7 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/order">
         <button
+        style={style.prueba}
           className="btn btn-lg btn-dark "
           href="/docs/4.3/components/navbar/"
           role="button"
@@ -37,6 +42,7 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/add">
         <button
+        style={style.prueba}
           className="btn btn-lg btn-dark"
           href="/docs/4.3/components/navbar/"
           role="button"
@@ -52,6 +58,7 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/users">
         <button
+        style={style.prueba}
           className="btn btn-lg btn-dark"
           href="/docs/4.3/components/navbar/"
           role="button"
