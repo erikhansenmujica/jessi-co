@@ -2,9 +2,8 @@ import React from "react";
 import SingleProduct from "../components/SingleProduct";
 import { connect } from "react-redux";
 import { setCart, remCart, addUserCart } from "../../store/actions/getCarrito";
-import Axios from "axios";
+import axios from "axios";
 import Reviews from "../components/Reviews";
- 
 
 class SingleProductContainer extends React.Component {
   constructor(props) {
@@ -19,8 +18,7 @@ class SingleProductContainer extends React.Component {
   }
 
   addToCarrito(product) {
-    
-    var arr=this.props.carrito.filter(prod=>prod.id===product.id)
+    var arr = this.props.carrito.filter(prod => prod.id === product.id);
     if (!arr.length) {
       if (this.props.user.id > 0) {
         axios.post(`/api/carrito/${this.props.user.id}`, { product: product });
@@ -51,18 +49,17 @@ class SingleProductContainer extends React.Component {
   }
 
   render() {
-    //console.log(this.state.review)
     return (
       <div>
-      <SingleProduct
-        product={this.props.product}
-        setCart={this.addToCarrito}
-        remCart={this.remFromCarrito}
-        handleReviewChange={this.handleReviewChange}
-        handleSubmitChange={this.handleSubmitChange}
-      />
-     <Reviews reviews={this.props.product.reviews}/>
-     </div>
+        <SingleProduct
+          product={this.props.product}
+          setCart={this.addToCarrito}
+          remCart={this.remFromCarrito}
+          handleReviewChange={this.handleReviewChange}
+          handleSubmitChange={this.handleSubmitChange}
+        />
+        <Reviews reviews={this.props.product.reviews} />
+      </div>
     );
   }
 }

@@ -14,11 +14,12 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { withStyles } from "@material-ui/core/styles"; // para carrito
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"; // icon carrito
-import LogInContainer from "../containers/LogInContainer"
-import RegisterContainer from "../containers/RegisterContainer"
-import Axios from "axios"
-import {deLogUser} from "../../store/actions/logUser"
-import store from "../../store"
+import LogInContainer from "../containers/LogInContainer";
+import RegisterContainer from "../containers/RegisterContainer";
+import Axios from "axios";
+import { deLogUser } from "../../store/actions/logUser";
+
+import store from "../../store";
 import SecondNavbarContainer from "../containers/SecondNavbarContainer";
 
 const StyledBadge = withStyles(theme => ({
@@ -32,11 +33,11 @@ const StyledBadge = withStyles(theme => ({
     }`
   }
 }))(Badge);
-const style={
-  text:{
-    color:'white'
+const style = {
+  text: {
+    color: "white"
   }
-}
+};
 const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(1)
@@ -105,7 +106,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carrito, user, history} ) {
+export default function PrimarySearchAppBar({
+  handleSearch,
+  handleSubmit,
+  carrito,
+  user,
+  history,
+  removeCart
+}) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -129,9 +137,11 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
   function handleMobileMenuOpen(event) {
     setMobileMoreAnchorEl(event.currentTarget);
   }
-  function handleLogOut(){
-        Axios.get("/api/user/logout").then(()=>store.dispatch(deLogUser()))
-      
+  function handleLogOut() {
+    removeCart([])
+    Axios.get("/api/user/logout").then(() =>
+      store.dispatch(deLogUser())
+    );
   }
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -144,10 +154,10 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-     <a href="" data-toggle="modal" data-target="#modalLoginForm">
-     <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
-     </a>
-     <a href="" data-toggle="modal" data-target="#modalRegisterForm">
+      <a href="" data-toggle="modal" data-target="#modalLoginForm">
+        <MenuItem onClick={handleMenuClose}>Log-In</MenuItem>
+      </a>
+      <a href="" data-toggle="modal" data-target="#modalRegisterForm">
         <MenuItem onClick={handleMenuClose}>Register</MenuItem>
       </a>
     </Menu>
@@ -162,9 +172,10 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-     <div onClick={handleLogOut}><MenuItem onClick={handleMenuClose}>Log-Out</MenuItem></div> 
+      <div onClick={handleLogOut}>
+        <MenuItem onClick={handleMenuClose}>Log-Out</MenuItem>
+      </div>
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      
     </Menu>
   );
 
@@ -203,7 +214,7 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
             aria-label="Open drawer"
           />
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to='/'>
+            <Link to="/">
               <h3 style={style.text}>Tessie&Co</h3>
             </Link>
           </Typography>
@@ -225,8 +236,8 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
             </div>
           </form>
           <div className={classes.grow} />
-           <Typography className={classes.title} variant="h6" noWrap>
-           { user.name&&<p style={{fontSize:"80%"}}>Hola {user.name}!</p>}
+          <Typography className={classes.title} variant="h6" noWrap>
+            {user.name && <p style={{ fontSize: "80%" }}>Hola {user.name}!</p>}
           </Typography>
           <div className={classes.sectionDesktop}>
             <Link to="/carrito">
@@ -261,11 +272,11 @@ export default function PrimarySearchAppBar( { handleSearch, handleSubmit, carri
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {!user.name&&renderMenu}
-      {user.name&&renderMenu2}
-      <LogInContainer/>
-      <RegisterContainer/>
-      <SecondNavbarContainer history={history}/>
+      {!user.name && renderMenu}
+      {user.name && renderMenu2}
+      <LogInContainer />
+      <RegisterContainer />
+      <SecondNavbarContainer history={history} />
     </div>
   );
 }

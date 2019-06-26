@@ -17,12 +17,9 @@ class RegisterContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleChange(e) {
-
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(this.state)
-
     }
     handleSubmit(e) {
         e.preventDefault()

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LogIn from "../components/LogIn";
 import { connect } from "react-redux";
 import { fetchUser } from "../../store/actions/logUser";
+import axios from "axios";
 
 class LogInContainer extends Component {
   constructor(props) {
@@ -31,6 +32,11 @@ class LogInContainer extends Component {
   }
 }
 
+const mapStateToProps = ({ carrito }) => {
+  return {
+    carrito: carrito.products
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     logUser: fetchUser
@@ -38,6 +44,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(LogInContainer);
