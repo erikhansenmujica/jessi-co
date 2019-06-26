@@ -12,7 +12,7 @@ export default class OrderContainer extends React.Component {
     };
   }
   componentDidMount() {
-    return Axios.get("/api/order/").then(response => {
+    return Axios.get("/api/order").then(response => {
       this.setState({ order: response.data });
     });
   }

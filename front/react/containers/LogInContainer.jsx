@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LogIn from "../components/LogIn";
 import { connect } from "react-redux";
 import { fetchUser } from "../../store/actions/logUser";
+import axios from "axios";
 
 class LogInContainer extends Component {
   constructor(props) {
@@ -18,12 +19,9 @@ class LogInContainer extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.logUser(this.state, this.props.history)
-
+    this.props.logUser(this.state, this.props.history);
   }
-  componentDidUpdate(){
-
-  }
+  componentDidUpdate() {}
   render() {
     return (
       <LogIn
@@ -33,9 +31,9 @@ class LogInContainer extends Component {
     );
   }
 }
-const mapStateToProps = (state) =>({
-    user:state.user.user
-})
+const mapStateToProps = state => ({
+  user: state.user.user
+});
 const mapDispatchToProps = dispatch => {
   return {
     logUser: fetchUser

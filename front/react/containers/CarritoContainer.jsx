@@ -23,6 +23,7 @@ class CarritoContainer extends Component {
     this.handleQuantityDown = this.handleQuantityDown.bind(this);
     this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
   }
+
   handleAddress(address) {
     this.setState({ buyerAddress: address });
   }
@@ -38,19 +39,21 @@ class CarritoContainer extends Component {
   handleDeleteProduct(id) {
     this.props.deleteSingleProduct(id);
   }
+
   handleBuyButton() {
     axios
       .post("/api/order", {
         data: {
           email: this.state.buyerEmail,
           address: this.state.buyerAddress,
+          userId: this.props.user.id,
           carrito: this.props.carrito
         }
       })
       .then(res => {
         if (res.data.msg === "success") {
           alert("Order created.");
-          this.props.removeCart([])
+          this.props.removeCart([]);
           this.props.history.push("/");
         } else if (res.data.msg === "fail") {
           alert("Order failed.");
@@ -74,9 +77,10 @@ class CarritoContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ carrito }) => {
+const mapStateToProps = ({ carrito, user }) => {
   return {
     carrito: carrito.products,
+    user: user.user
   };
 };
 
@@ -84,7 +88,7 @@ const mapDispatchToProps = dispatch => ({
   quantityUp: id => dispatch(quantityUp(id)),
   quantityDown: id => dispatch(quantityDown(id)),
   deleteSingleProduct: id => dispatch(deleteSingleProduct(id)),
-  removeCart: (arr )=> dispatch(remCart(arr))
+  removeCart: arr => dispatch(remCart(arr))
 });
 
 export default connect(

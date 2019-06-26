@@ -1,29 +1,35 @@
 const router = require('express').Router();
-const { Carrito, Product } = require('../db/models');
+const { Product, User } = require('../db/models');
 
 
 router.get('/:userId', function (req, res) {
     let userId = req.params.userId;
-    Carrito.findAll({ where: { userId: userId } }, {
+    User.findAll({
         include: [{
             model: Product,
         }]
-    }).then(carrito => res.send(carrito))
+    }).
+        then(user => {
+            let selectedUser = user.filter(user => user.id == userId)
+            res.send(selectedUser[0].products)
+        })
 })
 
+
 router.get('/', function (req, res) {
-    Carrito.findAll({
+    User.findAll({
         include: [{
             model: Product,
         }]
     })
-        .then(carrito => res.send(carrito))
+        .then(user => res.send(user))
 })
 
 router.post('/:userId', function (req, res) {
     let userId = req.params.userId;
-    Carrito.create({ where: { userId: userId } })
-        .then(carrito => carrito.addProduct(req.body.product))
+    User.findOne({ where: { id: userId } })
+        .then(user => user.addProducts(req.body.product.id))
+        .then(user => res.sendStatus(200))
 })
 
 module.exports = router;

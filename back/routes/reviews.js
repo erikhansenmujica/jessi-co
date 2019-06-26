@@ -33,7 +33,6 @@ router.post("/addreview", function(req, res) {
   
 });
 router.get("/:id", function(req, res) {
-  console.log(req.params, "AJFLASJDGLASGJLAFKGJL;ASKFJGLKFJGLAFKJG;LADKFJGL;AKDFJGLAKDFJGLADFJGLADKFGJLADFJGLAFJGKJLAFGHKAJFGHKJAHGKJF")
   let id = req.params.id;
   Product.findOne({ where: { id: id } }).then(product => res.send(product));
 });
