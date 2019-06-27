@@ -18,17 +18,24 @@ class SingleProductContainer extends React.Component {
     this.remFromCarrito = this.remFromCarrito.bind(this);
   }
   componentDidMount() {
-    Axios.get(`/api/order/${this.props.user.id}`).then(products => {
-      if (products.data.includes(this.props.product))
-        this.setState({ userBought: true });
-    });
+    if (this.props.user.id > 0) {
+      Axios.get(`/api/order/products/${this.props.user.id}`).then(products => {
+        let bul = false;
+        products.data.forEach(product => {
+          if (product.id == this.props.product.id) bul = true;
+        });
+        if (bul) this.setState({ userBought: true });
+      });
+    }
   }
 
   addToCarrito(product) {
     var arr = this.props.carrito.filter(prod => prod.id === product.id);
     if (!arr.length) {
       if (this.props.user.id > 0) {
-        Axios.post(`/api/carrito//products/${this.props.user.id}`, { product: product });
+        Axios.post(`/api/carrito//products/${this.props.user.id}`, {
+          product: product
+        });
       }
       this.props.setCart(product);
       alert("Producto agregado al carrito");

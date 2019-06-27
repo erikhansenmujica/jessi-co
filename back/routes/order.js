@@ -47,11 +47,9 @@ router.get('/products/:userId', function (req, res) {
                 product.push(selectedUserOrders[i].products)
                 prod = [].concat(...product)
             }
-
             res.send(prod)
         })
 })
-
 
 router.post('/', function (req, res) {
     let productsId = [];
