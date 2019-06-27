@@ -21,6 +21,7 @@ router.get('/all', function (req, res) {
         res.send(order)
     })
 })
+
 router.get('/:userId', function (req, res) {
     let userId = req.params.userId;
     Order.findAll({
@@ -40,6 +41,7 @@ router.get('/', function (req, res) {
         }]
     }).then(orders => res.send(orders))
 })
+
 router.post('/update', function (req, res) {
     Order.findOne({
         where: {
@@ -57,6 +59,7 @@ router.post('/update', function (req, res) {
                 }).then(orders => res.send(orders))
             )
     })
+})
 
 
 router.get('/products/:userId', function (req, res) {
