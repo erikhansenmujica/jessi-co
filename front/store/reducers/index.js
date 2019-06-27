@@ -10,5 +10,5 @@ export default combineReducers({
     carrito : carritoReducer,
     user:userReducer,
     users: usersReducer,
-    categories:categoriesReducer
+    categories:categoriesReducer,
 })

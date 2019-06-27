@@ -5,37 +5,58 @@ const style = {
     width: "45%",
     margin: "auto",
     display: "block"
-  }, 
-  text:{
-    textAlign: "center", 
-    fontSize:'18px'
+  },
+  text: {
+    textAlign: "center",
+    fontSize: "18px"
   }
 };
 
-export default () => {
+export default ({ user, order }) => {
+  let i = 0;
   return (
-    <div className="container">
+    <div className="container" key={order}>
+      <br />
+      {user ? (
+        <div>
+          <div className="card" style={style.div}>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <h3>Name:{user.name} </h3>
+              </li>
+              <li className="list-group-item">
+                <h3>LastName:{user.lastname} </h3>
+              </li>
+              <li className="list-group-item">
+                <h3>Email:{user.email} </h3>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <div className="card" style={style.div}>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <h3> No hay informacion que mostrar!! </h3>
+              </li>
+              <li className="list-group-item">
+                <h3>No hay informacion que mostrar!!</h3>
+              </li>
+              <li className="list-group-item">
+                <h3>No hay informacion que mostrar!!</h3>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+      <br />
       <br />
 
-      <div className="card" style={style.div}>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            <h3>Name: </h3>
-          </li>
-          <li className="list-group-item">
-            <h3>Last-Name: </h3>
-          </li>
-          <li className="list-group-item">
-            <h3>Email: </h3>
-          </li>
-        </ul>
-      </div>
-      <br />
-      <br />
       <div className="accordion" id="accordionExample">
         <div className="card">
           <div className="card-header" id="headingOne">
-            <h2 className="mb-0"  style={style.text}>
+            <h2 className="mb-0" style={style.text}>
               <button
                 className="btn btn-link"
                 type="button"
@@ -43,7 +64,6 @@ export default () => {
                 data-target="#collapseOne"
                 aria-expanded="true"
                 aria-controls="collapseOne"
-               
               >
                 <h3>Historial de Ordenes</h3>
               </button>
@@ -56,12 +76,26 @@ export default () => {
             aria-labelledby="headingOne"
             data-parent="#accordionExample"
           >
-            <div className="card-body">
-              Orden 1: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Optio veniam magnam, beatae pariatur dolorem odit velit distinctio
-              temporibus accusantium dolore ratione vel, tempora dicta iste
-              ipsa? Exercitationem voluptatibus eius eligendi!
-            </div>
+            {order && (
+              order.map((order) => {
+                return (
+                  <div className="card-body">
+                    <h3>Direccion: {order.address}</h3>
+                      <p className="mb-0">Estado de tu orden: {order.status}</p>
+
+                    {order.products &&
+                      order.products.map((product) => 
+                        <div className="card">
+                          <div className="card-body">
+                            <p className="mb-0">Name: {product.name}</p>
+                            <p className="mb-0">Precio: {product.price}</p>
+                          </div>
+                        </div>
+                      )}
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </div>

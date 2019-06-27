@@ -8,12 +8,8 @@ import CarritoContainer from "../containers/CarritoContainer";
 import AddProductsContainer from "../containers/AddProductsContainer";
 import OrderContainer from "../containers/OrderContainer";
 import ListOfUsersContainer from "../containers/ListOfUsersContainer";
-<<<<<<< HEAD
 import Admin from './Admin'
-import ProfileUser from "./ProfileUser";
-=======
-import Admin from "./Admin";
->>>>>>> 84d0367233e8e45a4ffcaba8b6fd322792310b5d
+import ProfileUserContainer from "../containers/ProfileUserContainer";
 
 export default () => {
   return (
@@ -31,12 +27,8 @@ export default () => {
         <Route exact path="/category/:name" component={ProductsContainer} />
         <Route exact path="/carrito" component={CarritoContainer} />
         <Route path="/add" component={AddProductsContainer} />
-<<<<<<< HEAD
         <Route path ='/order' component={OrderContainer} />
-        <Route path = '/profile' component = {ProfileUser} />
-=======
-        <Route path="/order" component={OrderContainer} />
->>>>>>> 84d0367233e8e45a4ffcaba8b6fd322792310b5d
+        <Route path = '/profile' component = {ProfileUserContainer} />
         <Route path="/" component={HomeContainer} />
       </Switch>
     </div>
