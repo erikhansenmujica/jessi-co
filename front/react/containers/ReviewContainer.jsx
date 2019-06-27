@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import Products from "../components/Products";
 import { addProduct } from "../../store/actions/getProducts";
 import Reviews from "../components/Reviews";
-import {fetchProductReviewsById} from '../../store/actions/getProducts'
-import Axios from 'axios'
+import { fetchProductReviewsById } from "../../store/actions/getProducts";
+import Axios from "axios";
 
 class ReviewContainer extends React.Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class ReviewContainer extends React.Component {
       reviewInput: "",
       ratingInput: 0
     };
-
     this.handleReviewChange = this.handleReviewChange.bind(this);
     this.handleSubmitChange = this.handleSubmitChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
   }
+  
 
   handleReviewChange(e) {
     var reviewInput = e.target.value;
@@ -25,7 +25,7 @@ class ReviewContainer extends React.Component {
   }
 
   handleRatingChange(e) {
-    e.preventDefault()
+    e.preventDefault();
     var ratingInput = e.target.value;
     this.setState({ ratingInput: ratingInput });
   }
@@ -36,11 +36,11 @@ class ReviewContainer extends React.Component {
     let rating = this.state.ratingInput;
     let productId = this.props.product.id;
     if (this.state.reviewInput) {
-      Axios.post("/api/reviews/addreview", { review, rating, productId })
-      .then((e)=> {
-        console.log(e)
-        this.props.fetchProductReviewsById(e.data[0].id)
-      });
+      Axios.post("/api/reviews/addreview", { review, rating, productId }).then(
+        e => {
+          this.props.fetchProductReviewsById(e.data[0].id);
+        }
+      );
     }
   }
 
@@ -52,12 +52,15 @@ class ReviewContainer extends React.Component {
         handleReviewChange={this.handleReviewChange}
         handleSubmitChange={this.handleSubmitChange}
         handleRatingChange={this.handleRatingChange}
+        user={this.props.user}
+        userBought={this.props.userBought}
       />
     );
   }
 }
-const mapStateToProps = ({ products }) => ({
-    product: products.product
+const mapStateToProps = ({ products, user }) => ({
+  product: products.product,
+  user: user.user
 });
 
 const mapDispatchToProps = dispatch => ({
