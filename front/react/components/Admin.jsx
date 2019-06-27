@@ -84,5 +84,21 @@ export default () => (
         </button>
         </Link>
     </div>
+    <div className="jumbotron" style={style.square}>
+      <div style={style.padding}>
+        <h1 style={style.text}>Edit Products</h1>
+      </div>
+      <p className="lead">.</p>
+      <Link to="/edit/products">
+        <button
+        style={style.prueba}
+          className="btn btn-lg btn-dark"
+          href="/docs/4.3/components/navbar/"
+          role="button"
+        >
+          View Products List &raquo;
+        </button>
+        </Link>
+    </div>
   </div>
 );

@@ -34,7 +34,7 @@ export default (props)=> {
       <GridList cellHeight={400} className={classes.gridList}  >
 
         {props.products.length >=1? props.products.map(prod =>
-            <div className="card" style={{
+           prod.stock>0&& <div className="card" style={{
               width: "18rem",
               margin: "2% 2% 2% 2%"
             }} key={prod.id}>

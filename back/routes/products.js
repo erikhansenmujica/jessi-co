@@ -4,32 +4,31 @@ const { Product } = require("../db/models");
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 
-// router.get('/all', function (req, res) {
-//    Product.findAll()
-//         .then((products) => {
-//             res.status(200).send(products)
-//         })
-// })
-
 router.get('/id/:id', function (req, res) {
   let id = req.params.id;
   Product.findOne({ where: { id: id } })
     .then(product => res.json(product))
 })
 
-router.post('/update/stock', function (req, res) {
+router.get('/all', function (req, res) {
+  Product.findAll()
+    .then((products) => {
+      res.status(200).send(products)
+    })
+})
 
-  Product.findOne({ where: { id: req.body.id } })
-    .then(product =>
-      product.update({
-        stock: product.stock-req.body.quantity
-      }))
-    .then(() =>
-      Product.findAll()
-        .then((products) => {
-          res.status(200).send(products)
-        })
-    )
+router.post('/update/stock', function (req, res) {
+  req.body.forEach(prod =>
+    Product.findOne({ where: { id: prod.id } })
+      .then(product =>
+        product.update({
+          stock: product.stock - prod.quantity
+        }))
+  )
+  Product.findAll()
+    .then((products) => {
+      res.status(200).send(products)
+    })
 })
 
 router.get('/:name', function (req, res) {

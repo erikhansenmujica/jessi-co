@@ -26,8 +26,6 @@ export const filterProductsByCat = (name) =>
         Axios.get(`/api/categories/${name}`)
             .then(products => dispatch(addProducts(products.data)))
 
-
-
 export const fetchProductsById = (id) =>
     Axios.get(`/api/products/${id}`)
         .then(product => store.dispatch(addProduct(product)))
@@ -37,7 +35,7 @@ export const fetchProductReviewsById = (id) =>
         .then(product=>store.dispatch(addProduct(product.data)))
         
 export const updateProductStock = (stockAndId) => 
-    Axios.post(`/api/update/stock`,stockAndId)
+    Axios.post(`/api/products/update/stock`,stockAndId)
         .then(products=>store.dispatch(addProducts(products.data)))
         
 //ver si es necesario
