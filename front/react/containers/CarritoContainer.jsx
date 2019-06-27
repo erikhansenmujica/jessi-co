@@ -56,7 +56,7 @@ class CarritoContainer extends Component {
           this.props.updateStock(carrito)
           alert("Order created.");
           this.props.removeCart([]);
-          this.props.history.push("/");
+          this.props.history.push("/profile");
         } else if (res.data.msg === "fail") {
           alert("Order failed.");
         }
