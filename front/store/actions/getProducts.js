@@ -36,6 +36,10 @@ export const fetchProductReviewsById = (id) =>
     Axios.get(`/api/reviews/${id}`)
         .then(product=>store.dispatch(addProduct(product.data)))
         
+export const updateProductStock = (stockAndId) => 
+    Axios.post(`/api/update/stock`,stockAndId)
+        .then(products=>store.dispatch(addProducts(products.data)))
+        
 //ver si es necesario
 export const product = (product) => {
     return function (dispatch) {

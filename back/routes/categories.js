@@ -10,6 +10,30 @@ router.get('/all', function (req, res) {
             res.status(200).send(category)
         })
 })
+router.post('/remove', function (req, res) {
+    Category.destroy({
+        where:{
+            id:req.body.id
+        }
+    })
+        .then(() => {
+            Category.findAll()
+            .then((category) => {
+                res.status(200).send(category)
+            })
+        })
+})
+router.post('/create', function (req, res) {
+    Category.create({
+       name:req.body.category
+    })
+        .then(() => {
+            Category.findAll()
+            .then((category) => {
+                res.status(200).send(category)
+            })
+        })
+})
 router.get('/:nombre', function (req, res) {
 
     try {

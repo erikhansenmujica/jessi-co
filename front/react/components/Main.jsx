@@ -9,6 +9,7 @@ import AddProductsContainer from "../containers/AddProductsContainer";
 import OrderContainer from "../containers/OrderContainer"
 import ListOfUsersContainer from "../containers/ListOfUsersContainer";
 import Admin from './Admin'
+import EditCategoriesContainer from "../containers/EditCategoriesContainer";
 
 export default () => {
   return (
@@ -22,6 +23,7 @@ export default () => {
         />
         <Route path = "/admin" component={Admin} />
         <Route path="/products" component={ProductsContainer} />
+        <Route path="/edit/categories" component={EditCategoriesContainer} />
         <Route path="/users" component={ListOfUsersContainer} />
         <Route path="/category/:name" component={ProductsContainer} />
         <Route exact path="/carrito" component={CarritoContainer} />
