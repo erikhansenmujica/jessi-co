@@ -11,17 +11,24 @@ class SingleProductContainer extends React.Component {
     super(props);
     this.state = {
       input: "",
-      reviews: []
+      reviews: [],
+      userBought: false
     };
     this.addToCarrito = this.addToCarrito.bind(this);
     this.remFromCarrito = this.remFromCarrito.bind(this);
+  }
+  componentDidMount() {
+    Axios.get(`/api/order/${this.props.user.id}`).then(products => {
+      if (products.data.includes(this.props.product))
+        this.setState({ userBought: true });
+    });
   }
 
   addToCarrito(product) {
     var arr = this.props.carrito.filter(prod => prod.id === product.id);
     if (!arr.length) {
       if (this.props.user.id > 0) {
-        Axios.post(`/api/carrito/${this.props.user.id}`, { product: product });
+        Axios.post(`/api/carrito//products/${this.props.user.id}`, { product: product });
       }
       this.props.setCart(product);
       alert("Producto agregado al carrito");
@@ -42,7 +49,7 @@ class SingleProductContainer extends React.Component {
           setCart={this.addToCarrito}
           remCart={this.remFromCarrito}
         />
-        <ReviewContainer />
+        <ReviewContainer userBought={this.state.userBought} />
       </div>
     );
   }

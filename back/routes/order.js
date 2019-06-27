@@ -12,12 +12,44 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+router.get('/:userId', function (req, res) {
+    let userId = req.params.userId;
+    Order.findAll({
+        include: [{
+            model: Product,
+        }]
+    }).then(order => {
+        let selectedUserOrders = order.filter(order => order.userId == userId)
+        res.send(selectedUserOrders)
+    })
+})
+
 router.get('/', function (req, res) {
     Order.findAll({
         include: [{
             model: Product,
         }]
     }).then(orders => res.send(orders))
+})
+
+router.get('/products/:userId', function (req, res) {
+    let userId = req.params.userId;
+    Order.findAll({
+        include: [{
+            model: Product,
+        }]
+    }).
+        then(orders => {
+            let selectedUserOrders = orders.filter(order => order.userId == userId)
+            let product = [];
+            let prod = [];
+            for (let i = 0; i < selectedUserOrders.length; i++) {
+                product.push(selectedUserOrders[i].products)
+                prod = [].concat(...product)
+            }
+
+            res.send(prod)
+        })
 })
 
 
