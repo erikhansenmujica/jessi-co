@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -149,22 +150,23 @@ export default function CenteredGrid(props) {
               onChange={handleEmail}
             />
           </div>
-         
-            <button
-              type="button"
-              className="btn btn-primary btn-lg"
-              style={buyButton}
-              onClick={props.handleBuyButton}
-            >
-              Buy
-            </button>
-        
+          <button
+            type="button"
+            className="btn btn-primary btn-lg"
+            style={buyButton}
+            onClick={()=>props.handleBuyButton(props.carrito)}
+          >
+            Buy
+          </button>
         </div>
       ) : (
-        <div className="container text-danger">
-          {" "}
-          "No hay productos en el carrito..."{" "}
-        </div>
+        // <div className="text-center"> <h3>"No hay productos en el carrito..."</h3> </div>
+        <div className={classes.root}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}><Link to='/'>No hay productos en el carrito aún, realizá tu primera compra!</Link></Paper>
+        </Grid>
+      </div>
+       
       )}
     </div>
   );

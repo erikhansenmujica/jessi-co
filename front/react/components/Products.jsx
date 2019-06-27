@@ -18,6 +18,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const style = {
+  products: {
+    display: "block",
+    margin: "auto"
+  }
+}
+
 
 export default (props)=> {
   const classes = useStyles();
@@ -26,8 +33,8 @@ export default (props)=> {
     <div className={classes.root}>
       <GridList cellHeight={400} className={classes.gridList}  >
 
-        {props.products && props.products.map(prod =>
-            <div className="card" style={{
+        {props.products.length >=1? props.products.map(prod =>
+           prod.stock>0&& <div className="card" style={{
               width: "18rem",
               margin: "2% 2% 2% 2%"
             }} key={prod.id}>
@@ -43,7 +50,12 @@ export default (props)=> {
                 }}>Check Product</Link>
               </div>
             </div>
-        )}
+        ): <div style={style.products}>
+            <div class="alert alert-secondary" role="alert">
+              <h2 class="alert-heading">Oops! No han habido coincidencias con tu búsqueda... </h2>
+              <p><h3><Link to='/'>Inténtalo de nuevo!</Link></h3></p>
+            </div>
+        </div>}
       </GridList>
     </div>
   );

@@ -43,8 +43,6 @@ User.prototype.hashFunction = function (password) {
 }
 
 User.prototype.autenticate = function (password) {
-  console.log(this.hashFunction(password) + "password", this.password, "salt", this.salt)
-
   return this.hashFunction(password) === this.password
 
 }
