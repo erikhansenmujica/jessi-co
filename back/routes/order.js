@@ -57,7 +57,7 @@ router.post('/update', function (req, res) {
                 }).then(orders => res.send(orders))
             )
     })
-
+})
 
 router.get('/products/:userId', function (req, res) {
     let userId = req.params.userId;
@@ -80,7 +80,7 @@ router.get('/products/:userId', function (req, res) {
 })
 
 
-})
+
 
 router.post('/', function (req, res) {
     let productsId = [];
@@ -116,5 +116,6 @@ router.post('/', function (req, res) {
         }
     });
 })
+
 
 module.exports = router;

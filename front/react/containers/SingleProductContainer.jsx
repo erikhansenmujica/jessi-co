@@ -28,7 +28,7 @@ class SingleProductContainer extends React.Component {
     var arr = this.props.carrito.filter(prod => prod.id === product.id);
     if (!arr.length) {
       if (this.props.user.id > 0) {
-        Axios.post(`/api/carrito//products/${this.props.user.id}`, { product: product });
+        Axios.post(`/api/carrito/products/${this.props.user.id}`, { product: product });
       }
       this.props.setCart(product);
       alert("Producto agregado al carrito");

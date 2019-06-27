@@ -22,7 +22,7 @@ router.post('/update/stock', function (req, res) {
     Product.findOne({ where: { id: prod.id } })
       .then(product =>
         product.update({
-          stock: product.stock - prod.quantity
+          stock: prod.quantity>0?product.stock - prod.quantity:product.stock-1
         }))
   )
   Product.findAll()
