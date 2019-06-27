@@ -16,89 +16,97 @@ const button = {
 };
 
 const rating = {
-  marginTop : "1%" 
-}
+  marginTop: "1%"
+};
 
 export default props => {
-  let i=0;
+  let i = 0;
   let ratingSum;
   if (props.rating && props.rating.length > 0) {
     ratingSum = props.rating.reduce(function(acumulador, siguienteValor) {
       return acumulador + siguienteValor;
     }, 0);
   }
-   
 
   return (
     <div className="container">
-      <form onSubmit={props.handleSubmitChange}>
-        <div className="input-group-prepend">
-          <span className="input-group-text">Review</span>
-          <input
-            onChange={e => props.handleReviewChange(e)}
-            className="col-xs-12 form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Escribi tu review..."
-          />
+      {props.user.id > 0 && props.userBought ? (
+        <div>
+          <form onSubmit={props.handleSubmitChange}>
+            <div className="input-group-prepend">
+              <span className="input-group-text">Review</span>
+              <input
+                onChange={e => props.handleReviewChange(e)}
+                className="col-xs-12 form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Escribi tu review..."
+              />
+            </div>
+            <br />
+            <button type="submit" className="btn btn-primary" style={button}>
+              SUBMIT
+            </button>
+          </form>
+          <div className="btn-group">
+            <button
+              onChange={e => props.handleRatingChange(e)}
+              type="button"
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style={button}
+            >
+              Please add your rating here!
+            </button>
+            <div className="dropdown-menu">
+              <li
+                onClick={e => props.handleRatingChange(e)}
+                className="dropdown-item"
+                value="1"
+              >
+                1
+              </li>
+              <li
+                onClick={e => props.handleRatingChange(e)}
+                className="dropdown-item"
+                value="2"
+              >
+                2
+              </li>
+              <li
+                onClick={e => props.handleRatingChange(e)}
+                className="dropdown-item"
+                value="3"
+              >
+                3
+              </li>
+              <li
+                onClick={e => props.handleRatingChange(e)}
+                className="dropdown-item"
+                value="4"
+              >
+                4
+              </li>
+              <li
+                onClick={e => props.handleRatingChange(e)}
+                className="dropdown-item"
+                value="5"
+              >
+                5
+              </li>
+            </div>
+          </div>
+          <br />
         </div>
-        <br />
-        
-        <button type="submit" className="btn btn-primary" style={button}>
-          SUBMIT
-        </button>
-      </form>
-      <div className="btn-group">
-        <button
-          onChange={e => props.handleRatingChange(e)}
-          type="button"
-          className="btn btn-primary dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-          style={button}
-        >
-          Please add your rating here!
-        </button>
-        <div className="dropdown-menu">
-          <li
-            onClick={e => props.handleRatingChange(e)}
-            className="dropdown-item"
-            value="1"
-          >
-            1
-          </li>
-          <li
-            onClick={e => props.handleRatingChange(e)}
-            className="dropdown-item"
-            value="2"
-          >
-            2
-          </li>
-          <li
-            onClick={e => props.handleRatingChange(e)}
-            className="dropdown-item"
-            value="3"
-          >
-            3
-          </li>
-          <li
-            onClick={e => props.handleRatingChange(e)}
-            className="dropdown-item"
-            value="4"
-          >
-            4
-          </li>
-          <li
-            onClick={e => props.handleRatingChange(e)}
-            className="dropdown-item"
-            value="5"
-          >
-            5
-          </li>
-        </div>
-        <br/>
-      </div>
+      ) : (
+        <h3>
+          {!props.userBought && props.user.id > 0
+            ? "Compra el producto para dejar una review"
+            : "Logueate para dejar una review"}
+        </h3>
+      )}
       <br />
       {props.rating && props.rating.length > 0 ? (
         <div style={rating} className="alert alert-success" role="alert">
@@ -111,9 +119,7 @@ export default props => {
           <blockquote className="blockquote mb-0">
             {props.reviews.map(review => (
               <div className="card-body" key={i++}>
-                <h4 style={square} >
-                  {review}
-                </h4>
+                <h4 style={square}>{review}</h4>
               </div>
             ))}
           </blockquote>

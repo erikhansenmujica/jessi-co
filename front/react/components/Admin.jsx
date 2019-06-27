@@ -18,7 +18,7 @@ const style = {
   }
 };
 export default () => (
-  <div class="container">
+  <div className="container">
     <div className="jumbotron" style={style.square}>
       <div style={style.padding}>
         <h1 style={style.text}>Lista de Ordernes</h1>
