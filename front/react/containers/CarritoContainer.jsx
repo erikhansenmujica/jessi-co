@@ -8,6 +8,7 @@ import {
   deleteSingleProduct,
   remCart
 } from "../../store/actions/getCarrito";
+import {updateProductStock} from "../../store/actions/getProducts"
 
 class CarritoContainer extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class CarritoContainer extends Component {
     this.props.deleteSingleProduct(id);
   }
 
-  handleBuyButton() {
+  handleBuyButton(carrito) {
     axios
       .post("/api/order", {
         data: {
@@ -52,9 +53,10 @@ class CarritoContainer extends Component {
       })
       .then(res => {
         if (res.data.msg === "success") {
+          this.props.updateStock(carrito)
           alert("Order created.");
           this.props.removeCart([]);
-          this.props.history.push("/");
+          this.props.history.push("/profile");
         } else if (res.data.msg === "fail") {
           alert("Order failed.");
         }
@@ -88,7 +90,8 @@ const mapDispatchToProps = dispatch => ({
   quantityUp: id => dispatch(quantityUp(id)),
   quantityDown: id => dispatch(quantityDown(id)),
   deleteSingleProduct: id => dispatch(deleteSingleProduct(id)),
-  removeCart: arr => dispatch(remCart(arr))
+  removeCart: arr => dispatch(remCart(arr)),
+  updateStock:  updateProductStock
 });
 
 export default connect(

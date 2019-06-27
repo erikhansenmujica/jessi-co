@@ -12,6 +12,15 @@ var transporter = nodemailer.createTransport({
     }
 });
 
+router.get('/all', function (req, res) {
+    Order.findAll({
+        include: [{
+            model: Product,
+        }]
+    }).then(order => {
+        res.send(order)
+    })
+})
 router.get('/:userId', function (req, res) {
     let userId = req.params.userId;
     Order.findAll({
@@ -31,6 +40,24 @@ router.get('/', function (req, res) {
         }]
     }).then(orders => res.send(orders))
 })
+router.post('/update', function (req, res) {
+    Order.findOne({
+        where: {
+            id: req.body.id
+        }
+    }).then(order => {
+        order.update({
+            status: req.body.status
+        })
+            .then(() =>
+                Order.findAll({
+                    include: [{
+                        model: Product,
+                    }]
+                }).then(orders => res.send(orders))
+            )
+    })
+
 
 router.get('/products/:userId', function (req, res) {
     let userId = req.params.userId;
@@ -73,13 +100,13 @@ router.post('/', function (req, res) {
     transporter.sendMail(mailOptions, function (err, info) {
         if (err) {
             console.log("Error al enviar el mail: ", err)
-            res.json({
+            res.send({
                 msg: 'fail'
             })
         }
         else {
             console.log("Mail enviado: ", info);
-            res.json({
+            res.send({
                 msg: 'success'
             })
         }

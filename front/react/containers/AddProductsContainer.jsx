@@ -18,7 +18,9 @@ class addProducts extends React.Component {
     this.handleCatChange = this.handleCatChange.bind(this);
   }
   componentDidMount(){
-    $('select').selectpicker();
+  
+      $('select').selectpicker();
+ 
   }
  
   handleChange(e) {
