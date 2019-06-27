@@ -29,10 +29,6 @@ export const deleteSingleProduct = (id) => ({
     id
 })
 
-// export const addUserCart = (userId) =>
-//     Axios.post(`/api/carrito/${userId}`)
-//         .then(carrito => store.dispatch(setCart(carrito)))
-
 
 export const fetchCarrito = (user) =>
     Axios.get(`/api/carrito/${user.id}`)

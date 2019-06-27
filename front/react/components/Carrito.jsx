@@ -153,7 +153,7 @@ export default function CenteredGrid(props) {
             type="button"
             className="btn btn-primary btn-lg"
             style={buyButton}
-            onClick={props.handleBuyButton}
+            onClick={()=>props.handleBuyButton(props.carrito)}
           >
             Buy
           </button>

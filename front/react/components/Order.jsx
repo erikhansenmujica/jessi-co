@@ -7,7 +7,7 @@ const style = {
   }
 };
 
-export default ({ order }) => {
+export default ({ order, handleSelection }) => {
   return (
     <div className="container">
       <h1 style={style.title}>Lista de Ordenes</h1>
@@ -20,7 +20,7 @@ export default ({ order }) => {
                 {order.products &&
                   order.products.map(name => {
                     return (
-                      <div key={name}>
+                      <div key={name.id}>
                         <h3>{name.name}</h3>
                         <p>{name.price}</p>
                       </div>
@@ -29,10 +29,14 @@ export default ({ order }) => {
               </h6>
               <p className="card-text">{order.status}</p>
               <p className="card-text">{order.createdAt}</p>
-
-              <a href="#" className="card-link">
-                {order.status}
-              </a>
+              <select className="custom-select custom-select-sm" style={{width:"15%"}} onChange={(e)=>handleSelection(e, order.id)}>
+                <option defaultValue>Select order status</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="canceled">Canceled</option>
+                <option value="delivered">Delivered</option>
+              </select>
+             
             </div>
           </div>
         ))}

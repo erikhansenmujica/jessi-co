@@ -25,6 +25,7 @@ export default (state = initialState, action) => {
         case QUANTITY_UP: {
             let index = state.products.findIndex(product => product.id == action.id)
             const selectedProduct = state.products[index]
+            if(selectedProduct.stock-selectedProduct.quantity<=0) return state
             if (!selectedProduct.quantity) selectedProduct.quantity = 2
             else selectedProduct.quantity += 1
             return Object.assign({}, state, {

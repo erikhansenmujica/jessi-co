@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AddCategoryContainer from "../containers/AddCategoryContainer";
 
 const style = {
   text: {
@@ -21,7 +22,7 @@ export default () => (
   <div className="container">
     <div className="jumbotron" style={style.square}>
       <div style={style.padding}>
-        <h1 style={style.text}>Lista de Ordernes</h1>
+        <h1 style={style.text}>Orders List</h1>
       </div>
       <p className="lead">.</p>
       <Link to="/order">
@@ -37,7 +38,7 @@ export default () => (
     </div>
     <div className="jumbotron" style={style.square}>
       <div style={style.padding}>
-        <h1 style={style.text}>Agregar Productos</h1>
+        <h1 style={style.text}>Add Products</h1>
       </div>
       <p className="lead">.</p>
       <Link to="/add">
@@ -47,13 +48,13 @@ export default () => (
           href="/docs/4.3/components/navbar/"
           role="button"
         >
-          Add Products &raquo;
+          Add One &raquo;
         </button>
       </Link>
     </div>
     <div className="jumbotron" style={style.square}>
       <div style={style.padding}>
-        <h1 style={style.text}>Lista de Usuarios</h1>
+        <h1 style={style.text}>Users List</h1>
       </div>
       <p className="lead">.</p>
       <Link to="/users">
@@ -66,6 +67,38 @@ export default () => (
           View List &raquo;
         </button>
       </Link>
+    </div>
+    <div className="jumbotron" style={style.square}>
+      <div style={style.padding}>
+        <h1 style={style.text}>Add Category</h1>
+      </div>
+      <p className="lead">.</p>
+      <Link to="/edit/categories">
+        <button
+        style={style.prueba}
+          className="btn btn-lg btn-dark"
+          href="/docs/4.3/components/navbar/"
+          role="button"
+        >
+          Add One &raquo;
+        </button>
+        </Link>
+    </div>
+    <div className="jumbotron" style={style.square}>
+      <div style={style.padding}>
+        <h1 style={style.text}>Edit Products</h1>
+      </div>
+      <p className="lead">.</p>
+      <Link to="/edit/products">
+        <button
+        style={style.prueba}
+          className="btn btn-lg btn-dark"
+          href="/docs/4.3/components/navbar/"
+          role="button"
+        >
+          View Products List &raquo;
+        </button>
+        </Link>
     </div>
   </div>
 );
