@@ -16,8 +16,6 @@ const session = require("express-session");
 const passport = require('./validations/passport');
 const db = require('./db/db')
 const { Product, Category } = require("./db/models")
-//try{Category.bulkCreate([{name:"Mac"},{name:"iPad"},{name:"iPhone"},{name:"Watch"},{name:"TV"},{name:"Gadget"}])}catch(err){console.log(err)}
-
 
 //object fit
 app.use(express.static('public'));

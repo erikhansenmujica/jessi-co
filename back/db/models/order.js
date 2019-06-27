@@ -11,8 +11,10 @@ const Order = db.define('orders', {
     type: S.STRING,
     allowNull: false,
   },
-  date: {
-    type: S.DATE, 
+  email: {
+    type: S.STRING,
+    allowNull: false,
+    isEmail: true,
   }
 })
 

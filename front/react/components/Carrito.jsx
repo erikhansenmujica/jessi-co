@@ -38,7 +38,8 @@ const inputStyle = {
 };
 
 const buyButton = {
-  textAlign: "center"
+  display: "block",
+  margin: "auto"
 };
 
 export default function CenteredGrid(props) {

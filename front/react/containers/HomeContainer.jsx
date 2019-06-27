@@ -1,19 +1,23 @@
 import React from "react";
 import Home from "../components/Home";
 import { connect } from "react-redux";
-import { fetchProducts } from "../../store/actions/getProducts";
+import { filterProductsByCat } from "../../store/actions/getProducts";
 
 class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.onClick=this.onClick.bind(this)
   }
-  componentDidMount() {
-    this.props.fetchProducts();
+
+  onClick(name){
+    this.props.fetchPbyCat(name)
+    
+    this.props.history.push(`/category/${name}`)
   }
   render() {
     return (
       <div>
-        <Home products={this.props.products} />
+        <Home products={this.props.products} onClick={this.onClick}/>
       </div>
     );
   }
@@ -21,13 +25,13 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.products
+    cats: state.categories.cats,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchProducts: products => dispatch(fetchProducts(products))
+    fetchPbyCat: (name)=>dispatch(filterProductsByCat(name)),
   };
 };
 
