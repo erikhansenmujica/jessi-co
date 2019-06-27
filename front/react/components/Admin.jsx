@@ -19,7 +19,7 @@ const style = {
   }
 };
 export default () => (
-  <div class="container">
+  <div className="container">
     <div className="jumbotron" style={style.square}>
       <div style={style.padding}>
         <h1 style={style.text}>Orders List</h1>
