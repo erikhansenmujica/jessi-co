@@ -1,4 +1,5 @@
 import React from "react";
+import {Link } from 'react-router-dom'
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -148,18 +149,22 @@ export default function CenteredGrid(props) {
               onChange={handleEmail}
             />
           </div>
-          <button
-            type="button"
-            className="btn btn-primary btn-lg"
-            style={buyButton}
-            onClick={props.handleBuyButton}
-          >
-            Buy
-          </button>
+         
+            <button
+              type="button"
+              className="btn btn-primary btn-lg"
+              style={buyButton}
+              onClick={props.handleBuyButton}
+            >
+              Buy
+            </button>
+        
         </div>
       ) : (
-        <div className="container text-danger"> "No hay productos en el carrito..." </div>
-       
+        <div className="container text-danger">
+          {" "}
+          "No hay productos en el carrito..."{" "}
+        </div>
       )}
     </div>
   );

@@ -54,7 +54,7 @@ class CarritoContainer extends Component {
         if (res.data.msg === "success") {
           alert("Order created.");
           this.props.removeCart([]);
-          this.props.history.push("/");
+          this.props.history.push("/profile");
         } else if (res.data.msg === "fail") {
           alert("Order failed.");
         }

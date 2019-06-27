@@ -9,6 +9,7 @@ import AddProductsContainer from "../containers/AddProductsContainer";
 import OrderContainer from "../containers/OrderContainer"
 import ListOfUsersContainer from "../containers/ListOfUsersContainer";
 import Admin from './Admin'
+import ProfileUser from "./ProfileUser";
 
 export default () => {
   return (
@@ -27,6 +28,7 @@ export default () => {
         <Route exact path="/carrito" component={CarritoContainer} />
         <Route path="/add" component={AddProductsContainer} />
         <Route path ='/order' component={OrderContainer} />
+        <Route path = '/profile' component = {ProfileUser} />
         <Route path="/" component={HomeContainer} />
       </Switch>
     </div>
