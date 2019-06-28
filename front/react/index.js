@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
-import Main from './components/Main';
 import { Provider } from 'react-redux';
-//import store from '../redux/store';
-//store={store}
+import store from '../store/index';
+import MainContainer from './containers/MainContainer';
+
 ReactDOM.render(
+  <Provider store={store}>
     <BrowserRouter>
-      <Route path="/" component={Main} />
-    </BrowserRouter>,
+      <Route path="/" component={MainContainer} />
+    </BrowserRouter>
+  </Provider>,
     document.getElementById('app')
 
 );
