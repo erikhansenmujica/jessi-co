@@ -42,10 +42,21 @@ router.post('/delete/:userId', function (req, res) {
         then(user => {
             let selectedUser = user.filter(user => user.id == userId)
             let newArr = selectedUser[0].products.filter(product => product.id !== req.body.deletedProduct)
-            selectedUser[0].addProducts(newArr)
-            res.json(newArr)
+            selectedUser[0].setProducts(newArr)
         })
 })
 
+router.post('/deleteall/:userId', function (req, res) {
+    let userId = req.params.userId;
+    User.findAll({
+        include: [{
+            model: Product,
+        }]
+    }).
+        then(user => {
+            let selectedUser = user.filter(user => user.id == userId)
+            selectedUser[0].setProducts([])
+        })
+})
 
 module.exports = router;
