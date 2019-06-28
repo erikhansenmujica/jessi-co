@@ -12,8 +12,8 @@ const style = {
   }
 };
 
-export default ({ user, order }) => {
-  let i = 0;
+export default ({ user, order}) => {
+ 
   return (
     <div className="container" key={order}>
       <br />
@@ -79,14 +79,14 @@ export default ({ user, order }) => {
             {order && (
               order.map((order) => {
                 return (
-                  <div className="card-body">
+                  <div className="card-body"  key={order.id}>
                     <h3>Direccion: {order.address}</h3>
                       <p className="mb-0">Estado de tu orden: {order.status}</p>
 
                     {order.products &&
-                      order.products.map((product) => 
-                        <div className="card">
-                          <div className="card-body">
+                      order.products.map((product, index) => 
+                        <div className="card"  key={index}  >
+                          <div className="card-body" >
                             <p className="mb-0">Name: {product.name}</p>
                             <p className="mb-0">Precio: {product.price}</p>
                           </div>
@@ -99,6 +99,18 @@ export default ({ user, order }) => {
           </div>
         </div>
       </div>
+      <br/>
+      <br/>
+      <br/>
+      <footer>
+        <p className="float-right" style={style.text2}>
+          <a href="#">Back to top</a>
+        </p>
+        <p>
+          &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
+          &middot; <a href="#">Terms</a>
+        </p>
+      </footer>
     </div>
   );
 };

@@ -33,7 +33,7 @@ Product.bulkCreate(
         price:45000,
         stock:11,
         description:'El iPad presenta chips avanzados diseñados por Apple, como el A12X Bionic con Neural Engine en el iPad Pro. Estos chips transforman la forma en que experimentas las fotos, los juegos y la realidad aumentada. También hacen que el iPad sea lo suficientemente potente como para manejar las aplicaciones que usas todos los días. E incluso aplicaciones profesionales como Adobe Photoshop CC.', 
-        images:['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/pa/ipad/pro/ipad-pro-12-11-select-201810?wid=435&amp;hei=550&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1540576039631', 'https://images-na.ssl-images-amazon.com/images/I/61yaUxH6XsL._SX466_.jpg', 'https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-ipad-pro-y-ipad-air-3-de-10_5_-slot-rojo-con-soporte-para-apple-pencil-comma.jpg'],
+        images:['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/pa/ipad/pro/ipad-pro-12-11-select-201810?wid=435&amp;hei=550&amp;fmt=jpeg&amp;qlt=95&amp;op_usm=0.5,0.5&amp;.v=1540576039631', 'https://images-na.ssl-images-amazon.com/images/I/61yaUxH6XsL._SX466_.jpg', 'https://static.k-tuin.com/media/catalog/product/cache/1/image/0dc2d03fe217f8c83829496872af24a0/f/u/funda-para-ipad-pro-y-ipad-air-3-de-10_5_-slot-rojo-con-soporte-para-apple-pencil-comma.jpg','https://tshop.r10s.com/a98/edb/5056/b1e7/d0db/2570/a778/119de98e3bc45444889ca7.jpg'],
         reviews:[],
         rating:[5]},
         {
@@ -45,11 +45,11 @@ Product.bulkCreate(
         reviews:[],
         rating:[5]
         }, {
-            name:'Iphone xs',
+            name:'Iphone XS',
             price:75000,
             stock:5,
             description:'El Programa de actualización de iPhone es la forma más fácil de obtener un nuevo iPhone cada año, así como la seguridad y protección de AppleCare +. Puede comprar el iPhone XS, el iPhone XS Max o el iPhone XR con el Programa de actualización de iPhone en apple.com, usando la aplicación Apple Store o en Apple Store.', 
-            images:['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/4/4/44/alu/44-alu-silver-sport-white-s4-gallery3?wid=1000&hei=1000&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535748728969', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/compare/iphone-compare-models-201809?wid=282&hei=383&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535588384763', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-gallery-2018-3?wid=2000&hei=1536&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535396227637'],
+            images:['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-select-2018-group?wid=882&hei=1058&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1550795427806', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-max-space-select-2018?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1550795409906', 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/image/AppleInc/aos/published/images/i/ph/iphone/xs/iphone-xs-max-gold-select-2018?wid=441&hei=529&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1550795409154'],
             reviews:[],
             rating:[5]
         },
@@ -67,7 +67,7 @@ Product.bulkCreate(
             price:2500,
             stock:6,
             description:'Estos estuches diseñados por Apple se ajustan perfectamente a las curvas de su iPhone sin agregar volumen. Están hechas de cuero europeo especialmente curtido y acabado, por lo que el exterior se siente suave al tacto y desarrolla una pátina natural con el tiempo. Los botones de aluminio mecanizados coinciden con el acabado de su funda de cuero, mientras que el interior de microfibra ayuda a proteger su iPhone. Y puede mantenerlo encendido todo el tiempo, incluso cuando se está cargando de forma inalámbrica.', 
-            images:['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/M/TE/MTEV2/MTEV2?wid=2000&hei=2000&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535399239442', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/M/TE/MTEW2/MTEW2?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1535399244650', 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/image/AppleInc/aos/published/images/M/TE/MTEX2/MTEX2?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1535399265041', ''],
+            images:['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/M/TE/MTEV2/MTEV2?wid=2000&hei=2000&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1535399239442', 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/M/TE/MTEW2/MTEW2?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1535399244650', 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/image/AppleInc/aos/published/images/M/TE/MTEX2/MTEX2?wid=1144&hei=1144&fmt=jpeg&qlt=80&op_usm=0.5,0.5&.v=1535399265041', 'https://www.macstation.com.ar/img/productos/small/1310-1.jpg'],
             reviews:[],
             rating:[5]         
         }, {
