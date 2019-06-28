@@ -21,10 +21,10 @@ export const fetchUser = (user, history, addedProducts) => Axios.post("/api/user
         Axios.get(`/api/carrito/${user.id}`)
             .then(carrito => {
                 carrito.data.forEach(product=>{
-                    addedProducts.forEach(ad=>{
+                   if(addedProducts[0])addedProducts.forEach(ad=>{
                         if(product.id!==ad.id) store.dispatch(setCart(product))
                     })
-                    
+                    else store.dispatch(setCart(product))
                 })
                 return user
             })
