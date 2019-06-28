@@ -1,8 +1,12 @@
-import { ADD_ORDERS } from "../../utils/constants"
+import { ADD_ORDERS, ADD_USER_ORDERS } from "../../utils/constants"
 import Axios from "axios";
 
-const addOrders = (orders) => ({
+export const addOrders = (orders) => ({
     type: ADD_ORDERS,
+    orders
+})
+export const addUserOrders = (orders) => ({
+    type: ADD_USER_ORDERS,
     orders
 })
 
@@ -11,6 +15,12 @@ export const fetchOrders = () =>
         Axios.get("/api/order/all").then(response => {
             dispatch(addOrders(response.data))
         })
+
+export const fetchUserOrders = (id) =>
+    (dispatch) =>
+        Axios.get(`/api/order/${id}`).then(response =>
+            dispatch(addUserOrders(response.data))
+        )
 
 export const updateOrder = (statusAndId) =>
     (dispatch) =>

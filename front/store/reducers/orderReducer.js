@@ -1,7 +1,8 @@
-import {ADD_ORDERS} from '../../utils/constants'
+import {ADD_ORDERS, ADD_USER_ORDERS} from '../../utils/constants'
 
 const initialState ={
-    orders: []
+    orders: [],
+    userOrders:[]
 }
 
 export default (state=initialState, action) =>{
@@ -9,6 +10,11 @@ export default (state=initialState, action) =>{
         case ADD_ORDERS: {
             return Object.assign({}, state, {
                 orders : action.orders
+            })
+        }
+        case ADD_USER_ORDERS: {
+            return Object.assign({}, state, {
+                userOrders : action.orders
             })
         }
        
