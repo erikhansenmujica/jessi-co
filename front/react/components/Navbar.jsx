@@ -18,7 +18,6 @@ import LogInContainer from "../containers/LogInContainer";
 import RegisterContainer from "../containers/RegisterContainer";
 import Axios from "axios";
 import { deLogUser } from "../../store/actions/logUser";
-
 import store from "../../store";
 import SecondNavbarContainer from "../containers/SecondNavbarContainer";
 
@@ -138,10 +137,9 @@ export default function PrimarySearchAppBar({
     setMobileMoreAnchorEl(event.currentTarget);
   }
   function handleLogOut() {
-    removeCart([])
-    Axios.get("/api/user/logout").then(() =>
-      store.dispatch(deLogUser())
-    );
+    removeCart([]);
+    sessionStorage.clear()
+    Axios.get("/api/user/logout").then(() => store.dispatch(deLogUser()));
   }
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -175,8 +173,8 @@ export default function PrimarySearchAppBar({
       <div onClick={handleLogOut}>
         <MenuItem onClick={handleMenuClose}>Log-Out</MenuItem>
       </div>
-      <Link to='/profile'>
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <Link to="/profile">
+        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       </Link>
     </Menu>
   );
@@ -216,7 +214,7 @@ export default function PrimarySearchAppBar({
             aria-label="Open drawer"
           />
           <Typography className={classes.title} variant="h6" noWrap>
-            <Link to={user.admin===true?"/admin":"/"} >
+            <Link to={user.admin === true ? "/admin" : "/"}>
               <h3 style={style.text}>Tessie&Co</h3>
             </Link>
           </Typography>
@@ -244,7 +242,10 @@ export default function PrimarySearchAppBar({
           <div className={classes.sectionDesktop}>
             <Link to="/carrito">
               <IconButton aria-label="Cart">
-                <StyledBadge badgeContent={carrito.length} color="primary">
+                <StyledBadge
+                  badgeContent={carrito.length && carrito.length}
+                  color="primary"
+                >
                   <ShoppingCartIcon />
                 </StyledBadge>
               </IconButton>
@@ -274,11 +275,11 @@ export default function PrimarySearchAppBar({
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {!user.name&&renderMenu}
-      {user.name&&renderMenu2}
-      <LogInContainer history={history}/>
-      <RegisterContainer/>
-      <SecondNavbarContainer history={history}/>
+      {!user.name && renderMenu}
+      {user.name && renderMenu2}
+      <LogInContainer history={history} />
+      <RegisterContainer />
+      <SecondNavbarContainer history={history} />
     </div>
   );
 }

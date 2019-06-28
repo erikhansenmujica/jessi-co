@@ -32,7 +32,9 @@ export default props => {
     <div className="container">
       {props.user.id > 0 && props.userBought ? (
         <div>
-          <form onSubmit={props.handleSubmitChange}>
+          <form onSubmit={(e)=>{props.handleSubmitChange(e)
+            document.querySelector("#exampleInputEmail1").value=""}
+            }>
             <div className="input-group-prepend">
               <span className="input-group-text">Review</span>
               <input
