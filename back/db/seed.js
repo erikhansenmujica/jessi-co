@@ -80,7 +80,13 @@ Product.bulkCreate(
             rating:[5]
         }
 ])
-
+User.create({
+    name:"tessie",
+    lastname:"sills",
+    email:"tessie@tessie.com",
+    password:"123",
+    admin:true
+})
 Category.bulkCreate([
     {name:"Mac"},
     {name:"iPad"},
