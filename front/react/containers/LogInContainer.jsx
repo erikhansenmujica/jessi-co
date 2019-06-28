@@ -19,9 +19,10 @@ class LogInContainer extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.logUser(this.state, this.props.history);
+    this.props.logUser(this.state, this.props.history, this.props.carrito);
+   
   }
-  componentDidUpdate() {}
+  
   render() {
     return (
       <LogIn
@@ -32,11 +33,12 @@ class LogInContainer extends Component {
   }
 }
 const mapStateToProps = state => ({
-  user: state.user.user
+  user: state.user.user,
+  carrito: state.carrito.products
 });
 const mapDispatchToProps = dispatch => {
   return {
-    logUser: fetchUser
+    logUser: fetchUser,
   };
 };
 

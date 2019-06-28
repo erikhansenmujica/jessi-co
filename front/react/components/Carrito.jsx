@@ -1,5 +1,5 @@
 import React from "react";
-import {Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -55,6 +55,7 @@ export default function CenteredGrid(props) {
   return (
     <div className="container">
       <div className={classes.root}>
+        {console.log(props.carrito)}
         <Grid item xs={12}>
           <Paper className={classes.paper}>WELCOME TO CARRITO</Paper>
         </Grid>
@@ -153,7 +154,7 @@ export default function CenteredGrid(props) {
             type="button"
             className="btn btn-primary btn-lg"
             style={buyButton}
-            onClick={()=>props.handleBuyButton(props.carrito)}
+            onClick={() => props.handleBuyButton(props.carrito)}
           >
             Buy
           </button>
@@ -161,11 +162,14 @@ export default function CenteredGrid(props) {
       ) : (
         // <div className="text-center"> <h3>"No hay productos en el carrito..."</h3> </div>
         <div className={classes.root}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}><Link to='/'>No hay productos en el carrito aún, realizá tu primera compra!</Link></Paper>
-        </Grid>
-      </div>
-       
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <Link to="/">
+                No hay productos en el carrito aún, realizá tu primera compra!
+              </Link>
+            </Paper>
+          </Grid>
+        </div>
       )}
     </div>
   );
