@@ -30,7 +30,11 @@ export const deleteSingleProduct = (id) => ({
 })
 
 
-export const fetchCarrito = (user) =>
-    Axios.get(`/api/carrito/${user.id}`)
-        .then(carrito => store.dispatch(setCart(carrito)))
+export const fetchCarrito = (id, addedProducts) =>
+    Axios.get(`/api/carrito/${id}`)
+        .then(carrito => {
+            carrito.data.concat(addedProducts)
+            store.dispatch(setCart(carrito.data))
+        }
+        )
 

@@ -37,7 +37,7 @@ router.get('/:name', function (req, res) {
     where: {
       name: Sequelize.where(Sequelize.fn('LOWER', Sequelize.col('name')), 'LIKE', '%' + nombre + '%'),
       stock: {
-        [Op.gt]: 1
+        [Op.gt]: 0
       }
     }
 

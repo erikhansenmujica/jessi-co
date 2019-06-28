@@ -12,7 +12,6 @@ Product.belongsToMany(Carrito, { through: 'ProductCarrito' });
 Order.belongsToMany(Product, { through: 'ProductOrder' });
 Product.belongsToMany(Order, { through: 'ProductOrder' });
 User.hasMany(Order)
-
 User.belongsToMany(Product, { through: 'UserProduct' })
 Product.belongsToMany(User, { through: 'UserProduct' })
 
