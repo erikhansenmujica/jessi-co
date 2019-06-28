@@ -23,13 +23,13 @@ export default ({ user }) => {
           path="/products/:name"
           component={SingleProductContainer}
         />
-        <Route exact path="/products" component={ProductsContainer} />
+        <Route path="/products" component={ProductsContainer} />
         <Route exact path="/category/:name" component={ProductsContainer} />
-        <Route exact path="/carrito" component={CarritoContainer} />
-        <Route exact path="/profile" component={ProfileUserContainer} />
+        <Route path="/carrito" component={CarritoContainer} />
+        <Route path="/profile" component={ProfileUserContainer} />
         <Route exact path="/" component={HomeContainer} />
         {user.admin === true && (
-          <div>
+          <React.Fragment>
             <Route path="/admin" component={Admin} />
             <Route
               path="/edit/categories"
@@ -48,7 +48,8 @@ export default ({ user }) => {
               path="/products/:name"
               component={SingleProductContainer}
             />
-          </div>
+        
+          </React.Fragment>
         )}
       </Switch>
     </div>

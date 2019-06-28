@@ -1,8 +1,8 @@
 import React from "react";
 
 const button = {
-  display: "block", 
-  margin: 'auto'
+  display: "block",
+  margin: "auto"
 };
 
 const letters = {
@@ -87,21 +87,27 @@ export default ({ handleChange, handleSubmit, cat, handleCatChange }) => {
           <label style={letters} className="col-sm-2 col-form-label">
             Categorias del producto
           </label>
-          <select className="selectpicker"multiple onChange={handleCatChange}>
-           {cat.length&&cat.map(cati=>
-            <option key={cati.id} value={cati.name}>{cati.name}</option>
-            )} 
+          <select className="selectpicker" multiple onChange={handleCatChange}>
+            {cat.length &&
+              cat.map(cati => (
+                <option key={cati.id} value={cati.name}>
+                  {cati.name}
+                </option>
+              ))}
           </select>
         </div>
-
 
         <br />
         <br />
         <br />
         <div>
-          <button style={button} type="submit" className="btn btn-primary btn-lg">
+          <button
+            style={button}
+            type="submit"
+            className="btn btn-primary btn-lg"
+          >
             Agregar
-            </button>
+          </button>
         </div>
       </form>
     </div>
