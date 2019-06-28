@@ -47,5 +47,17 @@ router.post('/delete/:userId', function (req, res) {
         })
 })
 
+router.post('/deleteall/:userId', function (req, res) {
+    let userId = req.params.userId;
+    User.findAll({
+        include: [{
+            model: Product,
+        }]
+    }).
+        then(user => {
+            let selectedUser = user.filter(user => user.id == userId)
+            selectedUser[0].setProducts([])
+        })
+})
 
 module.exports = router;

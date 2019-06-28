@@ -20,9 +20,8 @@ class LogInContainer extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.logUser(this.state, this.props.history, this.props.carrito);
-   
   }
-  
+
   render() {
     return (
       <LogIn
@@ -38,7 +37,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => {
   return {
-    logUser: fetchUser,
+    logUser: fetchUser
   };
 };
 

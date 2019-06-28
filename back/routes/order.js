@@ -111,9 +111,10 @@ router.post('/', function (req, res) {
     for (let i = 0; i < req.body.data.carrito.length; i++) {
         productsId.push(req.body.data.carrito[i].id)
     }
+    console.log("productsid", productsId)
     Order.create(req.body.data)
         .then(order => order.addProducts(productsId))
-
+        .then(order => console.log("la order", order))
     let products = req.body.data.carrito.map(product => product.name);
     let total = 0
     for (let i = 0; i < req.body.data.carrito.length; i++) {
