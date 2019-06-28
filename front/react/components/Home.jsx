@@ -8,6 +8,9 @@ const style = {
     width: "200px",
     objectFit: "contain"
   },
+  carrousel:{
+    marginTop:"35px"
+  },
   text: {
     textAlign: "center",
     fontFamily: "Francois One",
@@ -17,22 +20,22 @@ const style = {
     textAlign: "center"
   },
   footer: {
-    backgroundColor: "#2A2A36"
+    marginTop: '170px'
   },
   arrowcolor: {
     filter: "invert(100%)"
   }
 };
 //<h1 style={style.text}>TESSIE&CO</h1>
-export default ({onClick}) => {
+export default ({ onClick }) => {
   return (
     <div className="container">
-      <br />
-      <br />
+      
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
         data-ride="carousel"
+        style={style.carrousel}
       >
         <ol className="carousel-indicators">
           <li
@@ -44,7 +47,7 @@ export default ({onClick}) => {
           <li data-target="#carouselExampleCaptions" data-slide-to="2" />
         </ol>
         <div className="carousel-inner">
-          <div className="carousel-item active" onClick={()=>onClick("Mac")}>
+          <div className="carousel-item active" onClick={() => onClick("Mac")}>
             <img
               src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4598/4598800cv12d.jpg"
               className="d-block w-100"
@@ -55,7 +58,7 @@ export default ({onClick}) => {
               <h5>MacBook</h5>
             </div>
           </div>
-          <div className="carousel-item" onClick={()=>onClick("iPad")}>
+          <div className="carousel-item" onClick={() => onClick("iPad")}>
             <img
               src="https://www.apple.com/my/support/products/images/mac-hero_2x.png"
               style={style.div}
@@ -66,7 +69,7 @@ export default ({onClick}) => {
               <h5>Mac Apple</h5>
             </div>
           </div>
-          <div className="carousel-item" onClick={()=>onClick("Gadget")}>
+          <div className="carousel-item" onClick={() => onClick("Gadget")}>
             <img
               src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/image/AppleInc/aos/published/images/a/pp/apple/watch/apple-watch-og-hero-201809?wid=600&hei=315&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1536762554360"
               style={style.div}
@@ -100,14 +103,9 @@ export default ({onClick}) => {
           <span className="sr-only">Next</span>
         </a>
       </div>
-       <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <footer>
+      <div>
+        
+      <footer style={style.footer} >
         <p className="float-right" style={style.text2}>
           <a href="#">Back to top</a>
         </p>
@@ -116,6 +114,7 @@ export default ({onClick}) => {
           &middot; <a href="#">Terms</a>
         </p>
       </footer>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import React from "react";
 
-const center = {
-  textAlign: "center"
+const button = {
+  display: "block", 
+  margin: 'auto'
 };
 
 const letters = {
@@ -98,7 +99,7 @@ export default ({ handleChange, handleSubmit, cat, handleCatChange }) => {
         <br />
         <br />
         <div>
-          <button type="submit" className="btn btn-primary btn-lg">
+          <button style={button} type="submit" className="btn btn-primary btn-lg">
             Agregar
             </button>
         </div>

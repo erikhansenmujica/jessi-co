@@ -13,7 +13,7 @@ import ProfileUserContainer from "../containers/ProfileUserContainer";
 import EditCategoriesContainer from "../containers/EditCategoriesContainer";
 import EditProductsFromListContainer from "../containers/EditProductsFromListContainer";
 
-export default () => {
+export default ({ user }) => {
   return (
     <div>
       <Route component={NavbarContainer} />
@@ -23,20 +23,33 @@ export default () => {
           path="/products/:name"
           component={SingleProductContainer}
         />
-        <Route path="/admin" component={Admin} />
-        <Route path="/products" component={ProductsContainer} />
-        <Route path="/edit/categories" component={EditCategoriesContainer} />
-        <Route
-          path="/edit/products"
-          component={EditProductsFromListContainer}
-        />
-        <Route path="/users" component={ListOfUsersContainer} />
+        <Route exact path="/products" component={ProductsContainer} />
         <Route exact path="/category/:name" component={ProductsContainer} />
         <Route exact path="/carrito" component={CarritoContainer} />
-        <Route path="/add" component={AddProductsContainer} />
-        <Route path="/order" component={OrderContainer} />
-        <Route path="/profile" component={ProfileUserContainer} />
-        <Route path="/" component={HomeContainer} />
+        <Route exact path="/profile" component={ProfileUserContainer} />
+        <Route exact path="/" component={HomeContainer} />
+        {user.admin === true && (
+          <div>
+            <Route path="/admin" component={Admin} />
+            <Route
+              path="/edit/categories"
+              component={EditCategoriesContainer}
+            />
+            <Route path="/users" component={ListOfUsersContainer} />
+            <Route
+              path="/edit/products"
+              component={EditProductsFromListContainer}
+            />
+            <Route path="/add" component={AddProductsContainer} />
+            <Route path="/order" component={OrderContainer} />
+
+            <Route
+              exact
+              path="/products/:name"
+              component={SingleProductContainer}
+            />
+          </div>
+        )}
       </Switch>
     </div>
   );
