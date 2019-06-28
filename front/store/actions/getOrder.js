@@ -11,9 +11,10 @@ export const fetchOrders = () =>
         Axios.get("/api/order/all").then(response => {
             dispatch(addOrders(response.data))
         })
-export const updateOrder =(statusAndId)=>
-(dispatch) =>
-        Axios.post("/api/order/update",statusAndId).then(res=>
+        
+export const updateOrder = (statusAndId) =>
+    (dispatch) =>
+        Axios.post("/api/order/update", statusAndId).then(res =>
             dispatch(addOrders(res.data))
-            )
+        )
 

@@ -11,27 +11,27 @@ class addProducts extends React.Component {
       images: "",
       price: "",
       stock: "",
-      categories:[]
+      categories: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCatChange = this.handleCatChange.bind(this);
   }
-  componentDidMount(){
-  
-      $('select').selectpicker();
- 
+  componentDidMount() {
+    $("select").selectpicker();
   }
- 
-  handleChange(e) {
 
+  handleChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     });
   }
   handleCatChange(e) {
-    var arr=[]
-    document.querySelectorAll(".dropdown-item").forEach(elem=>{if(elem.getAttribute("aria-selected")==="true")arr.push(elem.textContent)})
+    var arr = [];
+    document.querySelectorAll(".dropdown-item").forEach(elem => {
+      if (elem.getAttribute("aria-selected") === "true")
+        arr.push(elem.textContent);
+    });
     this.setState({
       categories: arr
     });
@@ -50,9 +50,9 @@ class addProducts extends React.Component {
       stock: parseInt(this.state.stock),
       description: this.state.description,
       images: arr,
-      categories:this.state.categories
-      
-    });
+      categories: this.state.categories
+    })
+    .then(()=> alert('Product created!'))
   }
 
   render() {
@@ -66,8 +66,8 @@ class addProducts extends React.Component {
     );
   }
 }
-const mapStateToProps = (store)=>({
-    cat:store.categories.cats
-})
+const mapStateToProps = store => ({
+  cat: store.categories.cats
+});
 
-export default connect(mapStateToProps)(addProducts)
+export default connect(mapStateToProps)(addProducts);
