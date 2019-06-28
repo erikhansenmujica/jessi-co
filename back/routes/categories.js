@@ -10,6 +10,22 @@ router.get('/all', function (req, res) {
             res.status(200).send(category)
         })
 })
+
+router.get('/find/:id', function (req, res) {
+    Product.findAll({
+        include: [{
+            model: Category,
+            attributes:["name"]
+        }],
+        where:{id:req.params.id}
+    })
+    .then((categories)=>{
+       res.status(200).send(categories)
+    })
+   
+})
+
+
 router.post('/remove', function (req, res) {
     Category.destroy({
         where:{

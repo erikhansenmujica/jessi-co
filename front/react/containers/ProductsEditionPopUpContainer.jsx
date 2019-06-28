@@ -1,5 +1,5 @@
 import React from "react";
-import {addProducts} from "../../store/actions/getProducts";
+import { addProducts } from "../../store/actions/getProducts";
 import { connect } from "react-redux";
 import Axios from "axios";
 import ProductsEditionPopUp from "../components/ProductsEditionPopUp";
@@ -10,10 +10,12 @@ class ProductsEditionPopUpContainer extends React.Component {
             name: "",
             price: "",
             stock: "",
-            description: ""
+            description: "",
+            categories: []
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleCatChange = this.handleCatChange.bind(this);
     }
     componentDidMount() {
         $("select").selectpicker();
@@ -24,6 +26,19 @@ class ProductsEditionPopUpContainer extends React.Component {
             [e.target.name]: e.target.value
         });
     }
+    handleCatChange(e) {
+        var arr =[]
+        document.querySelectorAll(".dropdown-item").forEach(elem => {
+            if (elem.getAttribute("aria-selected") === "true") {
+                arr.push(elem.textContent)
+            }
+        }
+        );
+
+        this.setState({
+            categories: arr
+        });
+    }
 
     handleSubmit() {
         return Axios.post("/api/products/things/update", {
@@ -32,19 +47,23 @@ class ProductsEditionPopUpContainer extends React.Component {
             price: parseInt(this.state.price),
             stock: parseInt(this.state.stock),
             description: this.state.description,
+            categories: this.state.categories
         })
-            .then((products) =>{
-                this.props.addProducts(products.data)        
+            .then((products) => {
+                this.props.addProducts(products.data)
                 alert('Product Updated!')
             })
     }
 
     render() {
+        console.log(this.state.categories)
         return (
             <ProductsEditionPopUp
-            id={this.props.id}
+                id={this.props.id}
                 handleSubmit={this.handleSubmit}
                 handleChange={this.handleChange}
+                handleCatChange={this.handleCatChange}
+                cat={this.props.cat}
             />
         );
     }
@@ -52,8 +71,8 @@ class ProductsEditionPopUpContainer extends React.Component {
 const mapStateToProps = store => ({
     cat: store.categories.cats
 });
-const mapDispatchToProps = dispatch=>({
-    addProducts: prod=>dispatch(addProducts(prod))
+const mapDispatchToProps = dispatch => ({
+    addProducts: prod => dispatch(addProducts(prod))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsEditionPopUpContainer);
