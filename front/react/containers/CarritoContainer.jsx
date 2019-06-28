@@ -38,6 +38,12 @@ class CarritoContainer extends Component {
     this.props.quantityDown(id);
   }
   handleDeleteProduct(id) {
+    sessionStorage.setItem('product', JSON.stringify(JSON.parse(sessionStorage.getItem("product")).filter(product => product.id !== id)))
+    if (this.props.user.id >= 0) {
+      axios.post(`/api/carrito/delete/${this.props.user.id}`, {
+        deletedProduct: id
+      })
+    }
     this.props.deleteSingleProduct(id);
   }
 

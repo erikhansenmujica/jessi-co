@@ -42,25 +42,50 @@ router.get('/', function (req, res) {
     }).then(orders => res.send(orders))
 })
 
-router.post('/update', function (req, res) {
+router.post("/update", function (req, res) {
     Order.findOne({
         where: {
             id: req.body.id
         }
     }).then(order => {
-        order.update({
-            status: req.body.status
-        })
-            .then(() =>
-                Order.findAll({
-                    include: [{
-                        model: Product,
-                    }]
-                }).then(orders => res.send(orders))
-            )
-    })
-})
+        return order
+            .update({
+                status: req.body.status
+            })
+            .then(order => {
+                const mailOptions = {
+                    from: "tessiecompany@gmail.com",
+                    to: order.email,
+                    subject: `Cambio de estado de tu orden #${order.id} en Tessie&Co: ${order.status}`,
+                    html:
+                        "<h2>Te mantendremos informado sobre futuros cambios en tu orden, gracias por tu compra! </h2>" +
+                        "<br><br><p>Este es un email autómatico. Para comunicarse con Tessie&co, por favor envíe un email a:</p>"
+                };
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if (err) {
+                        console.log("Error al enviar el mail: ", err);
+                        res.send({
+                            msg: "fail"
+                        });
+                    } else {
+                        console.log("Mail enviado: ", info);
+                        res.send({
+                            msg: "success"
+                        });
+                    }
+                });
 
+                Order.findAll({
+                    include: [
+                        {
+                            model: Product
+                        }
+                    ]
+                })
+                    .then(orders => res.send(orders));
+            });
+    });
+});
 
 router.get('/products/:userId', function (req, res) {
     let userId = req.params.userId;
@@ -75,8 +100,8 @@ router.get('/products/:userId', function (req, res) {
             let prod = [];
             for (let i = 0; i < selectedUserOrders.length; i++) {
                 product.push(selectedUserOrders[i].products)
-                prod = [].concat(...product)
             }
+            prod = [].concat(...product)
             res.send(prod)
         })
 })
