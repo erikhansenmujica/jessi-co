@@ -24,7 +24,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-      giveMeAllProducts:fetchProducts,
+      giveMeAllProducts:()=>dispatch(fetchProducts()),
     };
   };
 

@@ -15,7 +15,7 @@ const morgan = require("morgan")
 const session = require("express-session");
 const passport = require('./validations/passport');
 const db = require('./db/db')
-const { Product, Category } = require("./db/models")
+const { Product, Category, User } = require("./db/models")
 
 //object fit
 app.use(express.static('public'));

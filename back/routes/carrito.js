@@ -43,6 +43,7 @@ router.post('/delete/:userId', function (req, res) {
             let selectedUser = user.filter(user => user.id == userId)
             let newArr = selectedUser[0].products.filter(product => product.id !== req.body.deletedProduct)
             selectedUser[0].setProducts(newArr)
+            res.json(newArr)
         })
 })
 
