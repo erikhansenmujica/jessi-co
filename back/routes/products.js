@@ -31,7 +31,6 @@ router.post('/update/stock', function (req, res) {
     })
 })
 router.post('/things/update', function (req, res) {
-  console.log(req.body)
   Product.findOne({ where: { id: req.body.id } })
     .then(product =>
       product.update({

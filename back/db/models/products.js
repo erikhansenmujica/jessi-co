@@ -11,19 +11,19 @@ const Product = db.define('products', {
     allowNull: false,
   },
   stock: {
-    type: S.INTEGER, 
+    type: S.INTEGER,
   },
   description: {
-    type : S.TEXT
+    type: S.TEXT
   },
   images: {
-    type : S.ARRAY(S.STRING)
+    type: S.ARRAY(S.STRING)
   },
-  reviews : {
-    type : S.ARRAY(S.TEXT)
+  reviews: {
+    type: S.ARRAY(S.TEXT)
   },
-  rating : {
-    type : S.ARRAY(S.INTEGER)
+  rating: {
+    type: S.ARRAY(S.INTEGER)
   }
 })
 

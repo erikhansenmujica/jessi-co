@@ -29,14 +29,17 @@ export default ({ order, handleSelection }) => {
               </h6>
               <p className="card-text">{order.status}</p>
               <p className="card-text">{order.createdAt}</p>
-              <select className="custom-select custom-select-sm" style={{width:"15%"}} onChange={(e)=>handleSelection(e, order.id)}>
+              <select
+                className="custom-select custom-select-sm"
+                style={{ width: "15%" }}
+                onChange={e => handleSelection(e, order.id)}
+              >
                 <option defaultValue>Select order status</option>
                 <option value="pending">Pending</option>
                 <option value="processing">Processing</option>
                 <option value="canceled">Canceled</option>
                 <option value="delivered">Delivered</option>
               </select>
-             
             </div>
           </div>
         ))}

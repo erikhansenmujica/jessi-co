@@ -55,7 +55,6 @@ export default function CenteredGrid(props) {
   return (
     <div className="container">
       <div className={classes.root}>
-        {console.log(props.carrito)}
         <Grid item xs={12}>
           <Paper className={classes.paper}>WELCOME TO CARRITO</Paper>
         </Grid>

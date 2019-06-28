@@ -7,8 +7,7 @@ class AddCategoryContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      category: "",
-     
+      category: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,7 +16,7 @@ class AddCategoryContainer extends Component {
     this.setState({ category: e.target.value });
   }
   handleSubmit(e) {
-    this.props.addCat(this.state)
+    this.props.addCat(this.state);
   }
   componentDidUpdate() {}
   render() {
@@ -32,7 +31,7 @@ class AddCategoryContainer extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addCat: (name)=>dispatch(create(name))
+    addCat: name => dispatch(create(name))
   };
 };
 

@@ -18,7 +18,6 @@ class ProfileUserContainer extends React.Component {
     );
   }
   render() {
-    
     return <ProfileUser user={this.props.user} order={this.state.order} />;
   }
 }

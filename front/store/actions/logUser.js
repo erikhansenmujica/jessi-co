@@ -1,7 +1,7 @@
 import { LOG_USER, DELOG_USER } from "../../utils/constants";
 import Axios from "axios";
 import store from "../../store/index"
-import { setCart,remCart } from "../actions/getCarrito";
+import { setCart, remCart } from "../actions/getCarrito";
 
 export const logUser = (user) => ({
     type: LOG_USER,
@@ -20,19 +20,19 @@ export const fetchUser = (user, history, addedProducts) => Axios.post("/api/user
     .then((user) => {
         Axios.get(`/api/carrito/${user.id}`)
             .then(carrito => {
-                carrito.data.forEach(product=>{
-                    addedProducts.forEach(ad=>{
-                        if(product.id!==ad.id) store.dispatch(setCart(product))
+                carrito.data.forEach(product => {
+                    if (addedProducts[0]) addedProducts.forEach(ad => {
+                        if (product.id !== ad.id) store.dispatch(setCart(product))
                     })
-                    
+                    else store.dispatch(setCart(product))
                 })
                 return user
             })
-            .then((user)=>{
-                addedProducts.forEach(prod=>{
+            .then((user) => {
+                addedProducts.forEach(prod => {
                     Axios.post(`/api/carrito/${user.id}`, {
-                        product: prod   
-                      })
+                        product: prod
+                    })
                 })
             })
     })
@@ -44,8 +44,7 @@ export const fetchLoggedUser = () => Axios.get("/api/user/get-user").then(user =
     .then((user) => {
         Axios.get(`/api/carrito/${user.id}`)
             .then(carrito => {
-                    store.dispatch(remCart(carrito.data))
+                store.dispatch(remCart(carrito.data))
                 return user
             })
-        })
-        
+    })

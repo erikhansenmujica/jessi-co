@@ -17,7 +17,6 @@ class ReviewContainer extends React.Component {
     this.handleSubmitChange = this.handleSubmitChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
   }
-  
 
   handleReviewChange(e) {
     var reviewInput = e.target.value;
@@ -35,13 +34,13 @@ class ReviewContainer extends React.Component {
     let review = this.state.reviewInput;
     let rating = this.state.ratingInput;
     let productId = this.props.product.id;
-    if (this.state.reviewInput) {
+    if (this.state.reviewInput && this.state.ratingInput) {
       Axios.post("/api/reviews/addreview", { review, rating, productId }).then(
         e => {
           this.props.fetchProductReviewsById(e.data[0].id);
         }
       );
-    }
+    } else if (!this.state.reviewInput || !this.state.ratingInput) alert("Complete su reseña!")
   }
 
   render() {

@@ -8,8 +8,8 @@ const style = {
     width: "200px",
     objectFit: "contain"
   },
-  carrousel:{
-    marginTop:"35px"
+  carrousel: {
+    marginTop: "35px"
   },
   text: {
     textAlign: "center",
@@ -20,7 +20,7 @@ const style = {
     textAlign: "center"
   },
   footer: {
-    marginTop: '170px'
+    marginTop: "170px"
   },
   arrowcolor: {
     filter: "invert(100%)"
@@ -30,7 +30,6 @@ const style = {
 export default ({ onClick }) => {
   return (
     <div className="container">
-      
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
@@ -104,16 +103,15 @@ export default ({ onClick }) => {
         </a>
       </div>
       <div>
-        
-      <footer style={style.footer} >
-        <p className="float-right" style={style.text2}>
-          <a href="#">Back to top</a>
-        </p>
-        <p>
-          &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
-          &middot; <a href="#">Terms</a>
-        </p>
-      </footer>
+        <footer style={style.footer}>
+          <p className="float-right" style={style.text2}>
+            <a href="#">Back to top</a>
+          </p>
+          <p>
+            &copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a>{" "}
+            &middot; <a href="#">Terms</a>
+          </p>
+        </footer>
       </div>
     </div>
   );

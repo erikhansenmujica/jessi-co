@@ -15,39 +15,39 @@ router.get('/find/:id', function (req, res) {
     Product.findAll({
         include: [{
             model: Category,
-            attributes:["name"]
+            attributes: ["name"]
         }],
-        where:{id:req.params.id}
+        where: { id: req.params.id }
     })
-    .then((categories)=>{
-       res.status(200).send(categories)
-    })
-   
+        .then((categories) => {
+            res.status(200).send(categories)
+        })
+
 })
 
 
 router.post('/remove', function (req, res) {
     Category.destroy({
-        where:{
-            id:req.body.id
+        where: {
+            id: req.body.id
         }
     })
         .then(() => {
             Category.findAll()
-            .then((category) => {
-                res.status(200).send(category)
-            })
+                .then((category) => {
+                    res.status(200).send(category)
+                })
         })
 })
 router.post('/create', function (req, res) {
     Category.create({
-       name:req.body.category
+        name: req.body.category
     })
         .then(() => {
             Category.findAll()
-            .then((category) => {
-                res.status(200).send(category)
-            })
+                .then((category) => {
+                    res.status(200).send(category)
+                })
         })
 })
 router.get('/:nombre', function (req, res) {
@@ -63,9 +63,9 @@ router.get('/:nombre', function (req, res) {
 
             }]
         })
-        .then((category) => {
-            res.status(200).send(category)
-        })
+            .then((category) => {
+                res.status(200).send(category)
+            })
     } catch (err) { console.log(err) }
 })
 

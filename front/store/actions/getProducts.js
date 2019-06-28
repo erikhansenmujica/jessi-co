@@ -30,14 +30,14 @@ export const fetchProductsById = (id) =>
     Axios.get(`/api/products/${id}`)
         .then(product => store.dispatch(addProduct(product)))
 
-export const fetchProductReviewsById = (id) => 
+export const fetchProductReviewsById = (id) =>
     Axios.get(`/api/reviews/${id}`)
-        .then(product=>store.dispatch(addProduct(product.data)))
-        
-export const updateProductStock = (stockAndId) => 
-    Axios.post(`/api/products/update/stock`,stockAndId)
-        .then(products=>store.dispatch(addProducts(products.data)))
-        
+        .then(product => store.dispatch(addProduct(product.data)))
+
+export const updateProductStock = (stockAndId) =>
+    Axios.post(`/api/products/update/stock`, stockAndId)
+        .then(products => store.dispatch(addProducts(products.data)))
+
 //ver si es necesario
 export const product = (product) => {
     return function (dispatch) {

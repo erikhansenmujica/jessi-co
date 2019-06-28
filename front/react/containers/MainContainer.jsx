@@ -42,12 +42,10 @@ class MainContainer extends Component {
         "selectedProduct",
         JSON.stringify(this.props.product)
       );
-     
   }
 
-
   render() {
-    return <Main user={this.props.user}/>;
+    return <Main user={this.props.user} />;
   }
 }
 

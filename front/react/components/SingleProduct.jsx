@@ -111,8 +111,7 @@ export default props => {
           </div>
         </div>
       )}
-     <br/>
-     
+      <br />
     </div>
   );
 };

@@ -51,8 +51,7 @@ class addProducts extends React.Component {
       description: this.state.description,
       images: arr,
       categories: this.state.categories
-    })
-    .then(()=> alert('Product created!'))
+    }).then(() => alert("Product created!"));
   }
 
   render() {

@@ -18,10 +18,14 @@ export default ({ handleChange, handleSubmit, cat, handleCatChange }) => {
     <div className="container">
       <h1 style={title}>Agregar Productos</h1>
 
-      <form onSubmit={(e)=>{
-        handleSubmit(e)
-      document.querySelectorAll(".form-control").forEach(input=>input.value="")
-      }}>
+      <form
+        onSubmit={e => {
+          handleSubmit(e);
+          document
+            .querySelectorAll(".form-control")
+            .forEach(input => (input.value = ""));
+        }}
+      >
         <div className="form-group row">
           <label style={letters} className="col-sm-2 col-form-label">
             Nombre

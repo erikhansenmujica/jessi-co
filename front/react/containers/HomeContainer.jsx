@@ -31,7 +31,7 @@ const mapStateToProps = ({ carrito, user }) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchPbyCat: name => dispatch(filterProductsByCat(name)),
+    fetchPbyCat: name => dispatch(filterProductsByCat(name))
   };
 };
 

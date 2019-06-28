@@ -48,7 +48,6 @@ export default ({ user }) => {
               path="/products/:name"
               component={SingleProductContainer}
             />
-        
           </React.Fragment>
         )}
       </Switch>

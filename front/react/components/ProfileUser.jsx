@@ -12,8 +12,7 @@ const style = {
   }
 };
 
-export default ({ user, order}) => {
- 
+export default ({ user, order }) => {
   return (
     <div className="container" key={order}>
       <br />
@@ -76,32 +75,31 @@ export default ({ user, order}) => {
             aria-labelledby="headingOne"
             data-parent="#accordionExample"
           >
-            {order && (
-              order.map((order) => {
+            {order &&
+              order.map(order => {
                 return (
-                  <div className="card-body"  key={order.id}>
+                  <div className="card-body" key={order.id}>
                     <h3>Direccion: {order.address}</h3>
-                      <p className="mb-0">Estado de tu orden: {order.status}</p>
+                    <p className="mb-0">Estado de tu orden: {order.status}</p>
 
                     {order.products &&
-                      order.products.map((product, index) => 
-                        <div className="card"  key={index}  >
-                          <div className="card-body" >
+                      order.products.map((product, index) => (
+                        <div className="card" key={index}>
+                          <div className="card-body">
                             <p className="mb-0">Name: {product.name}</p>
                             <p className="mb-0">Precio: {product.price}</p>
                           </div>
                         </div>
-                      )}
+                      ))}
                   </div>
                 );
-              })
-            )}
+              })}
           </div>
         </div>
       </div>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
       <footer>
         <p className="float-right" style={style.text2}>
           <a href="#">Back to top</a>

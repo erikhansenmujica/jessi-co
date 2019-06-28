@@ -138,7 +138,7 @@ export default function PrimarySearchAppBar({
   }
   function handleLogOut() {
     removeCart([]);
-    sessionStorage.clear()
+    sessionStorage.clear();
     Axios.get("/api/user/logout").then(() => store.dispatch(deLogUser()));
   }
   const menuId = "primary-search-account-menu";

@@ -13,9 +13,9 @@ const style = {
   padding: {
     paddingTop: "55px"
   },
-  prueba:{
-      display: "block",
-      margin:"auto"
+  prueba: {
+    display: "block",
+    margin: "auto"
   }
 };
 export default () => (
@@ -27,7 +27,7 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/order">
         <button
-        style={style.prueba}
+          style={style.prueba}
           className="btn btn-lg btn-dark "
           href="/docs/4.3/components/navbar/"
           role="button"
@@ -43,7 +43,7 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/add">
         <button
-        style={style.prueba}
+          style={style.prueba}
           className="btn btn-lg btn-dark"
           href="/docs/4.3/components/navbar/"
           role="button"
@@ -59,7 +59,7 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/users">
         <button
-        style={style.prueba}
+          style={style.prueba}
           className="btn btn-lg btn-dark"
           href="/docs/4.3/components/navbar/"
           role="button"
@@ -75,14 +75,14 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/edit/categories">
         <button
-        style={style.prueba}
+          style={style.prueba}
           className="btn btn-lg btn-dark"
           href="/docs/4.3/components/navbar/"
           role="button"
         >
           Add One &raquo;
         </button>
-        </Link>
+      </Link>
     </div>
     <div className="jumbotron" style={style.square}>
       <div style={style.padding}>
@@ -91,14 +91,14 @@ export default () => (
       <p className="lead">.</p>
       <Link to="/edit/products">
         <button
-        style={style.prueba}
+          style={style.prueba}
           className="btn btn-lg btn-dark"
           href="/docs/4.3/components/navbar/"
           role="button"
         >
           View Products List &raquo;
         </button>
-        </Link>
+      </Link>
     </div>
   </div>
 );
