@@ -29,7 +29,7 @@ class MainContainer extends Component {
 
  }
   render() {
-    return <Main />;
+    return <Main user={this.props.user}/>;
   }
 }
 
