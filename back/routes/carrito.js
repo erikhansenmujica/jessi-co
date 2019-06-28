@@ -11,10 +11,9 @@ router.get('/:userId', function (req, res) {
     }).
         then(user => {
             let selectedUser = user.filter(user => user.id == userId)
-            res.send(selectedUser[0].products)
+            res.json(selectedUser[0].products)
         })
 })
-
 
 router.get('/', function (req, res) {
     User.findAll({
