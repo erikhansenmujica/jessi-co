@@ -8,7 +8,7 @@ import {
   deleteSingleProduct,
   remCart
 } from "../../store/actions/getCarrito";
-import {updateProductStock} from "../../store/actions/getProducts"
+import { updateProductStock } from "../../store/actions/getProducts";
 
 class CarritoContainer extends Component {
   constructor(props) {
@@ -38,11 +38,18 @@ class CarritoContainer extends Component {
     this.props.quantityDown(id);
   }
   handleDeleteProduct(id) {
-    sessionStorage.setItem('product', JSON.stringify(JSON.parse(sessionStorage.getItem("product")).filter(product => product.id !== id)))
+    sessionStorage.setItem(
+      "product",
+      JSON.stringify(
+        JSON.parse(sessionStorage.getItem("product")).filter(
+          product => product.id !== id
+        )
+      )
+    );
     if (this.props.user.id >= 0) {
       axios.post(`/api/carrito/delete/${this.props.user.id}`, {
         deletedProduct: id
-      })
+      });
     }
     this.props.deleteSingleProduct(id);
   }
@@ -58,8 +65,10 @@ class CarritoContainer extends Component {
         }
       })
       .then(res => {
+        if (this.props.user.id >= 0)
+          axios.post(`/api/carrito/deleteall/${this.props.user.id}`);
         if (res.data.msg === "success") {
-          this.props.updateStock(carrito)
+          this.props.updateStock(carrito);
           alert("Order created.");
           this.props.removeCart([]);
           this.props.history.push("/profile");
@@ -97,7 +106,7 @@ const mapDispatchToProps = dispatch => ({
   quantityDown: id => dispatch(quantityDown(id)),
   deleteSingleProduct: id => dispatch(deleteSingleProduct(id)),
   removeCart: arr => dispatch(remCart(arr)),
-  updateStock:  updateProductStock
+  updateStock: updateProductStock
 });
 
 export default connect(
