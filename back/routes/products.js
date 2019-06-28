@@ -30,6 +30,25 @@ router.post('/update/stock', function (req, res) {
       res.status(200).send(products)
     })
 })
+router.post('/things/update', function (req, res) {
+  console.log(req.body)
+    Product.findOne({ where: { id: req.body.id } })
+      .then(product =>
+        product.update({
+          name: req.body.name?req.body.name:product.name,
+          stock: req.body.stock?req.body.stock:product.stock,
+          price: req.body.price?req.body.price:product.price,
+          description: req.body.description?req.body.description:product.description
+        })
+  )
+  .then(()=>
+   Product.findAll()
+    .then((products) => {
+      res.status(200).send(products)
+    })
+  )
+ 
+})
 
 router.get('/:name', function (req, res) {
   let nombre = req.params.name.toLowerCase();

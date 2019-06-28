@@ -44,16 +44,17 @@ export default (props)=> {
               }} alt="no images" />
               <div className="card-body">
                 <h5 className="card-title">{prod.name}</h5>
-                <p className="card-text">Cantidad disponible: {prod.stock} precio: ${prod.price} </p>
+                <p className="card-text">Cantidad disponible: {prod.stock} </p>
+                <p className="card-text">precio: ${prod.price} </p>
                 <Link to={`/products/${prod.name}`} className="btn btn-primary" onClick={() => {
                   props.handleClick(prod)
                 }}>Check Product</Link>
               </div>
             </div>
         ): <div style={style.products}>
-            <div class="alert alert-secondary" role="alert">
-              <h2 class="alert-heading">Oops! No han habido coincidencias con tu búsqueda... </h2>
-              <p><h3><Link to='/'>Inténtalo de nuevo!</Link></h3></p>
+            <div className="alert alert-secondary" role="alert">
+              <h2 className="alert-heading">Oops! No han habido coincidencias con tu búsqueda... </h2>
+              <h3><Link to='/'>Inténtalo de nuevo!</Link></h3>
             </div>
         </div>}
       </GridList>
