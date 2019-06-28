@@ -74,14 +74,16 @@ router.get('/products/:userId', function (req, res) {
                 product.push(selectedUserOrders[i].products)
                 prod = [].concat(...product)
             }
-
             res.send(prod)
         })
 })
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> bf7dcf22be5ad2a62c1dc1c1244479d659308ed7
 router.post('/', function (req, res) {
     let productsId = [];
     for (let i = 0; i < req.body.data.carrito.length; i++) {
