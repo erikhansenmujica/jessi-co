@@ -25,7 +25,7 @@ router.get('/', function (req, res) {
         .then(user => res.send(user))
 })
 
-router.post('/products/:userId', function (req, res) {
+router.post('/:userId', function (req, res) {
     let userId = req.params.userId;
     User.findOne({ where: { id: userId } })
         .then(user => user.addProducts(req.body.product.id))
